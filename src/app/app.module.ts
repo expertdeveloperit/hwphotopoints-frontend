@@ -15,8 +15,6 @@ import { HeaderComponent } from './component/shared/header/header.component';
 import { FooterComponent } from './component/shared/footer/footer.component';
 
 
-
-
 @NgModule({
   declarations: [
     AppComponent,

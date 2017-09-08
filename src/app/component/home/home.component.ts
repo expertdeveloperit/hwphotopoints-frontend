@@ -10,13 +10,10 @@ import {HomeService} from './home.service';
 export class HomeComponent implements OnInit {
 
   public pageContent: any;
-  constructor(private _homeservice : HomeService ) {
 
-
-  }
+  constructor(private _homeservice : HomeService ) {}
 
   ngOnInit() {
-
     this._homeservice.gethomedata()
       .subscribe(res => {
         this.pageContent = res;        
@@ -25,9 +22,5 @@ export class HomeComponent implements OnInit {
         console.log(error);
       } 
     );
-
   }
-
-
-
 }

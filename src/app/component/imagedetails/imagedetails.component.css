@@ -1,0 +1,29 @@
+h2 {
+    font-size: 32px;
+    text-align: center;
+    margin: 30px 0 40px 0;
+    color: #246f24;
+}
+.row.imagedawnload p {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.row.imagedawnload {
+    margin-bottom: 20px;
+}
+
+.row.imagedawnload a {
+    color: #246f24;
+    font-size: 16px;
+}
+
+.row.imagedawnload a:first-child {
+    margin-right: 9px;
+    border-right: 2px solid #246f24;
+    padding-right: 10px;
+}
+
+.row.imagedawnload a:hover {
+    color: #000;
+}

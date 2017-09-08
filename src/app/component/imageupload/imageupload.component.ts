@@ -53,7 +53,6 @@ export class ImageuploadComponent implements OnInit {
 	}
 // ---=== select image send to service ---
 
-
   uploadFile(event) 
     {   
 
@@ -65,25 +64,19 @@ export class ImageuploadComponent implements OnInit {
 
     let reader = new FileReader(); 
     reader.onload = (e: any) => {             //---=== this function used for show upload image-name ---
-        this.logo = e.target.result;
+      this.logo = e.target.result;
     }
     reader.readAsDataURL(event.target.files[0]); //---=== this function used for show upload image---
     this.imageUplodedStatus = true; //---===when it true it show right(select) section
     let element = event.target; 
   	this.name = element.files[0].name;
+  	if(element.files.length > 0){       
 
-        
-  	 	if(element.files.length > 0){       
-
-
-
-
-  	// 	let formData = new FormData();                     
-  	// 	 formData.append('file',element.files);
-  	// 	this.imageupload.uploadimage(formData).subscribe();
-  	// 
     }
   }
+
+//---=== Right section functionality 
+
   onItemChange(seriesType){
     this.selectimagetype = false; 
     this.selectview = false; 
@@ -106,14 +99,14 @@ export class ImageuploadComponent implements OnInit {
         this.selectyearoption = true;
         
         for (minYear; minYear < maxYear; minYear++) {
-              this.allYears.push(minYear);
+          this.allYears.push(minYear);
         }
       }else {
         let minYear = 2017;        
         let maxYear = 2046;
         this.allYears = [];
         for (minYear; minYear < maxYear; minYear++) {
-              this.allYears.push(minYear);
+          this.allYears.push(minYear);
         }
         this.selectyearoption = true;        
       }
@@ -122,7 +115,7 @@ export class ImageuploadComponent implements OnInit {
     
   }
 
-  //on year change
+//---on year change
   onyearChange(year){
      this.selectimagetype = false; 
     this.selectview = false; 
@@ -137,8 +130,7 @@ export class ImageuploadComponent implements OnInit {
     this.selectspringoption = true;
   }
 
-
-  //on season change
+//---on season change
   onSeasonChange(season){
     this.selectimagetype = false; 
     this.selectview = false; 
@@ -150,17 +142,15 @@ export class ImageuploadComponent implements OnInit {
     this.formData.delete('season');
     this.formData.append('season',season);
     this.imageupload.getInfo(this.formData,'posts').subscribe(res => {
-      if(res.posts != null){
-          this.allPosts = res.posts;
-          this.selectlocationoption=true;
-      }
-
+    if(res.posts != null){
+        this.allPosts = res.posts;
+        this.selectlocationoption=true;
+    }
     this.loadingimg=false;
     });
   }
 
-
-  //on location change show image type
+//---on location change show image type
 
 onLocationChange(location){
     this.selectimagetype = false; 
@@ -173,16 +163,15 @@ onLocationChange(location){
     this.formData.append('location',location);
     this.imageupload.getInfo(this.formData,'imagetype').subscribe(res => {
       if(res.types != null){
-          this.allImageType = res.types;
-          console.log(this.allImageType,"allImageType");
-          this.selectimagetype = true; 
+        this.allImageType = res.types;
+        console.log(this.allImageType,"allImageType");
+        this.selectimagetype = true; 
       }
       this.loadingimg=false;
     });
-
   }
 
-//on imageType change show view
+//---on imageType change show view
   
   onImageChange(imageType){
     this.formSubmit = false;
@@ -195,18 +184,15 @@ onLocationChange(location){
      this.formData.append('image_view',imageType);
       this.imageupload.getInfo(this.formData,'values').subscribe(res => {
       if(res.values != null){
-          this.allvalues = res.values;
-          console.log(this.allvalues,"allvalues");
-          this.selectview = true;  
-
+        this.allvalues = res.values;
+        console.log(this.allvalues,"allvalues");
+        this.selectview = true;  
       }
       this.loadingimg=false;
-    });
-    
+    }); 
   }
 
-//on view
-
+//---on view
   onViewChange(view){
     if(view == ""){
       return false;
@@ -217,9 +203,7 @@ onLocationChange(location){
     this.imageupload.getInfo(this.formData,'uploadalldata').subscribe(res => {
     });
   }
-  // ---===form data save---====
-
-  
+// ---===form Submit save---====
 
    onSubmit(imageinfo:any){
     this.loadingimg=true;
