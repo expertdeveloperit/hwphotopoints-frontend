@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # HWPhotosPoint
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.7.
@@ -26,3 +27,6 @@ Before running the tests make sure you are serving the app via `ng serve`.
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+=======
+# hwphotopoints-frontend
+>>>>>>> 3511ca98a34b7a572a703f98e2b0c5d600bb5dc4
