@@ -1,0 +1,48 @@
+<!-- === Project title === -->
+<div class="container">
+<div class="row">
+<div class="col-sm-12">
+  <h1 class="photopoints-logo">
+    <a  routerLink="."> HWPhotoPoints.org.uk 
+    <span class="photopoints-description">The Image Storage Site for Heartwood Forest Volunteers</span></a>
+  </h1>
+  </div>
+  </div>
+</div>
+<!-- === nav section start ===-->
+
+  <nav class="navbar navbar-default photo-nav">
+      <div class="container">
+      <div class="row">
+      <!--=== Toggle header after 767 ===-->
+      <div class="col-sm-12">
+          <div class="navbar-header">
+          <div class="menu-toggle">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <i class="fa fa-bars"></i>
+            </button>
+          </div>
+      <!--=== nav link section start ===-->
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav header-link">
+                <li class=""><a routerLink="">Home</a></li>
+                <li><a routerLink="imageupload">Image Upload</a></li>
+                <li><a routerLink="photopoints">Photo Points</a></li>
+                <li><a routerLink="saplingsurvival">Sapling Survival</a></li>
+                <li><a routerLink="longterm">Long Term</a></li>
+              </ul>
+
+      <!--=== login Sign-up button === -->
+              <div class="navbar-right">
+                <button type="submit" class="btn btn-success" *ngIf="!userAuthenticated"><a routerLink="login">Login</a></button>
+                <button type="submit" (click)="logoutUser()" class="btn btn-success" *ngIf="userAuthenticated">Logout</button>
+              </div>
+            <!--/.nav-collapse -->
+              </div>
+             </div>
+          </div>
+      </div>
+    </div>
+</nav>
+

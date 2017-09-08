@@ -1,0 +1,25 @@
+.photopoints ul li
+ a {
+    color: #000;
+}
+
+.photopoints ul li {
+    line-height: 30px;
+}
+.photopoints ul li a:hover {
+    color: #104810;
+}
+.photopoints {
+    margin-bottom: 35px;
+}
+h2 {
+    font-size: 32px;
+    text-align: center;
+    margin: 30px 0 40px 0;
+    color: #246f24;
+}
+@media only screen and (max-width: 767px) {
+	.photopointslink {
+	    text-align: center;
+	}
+}
