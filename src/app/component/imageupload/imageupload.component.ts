@@ -54,7 +54,7 @@ export class ImageuploadComponent implements OnInit {
 // ---=== select image send to service ---
 
   uploadFile(event) 
-    {   
+  {   
 
       let fileList = event.target.files; 
       let file = fileList[0];  
@@ -72,6 +72,11 @@ export class ImageuploadComponent implements OnInit {
   	this.name = element.files[0].name;
   	if(element.files.length > 0){       
 
+<<<<<<< HEAD
+=======
+ 	 	if(element.files.length > 0){       
+ 
+>>>>>>> 008d6fe4b4d2e4c79ffe28f1b4ede68442e786b9
     }
   }
 
@@ -163,9 +168,14 @@ onLocationChange(location){
     this.formData.append('location',location);
     this.imageupload.getInfo(this.formData,'imagetype').subscribe(res => {
       if(res.types != null){
+<<<<<<< HEAD
         this.allImageType = res.types;
         console.log(this.allImageType,"allImageType");
         this.selectimagetype = true; 
+=======
+          this.allImageType = res.types;
+          this.selectimagetype = true; 
+>>>>>>> 008d6fe4b4d2e4c79ffe28f1b4ede68442e786b9
       }
       this.loadingimg=false;
     });
@@ -184,9 +194,15 @@ onLocationChange(location){
      this.formData.append('image_view',imageType);
       this.imageupload.getInfo(this.formData,'values').subscribe(res => {
       if(res.values != null){
+<<<<<<< HEAD
         this.allvalues = res.values;
         console.log(this.allvalues,"allvalues");
         this.selectview = true;  
+=======
+          this.allvalues = res.values;
+          this.selectview = true;  
+
+>>>>>>> 008d6fe4b4d2e4c79ffe28f1b4ede68442e786b9
       }
       this.loadingimg=false;
     }); 
@@ -200,13 +216,21 @@ onLocationChange(location){
     this.formSubmit = true;
     this.formData.delete('view');
     this.formData.append('view',view);    
-    this.imageupload.getInfo(this.formData,'uploadalldata').subscribe(res => {
-    });
   }
+<<<<<<< HEAD
 // ---===form Submit save---====
 
    onSubmit(imageinfo:any){
+=======
+  // ---===form data save---====
+
+  onSubmit(){
+>>>>>>> 008d6fe4b4d2e4c79ffe28f1b4ede68442e786b9
     this.loadingimg=true;
-     console.log(imageinfo);
-}
+    this.imageupload.getInfo(this.formData,'uploaddata').subscribe(res => {
+      if(res.response == 'succes'){
+        this.loadingimg=false;
+      }
+    });
+  }
 }
