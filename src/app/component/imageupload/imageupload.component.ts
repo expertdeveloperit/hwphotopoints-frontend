@@ -55,7 +55,7 @@ export class ImageuploadComponent implements OnInit {
 
 
   uploadFile(event) 
-    {   
+  {   
 
       let fileList = event.target.files; 
       let file = fileList[0];  
@@ -72,16 +72,8 @@ export class ImageuploadComponent implements OnInit {
     let element = event.target; 
   	this.name = element.files[0].name;
 
-        
-  	 	if(element.files.length > 0){       
-
-
-
-
-  	// 	let formData = new FormData();                     
-  	// 	 formData.append('file',element.files);
-  	// 	this.imageupload.uploadimage(formData).subscribe();
-  	// 
+ 	 	if(element.files.length > 0){       
+ 
     }
   }
   onItemChange(seriesType){
@@ -174,7 +166,6 @@ onLocationChange(location){
     this.imageupload.getInfo(this.formData,'imagetype').subscribe(res => {
       if(res.types != null){
           this.allImageType = res.types;
-          console.log(this.allImageType,"allImageType");
           this.selectimagetype = true; 
       }
       this.loadingimg=false;
@@ -196,7 +187,6 @@ onLocationChange(location){
       this.imageupload.getInfo(this.formData,'values').subscribe(res => {
       if(res.values != null){
           this.allvalues = res.values;
-          console.log(this.allvalues,"allvalues");
           this.selectview = true;  
 
       }
@@ -214,15 +204,15 @@ onLocationChange(location){
     this.formSubmit = true;
     this.formData.delete('view');
     this.formData.append('view',view);    
-    this.imageupload.getInfo(this.formData,'uploadalldata').subscribe(res => {
-    });
   }
   // ---===form data save---====
 
-  
-
-   onSubmit(imageinfo:any){
+  onSubmit(){
     this.loadingimg=true;
-     console.log(imageinfo);
-}
+    this.imageupload.getInfo(this.formData,'uploaddata').subscribe(res => {
+      if(res.response == 'succes'){
+        this.loadingimg=false;
+      }
+    });
+  }
 }
