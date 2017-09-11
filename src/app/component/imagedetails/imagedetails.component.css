@@ -27,3 +27,14 @@ h2 {
 .row.imagedawnload a:hover {
     color: #000;
 }
+.row.imagedetails {
+    margin-top: 25px;
+    margin-bottom: 20px;
+}
+.row.imagedetails a {
+    color: #246f24;
+    font-size: 17px;
+}
+.row.imagedetails ul li {
+    line-height: 28px;
+}
