@@ -52,6 +52,20 @@ img.loader {
 .pull-right.cancel {
     margin: 0 20px 0 0;
 }
+.response-data span {
+    word-break: break-all;
+}
+.response-img img {
+    max-width: 300px;
+    max-height: 300px;
+}
+.uploaded-links {
+    margin-top: 20px;
+}
+.uploaded-links a {
+    color: #fff;
+    margin-right: 10px;
+}
 /*---=== Media Query Start Here ---===*/
 @media only screen and (max-width: 992px) {
     .imgselectoption .btn{

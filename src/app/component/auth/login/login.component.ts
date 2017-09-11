@@ -1,14 +1,17 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit,Input , } from '@angular/core';
 import {CookieService} from 'angular2-cookie/core';
 import { Router } from '@angular/router'; //--- ==== import for routing
 import { FormBuilder, FormGroup, Validators,FormControl} from '@angular/forms';//its using for form
 import { ValidationService } from '../../../validation.service';
 import {LoginService} from './login.service';
+import {HeaderService} from '../../shared/header/header.service';
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers:[LoginService]
+  providers:[LoginService, HeaderService]
 })
 export class LoginComponent implements OnInit {
 
@@ -17,7 +20,7 @@ export class LoginComponent implements OnInit {
   @Input() title:string="Login";
 
   logininfo: FormGroup;
-  constructor(private router: Router,private _cookieService:CookieService, private formData: FormBuilder, private _loginservice : LoginService){
+  constructor(private router: Router,private _cookieService:CookieService, private formData: FormBuilder, private _loginservice : LoginService,public _headerService : HeaderService){
      this.logininfo = formData.group({
       'email' :['', [Validators.required, ValidationService.emailValidator]],
       'password' :[null,Validators.required],
@@ -32,13 +35,15 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(logininfo:any){
-    console.log(logininfo,"logininfo");
-    this._loginservice.logindetails(logininfo).subscribe(res => {
+     this._loginservice.logindetails(logininfo).subscribe(res => {
       
       this._cookieService.put("hwUserToken", res.token, '/');
       let user_str = JSON.stringify(res.user);
       this._cookieService.put("userDetail", user_str, '/');
+    
       this.router.navigate(['']);
+
+
     });
     
     

@@ -1,6 +1,6 @@
 <div class="container">
-<h2>Image Upload</h2>
-	<div class="row">
+	<h2>Image Upload</h2>
+	<div class="row" *ngIf="!imageUploded">
 		<form #imageinfo="ngForm"  (ngSubmit)="onSubmit(imageinfo.value)" >
 			<div class="col-sm-4 photo-id form-group text-center">
 			<!-- === select file (note:if we want single image select remove multiple in input) === -->
@@ -73,18 +73,46 @@
 				<div class="form-group form-controls">
 					<img class="loader" src="../../../assets/images/loader.gif" *ngIf="loadingimg">
 					<!-- === Button for save and cancle the process === -->
-					<button type="submit" class="btn btn-success pull-right" *ngIf="formSubmit"><a>save</a></button>
-					<button type="" class="btn btn-success pull-right cancel" *ngIf="imageUplodedStatus"><a routerLink="">cancel</a></button>
+					<button [disabled]="disabledButton" type="submit" class="btn btn-success pull-right" *ngIf="formSubmit"><a>save</a></button>
+					<button type="" class="btn btn-success pull-right cancel"  *ngIf="imageUplodedStatus"><a routerLink="">cancel</a></button>
 				</div>
 			</div>
 		</form>
 	</div>
+
+
+	<!-- When Image uploaded successfully -->
+	<div class="row" *ngIf="imageUploded">
+		<div class="col-xs-10 col-xs-offset-1">
+			<div class="col-xs-12 ">
+				<p>Username: Developer</p>
+			</div>
+		</div>
+		<div class="col-xs-10 col-xs-offset-1">
+			<div class="col-xs-12 ">
+				<span>File uploaded successfully with following details.</span>
+				<br><br>
+			</div>		
+			<div class="col-xs-4 filename">
+				<label>File Name:</label>
+				<div class="response-data">
+					<span>{{fileUrl}}</span>
+				</div>
+			</div>	
+			<div class="col-xs-6 filename">
+				<label>Uploaded Image:</label>
+				<div class=" response-img">
+					<img src="{{fileUrl}}"/>
+				</div>
+			</div>	
+		</div>	
+
+	</div>
+	<div class="row uploaded-links" *ngIf="imageUploded">
+		<div class="col-xs-10 col-xs-offset-1 " >
+			<a class="btn btn-success" routerLink="/imagedetails/{{imageId}}" >View Full Details</a>
+			<a class="btn btn-success" (click)="AddAnotherImage()">Add Another Image</a>
+			<a class="btn btn-success" routerLink="">Back to Home Page</a>
+		</div>	
+	</div>	
 </div>
-
-<!-- let comboValue : any;
-
-<select [(ngModel)]="comboValue">
- <option *ngFor = "let combo of combos" value={{combo}}>{{combo}}
- </option>
-</select> -->
-   

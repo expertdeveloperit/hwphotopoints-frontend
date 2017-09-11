@@ -46,7 +46,7 @@ const appRoutes: Routes = [
 	{path:'thumbnailsphotos', component:ThumbnailsphotoComponent,canActivate: [AlwaysAuthGuard]},
 	{path:'saplingsurvival', component:SaplingsurvivalComponent,canActivate: [AlwaysAuthGuard]},
 	{path:'longterm', component:LongtermComponent,canActivate: [AlwaysAuthGuard]},
-	{path:'imagedetails', component:ImagedetailsComponent,canActivate: [AlwaysAuthGuard]}
+	{path:'imagedetails/:id', component:ImagedetailsComponent,canActivate: [AlwaysAuthGuard]}
 
 ];
 
