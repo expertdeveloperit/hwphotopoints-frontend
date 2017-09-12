@@ -30,11 +30,16 @@ export class ImageuploadComponent implements OnInit {
   allImageType:any = [];
   allvalues:any = [];
   imageinfo:any = [];
-
+  imageUploded:boolean;
+  fileUrl : string = "";
+  imageName : string = "";
+  imageId : number ;
+  disabledButton: boolean;
 
   constructor(private imageupload : ImageuploadService) {
-
+    this.imageUploded = false;    
     this.imageUplodedStatus = false;
+    this.disabledButton =  false;
     this.selectyearoption = false;
     this.selectspringoption = false;
     this.selectlocationoption = false;
@@ -218,12 +223,24 @@ onLocationChange(location){
 
 
   onSubmit(){
-
+    this.disabledButton = true;
     this.loadingimg=true;
     this.imageupload.getInfo(this.formData,'uploaddata').subscribe(res => {
       if(res.response == 'succes'){
+        this.fileUrl = res.thumbImageUrl;
+        this.imageName = res.image_name;
+        this.imageId = res.imageId; 
+        this.imageUploded = true;
         this.loadingimg=false;
       }
     });
+  }
+
+  AddAnotherImage(){
+    this.imageUploded = false;
+    this.disabledButton = false;
+    this.fileUrl = "";
+    this.imageName = "";
+    this.imageId = 0; 
   }
 }

@@ -13,7 +13,7 @@ import { CookieService } from 'angular2-cookie/services/cookies.service';
 //--- === Shared component import
 import { HeaderComponent } from './component/shared/header/header.component';
 import { FooterComponent } from './component/shared/footer/footer.component';
-
+import { AuthGuard } from './authguard.service'
 
 @NgModule({
   declarations: [
@@ -29,7 +29,7 @@ import { FooterComponent } from './component/shared/footer/footer.component';
     HttpModule,
     ReactiveFormsModule
   ],
-  providers: [CookieService],
+  providers: [CookieService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
