@@ -43,7 +43,7 @@ const appRoutes: Routes = [
 	{path:'recoverpassword', component:PasswordComponent,canActivate: [AlwaysAuthGuard]},
 	{path:'imageupload', component:ImageuploadComponent,canActivate: [AlwaysAuthGuard]},
 	{path:'photopoints', component:PhotopointsComponent,canActivate: [AlwaysAuthGuard]},
-	{path:'thumbnailsphotos', component:ThumbnailsphotoComponent,canActivate: [AlwaysAuthGuard]},
+	{path:'thumbnailsphotos/:title', component:ThumbnailsphotoComponent,canActivate: [AlwaysAuthGuard]},
 	{path:'saplingsurvival', component:SaplingsurvivalComponent,canActivate: [AlwaysAuthGuard]},
 	{path:'longterm', component:LongtermComponent,canActivate: [AlwaysAuthGuard]},
 	{path:'imagedetails/:id', component:ImagedetailsComponent,canActivate: [AlwaysAuthGuard]}

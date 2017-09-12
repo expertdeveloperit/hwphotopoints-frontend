@@ -15,14 +15,14 @@ export class LongtermComponent implements OnInit {
 
   ngOnInit() { }
 
-public longtermdatashow(){
-  	this._longtermService.getlongtermdata()
-  	.subscribe(res => {this.longtermdata=res;
-  		console.log(this.longtermdata);
-  	}, 
-  	error =>{
-  		console.log(error);
-  	}	
-  	);
-	}
+  public longtermdatashow(){
+    	this._longtermService.getlongtermdata()
+    	.subscribe(res => {this.longtermdata=res;
+    		console.log(this.longtermdata);
+    	}, 
+    	error =>{
+    		console.log(error);
+    	}	
+    	);
+  	}
 }
