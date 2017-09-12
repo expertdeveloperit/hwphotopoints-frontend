@@ -46,7 +46,6 @@ h2 {
 
 .row.photo-points-space {
     border-top: 1px solid #eaeaea;
-    border-bottom: 1px solid #eaeaea;
 }
 .year-winter-list {
     overflow-x: scroll;
@@ -84,11 +83,13 @@ h2 {
 .photo-points-id{
     padding: 44px 0 0 0;
     text-align: center;
-    min-height: 131px;
+    min-height: 101px;
+    margin-bottom: 28px;
 }
 .row.winter h4 {
     margin: 0;
-    padding: 10px 0 0 0;
+    padding: 10px 0 9px;
+    min-height: 34px;
 }
 /*---=== option B select ===---*/
 
@@ -100,6 +101,22 @@ h2 {
 .row.select-option button {
     width: 70px;
     border-radius: 0;
+}
+.thirdoption-year {
+    border-top: 1px solid #eaeaea;
+}
+.row.photo-points-border {
+    border-top: 1px solid #eaeaea;
+    border-bottom: 1px solid #eaeaea;
+    margin-top: 15px;
+    margin-bottom: 35px;
+    margin-left: 0;
+    margin-right: 0;
+}
+.thirdoption-scroll {
+    height: 579px;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 @media only screen and (max-width: 992px) {
 
