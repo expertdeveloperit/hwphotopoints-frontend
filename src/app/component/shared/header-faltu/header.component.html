@@ -3,7 +3,7 @@
 <div class="row">
 <div class="col-sm-12">
   <h1 class="photopoints-logo">
-
+    <!-- {{CmService.data}} -->
     <a  routerLink="."> HWPhotoPoints.org.uk 
     <span class="photopoints-description">The Image Storage Site for Heartwood Forest Volunteers</span></a>
   </h1>
@@ -36,8 +36,8 @@
 
       <!--=== login Sign-up button === -->
               <div class="navbar-right">
-                <button type="submit" class="btn btn-success" *ngIf="serve.data"><a routerLink="login">Login</a></button>
-                <button type="submit" (click)="logoutUser()" class="btn btn-success" *ngIf="!serve.data">Logout</button>
+                <button type="submit" class="btn btn-success" *ngIf="!userAuthenticated"><a routerLink="login">Login</a></button>
+                <button type="submit" (click)="logoutUser()" class="btn btn-success" *ngIf="userAuthenticated">Logout</button>
               </div>
             <!--/.nav-collapse -->
               </div>

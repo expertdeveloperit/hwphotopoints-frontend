@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes, Router, CanActivate, ActivatedRouteSnapshot } from '@angular/router'; //--- ==== import for routing
 import { AppRoutingRoutingModule } from './app-routing-routing.module';
 import {CookieService} from 'angular2-cookie/core';
-
+import {SharedDataService} from '../shared-data.service';
 //--- === conponent import for routing
 import { LoginComponent } from '../component/auth/login/login.component';
 import { HomeComponent } from '../component/home/home.component';
@@ -20,10 +20,10 @@ import { ImagedetailsComponent } from '../component/imagedetails/imagedetails.co
 @Injectable()
 export class AlwaysAuthGuard implements CanActivate {
  
-   constructor(private router: Router, private _cookieService:CookieService) {}
+   constructor(private router: Router, private _cookieService:CookieService,private sd: SharedDataService) {}
  
    public canActivate() {
-
+   	
    		let loggedinUser = this._cookieService.get("hwUserToken");
    		if(loggedinUser){
    			return true;

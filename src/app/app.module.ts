@@ -6,21 +6,26 @@ import { RouterModule, Routes} from '@angular/router';//its module using for rou
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { routingcomponent } from './app-routing/app-routing.module';//---import component by app-routing module
 import { AppComponent } from './app.component';
-
+import { SharedDataService } from './shared-data.service'
 //---=== import cookeieservice  
-import { CookieService } from 'angular2-cookie/services/cookies.service';
+import {CookieService} from 'angular2-cookie/core';
 
 //--- === Shared component import
-import { HeaderComponent } from './component/shared/header/header.component';
+
 import { FooterComponent } from './component/shared/footer/footer.component';
-import { AuthGuard } from './authguard.service'
+
+import { AuthGuard } from './authguard.service';
+import { NewHeaderComponent } from './component/shared/header/header.component'
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
+    
     routingcomponent,
-    FooterComponent
+    FooterComponent,
+    NewHeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +34,7 @@ import { AuthGuard } from './authguard.service'
     HttpModule,
     ReactiveFormsModule
   ],
-  providers: [CookieService,AuthGuard],
+  providers: [AuthGuard,SharedDataService,CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

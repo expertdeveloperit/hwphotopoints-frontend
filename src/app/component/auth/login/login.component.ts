@@ -4,14 +4,15 @@ import { Router } from '@angular/router'; //--- ==== import for routing
 import { FormBuilder, FormGroup, Validators,FormControl} from '@angular/forms';//its using for form
 import { ValidationService } from '../../../validation.service';
 import {LoginService} from './login.service';
-import {CommonService} from '../../../common.service';
+
+import { SharedDataService } from '../../../shared-data.service'
 
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers:[LoginService, CommonService]
+  providers:[LoginService]
 })
 export class LoginComponent implements OnInit {
 
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
 
 
   logininfo: FormGroup;
-  constructor(private router: Router,private _cookieService:CookieService, private formData: FormBuilder, private _loginservice : LoginService,public commmonService : CommonService){
+  constructor(private router: Router,private _cookieService:CookieService, private formData: FormBuilder, private _loginservice : LoginService, private CmService : SharedDataService){
      this.logininfo = formData.group({
       'email' :['', [Validators.required, ValidationService.emailValidator]],
       'password' :[null,Validators.required],
@@ -31,8 +32,12 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-     this.commmonService.msgChanged("Have changed");
+     
   }
+
+ 
+
+
 
   onSubmit(logininfo:any){
      this._loginservice.logindetails(logininfo).subscribe(res => {
@@ -41,8 +46,9 @@ export class LoginComponent implements OnInit {
       let user_str = JSON.stringify(res.user);
       this._cookieService.put("userDetail", user_str, '/');
 
-      this.commmonService.msgChanged("Have changed");
+     
 
+      
       this.router.navigate(['']);
 
 
