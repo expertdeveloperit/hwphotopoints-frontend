@@ -101,7 +101,7 @@ export class ImageuploadComponent implements OnInit {
     this.imageupload.getInfo(this.formData,'year').subscribe(res => {
       if(res.years != null){
         this.allYears = [];
-        let minYear = parseInt(res.years.year);
+        let minYear = parseInt(res.years.start_year);
         
         let maxYear = minYear + 30;
         this.selectyearoption = true;
