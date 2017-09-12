@@ -1,4 +1,5 @@
 import { Component, OnInit, Input} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 import {ThumbnailsphotoService} from './thumbnailsphoto.service';
 
 @Component({
@@ -14,16 +15,25 @@ export class ThumbnailsphotoComponent implements OnInit {
   selectsecondoption:boolean;
   selectfirstoption:boolean;
   selectthirdoption:boolean;
-
-  constructor(private _sphotoService : ThumbnailsphotoService) { 
+  sphotoTitle : any =[];
+  formData:any = [];
+  pageContent : any = [];
+  constructor(private route:ActivatedRoute, private sphotoService : ThumbnailsphotoService) { 
   	this.selectfirstoption =true;
   	this.selectsecondoption =false;
-  	this.selectthirdoption =false
+  	this.selectthirdoption =false;
+    this.formData = new FormData();
+
   }
 
   ngOnInit() {
-  }
-
+    this.sphotoTitle = this.route.snapshot.params['title'];
+    let URL = 'pseriesdetail/';
+    this.formData.append('postname', this.sphotoTitle);
+    this.sphotoService.thumbnailsphotoinfo(this.formData,URL).subscribe(res => {
+      this.pageContent = res.media;
+    });
+  }  
  // ---=== View select---====
  firstoption(){
  	this.selectfirstoption=true;
