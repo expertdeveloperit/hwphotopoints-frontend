@@ -4,23 +4,22 @@ import { Router } from '@angular/router'; //--- ==== import for routing
 import { FormBuilder, FormGroup, Validators,FormControl} from '@angular/forms';//its using for form
 import { ValidationService } from '../../../validation.service';
 import {LoginService} from './login.service';
-import {HeaderService} from '../../shared/header/header.service';
+import {CommonService} from '../../../common.service';
 
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers:[LoginService, HeaderService]
+  providers:[LoginService, CommonService]
 })
 export class LoginComponent implements OnInit {
 
-  public userData: any;
 	
-  @Input() title:string="Login";
+
 
   logininfo: FormGroup;
-  constructor(private router: Router,private _cookieService:CookieService, private formData: FormBuilder, private _loginservice : LoginService,public _headerService : HeaderService){
+  constructor(private router: Router,private _cookieService:CookieService, private formData: FormBuilder, private _loginservice : LoginService,public commmonService : CommonService){
      this.logininfo = formData.group({
       'email' :['', [Validators.required, ValidationService.emailValidator]],
       'password' :[null,Validators.required],
@@ -32,6 +31,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+     this.commmonService.msgChanged("Have changed");
   }
 
   onSubmit(logininfo:any){
@@ -40,7 +40,9 @@ export class LoginComponent implements OnInit {
       this._cookieService.put("hwUserToken", res.token, '/');
       let user_str = JSON.stringify(res.user);
       this._cookieService.put("userDetail", user_str, '/');
-    
+
+      this.commmonService.msgChanged("Have changed");
+
       this.router.navigate(['']);
 
 
