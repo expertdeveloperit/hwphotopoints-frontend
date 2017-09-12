@@ -1,9 +1,11 @@
  h4 {
     text-transform: uppercase;
+    text-align: center;
+    font-size: 16px;
 }
 .row.photo-points-space {
     margin-top: 20px;
-    margin-bottom: 25px;
+    margin-bottom: 35px;
 }
 .photopoints-info {
     border-bottom: 1px dashed #cac9c9;
@@ -13,9 +15,87 @@
 h2 {
     font-size: 32px;
     text-align: center;
-    margin: 30px 0 40px 0;
+    margin: 30px 0 30px 0;
     color: #246f24;
 }
-h3 {
+.select-option{
+    margin-bottom: 40px;
+
+}
+.select-option button {
+    width: 100%;
+    border-radius: 0;
+    margin-top: 10px;
+}
+.row.winter {
+    text-align: right;
+    border-top: 1px solid #eaeaea;
+}
+
+.row.winter .btn {
+    width: 100%;
+    text-align: center;
+    border-radius: 0;
+
+}
+.row.winter .col-sm-2 {
+    padding: 0;
+    text-align: center;
+}
+.row.photo-points-winter {
     margin-bottom: 30px;
+    margin-top: 20px;
+}
+.row.photo-points-winter h4 {
+    line-height: 90px;
+    vertical-align: middle;
+    display: block;
+}
+
+.row.photo-points-space {
+    border-top: 1px solid #eaeaea;
+    border-bottom: 1px solid #eaeaea;
+}
+/*---=== option B select ===---*/
+.second-option-id {
+    text-align: center;
+    line-height: 100px;
+}
+@media only screen and (max-width: 992px) {
+
+.row.photo-points-winter h4{
+    line-height: normal;
+}
+}
+
+@media only screen and (max-width: 767px) {
+
+.row.photo-points-winter h4{
+    line-height: normal;
+    padding-bottom: 10px;
+}
+.row.photo-points-winter{
+    margin-top: 10px;
+}
+.second-option-id {
+    line-height: 32px;
+}
+/*--section C--*/
+.row.photo-points-space
+ h4 {
+    font-size: 12px;
+    padding: 0;
+}
+.row.photo-points-space .col-xs-2 {
+    padding-left: 0;
+}
+}
+@media only screen and (max-width: 767px) {
+
+.row.photo-points-winter{
+    margin-bottom: 15px;
+}
+.row.photo-points-space{
+    margin-bottom: 20px;
+}
 }
