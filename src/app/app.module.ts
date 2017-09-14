@@ -15,17 +15,19 @@ import {CookieService} from 'angular2-cookie/core';
 import { FooterComponent } from './component/shared/footer/footer.component';
 
 import { AuthGuard } from './authguard.service';
-import { NewHeaderComponent } from './component/shared/header/header.component'
+import { NewHeaderComponent } from './component/shared/header/header.component';
+
 
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    
+    AppComponent, 
     routingcomponent,
     FooterComponent,
     NewHeaderComponent
+
+   
   ],
   imports: [
     BrowserModule,

@@ -20,6 +20,12 @@
     text-transform: capitalize;
     margin: 40px 0 15px 0;
 }
+#test h2{
+    font-size: 32px;
+    color: #246f24;
+    text-transform: capitalize;
+    margin: 40px 0 15px 0;
+}
 p {
     line-height: 26px;
 }

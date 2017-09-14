@@ -4,7 +4,6 @@ import { Router } from '@angular/router'; //--- ==== import for routing
 import { FormBuilder, FormGroup, Validators,FormControl} from '@angular/forms';//its using for form
 import { ValidationService } from '../../../validation.service';
 import {LoginService} from './login.service';
-
 import { SharedDataService } from '../../../shared-data.service'
 
 
@@ -16,10 +15,8 @@ import { SharedDataService } from '../../../shared-data.service'
 })
 export class LoginComponent implements OnInit {
 
-	
-
-
   logininfo: FormGroup;
+  error: any[];
   constructor(private router: Router,private _cookieService:CookieService, private formData: FormBuilder, private _loginservice : LoginService, private CmService : SharedDataService){
      this.logininfo = formData.group({
       'email' :['', [Validators.required, ValidationService.emailValidator]],
@@ -35,26 +32,13 @@ export class LoginComponent implements OnInit {
      
   }
 
- 
-
-
-
   onSubmit(logininfo:any){
-     this._loginservice.logindetails(logininfo).subscribe(res => {
-      
+     this._loginservice.logindetails(logininfo).subscribe(res => { this.error = res; 
       this._cookieService.put("hwUserToken", res.token, '/');
       let user_str = JSON.stringify(res.user);
       this._cookieService.put("userDetail", user_str, '/');
-
-     
-
-      
       this.router.navigate(['']);
 
-
     });
-    
-    
- 
   }
 }

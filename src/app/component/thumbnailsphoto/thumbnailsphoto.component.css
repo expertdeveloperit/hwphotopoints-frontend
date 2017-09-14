@@ -3,7 +3,7 @@
     text-align: center;
     font-size: 16px;
 }
-.row.photo-points-space {
+.photo-points-space {
     margin-top: 20px;
     margin-bottom: 35px;
 }
@@ -19,32 +19,32 @@ h2 {
     color: #246f24;
 }
 
-.row.winter {
+.winter {
     text-align: right;
     border-top: 1px solid #eaeaea;
 }
 
-.row.winter .btn {
+.winter .btn {
     width: 100%;
     text-align: center;
     border-radius: 0;
 
 }
-.row.winter .col-sm-2 {
+.winter .col-sm-2 {
     padding: 0;
     text-align: center;
 }
-.row.photo-points-winter {
+.photo-points-winter {
     margin-bottom: 30px;
     margin-top: 20px;
 }
-.row.photo-points-winter h4 {
+.photo-points-winter h4 {
     line-height: 90px;
     vertical-align: middle;
     display: block;
 }
 
-.row.photo-points-space {
+.photo-points-space {
     border-top: 1px solid #eaeaea;
 }
 .year-winter-list {
@@ -74,7 +74,7 @@ h2 {
     border-bottom: 1px solid #eaeaea;
     margin-bottom: 30px;
 }
-.row.winter-img.spring-view ul {
+.winter-img.spring-view ul {
     margin-bottom: 13px;
 }
 .winterview-list {
@@ -86,7 +86,7 @@ h2 {
     min-height: 101px;
     margin-bottom: 28px;
 }
-.row.winter h4 {
+.winter h4 {
     margin: 0;
     padding: 10px 0 9px;
     min-height: 34px;
@@ -98,14 +98,14 @@ h2 {
     padding: 39px 0;
     margin-bottom: 10px;
 }
-.row.select-option button {
+.select-option button {
     width: 70px;
     border-radius: 0;
 }
 .thirdoption-year {
     border-top: 1px solid #eaeaea;
 }
-.row.photo-points-border {
+.photo-points-border {
     border-top: 1px solid #eaeaea;
     border-bottom: 1px solid #eaeaea;
     margin-top: 15px;
@@ -118,9 +118,24 @@ h2 {
     overflow-y: scroll;
     overflow-x: hidden;
 }
+.yearlist-section li {
+    width: 187px;
+    display: inline-block;
+}
+.Asectionview {
+    overflow-x: scroll;
+}
+
+.yearlist-section {
+    width: 1500px;
+}
+.Asectionview .photo-points-space{
+    margin-top: 20px;
+    margin-bottom: 0; 
+}
 @media only screen and (max-width: 992px) {
 
-.row.photo-points-winter h4{
+.photo-points-winter h4{
     line-height: normal;
 }
 }

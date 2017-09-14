@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container bg-img">
 	<h2>Image Upload</h2>
 	<div class="row" *ngIf="!imageUploded">
 		<form #imageinfo="ngForm"  (ngSubmit)="onSubmit(imageinfo.value)" >
@@ -116,3 +116,9 @@
 		</div>	
 	</div>	
 </div>
+<!--     <script>
+       $(document).height(){
+           $(".bg-img").height(685);  
+           console.log(height);  
+       };
+    </script> -->

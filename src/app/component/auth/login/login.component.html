@@ -1,5 +1,5 @@
 <!-- === Login page === -->
-<div class="container">
+<div class="container ">
   <h2 class="login-title">{{title}}</h2>
 </div>
 <div class="container loginpage-layout">
@@ -9,31 +9,18 @@
       <div class="form-group login-email">
         <input type="email" placeholder="email" class="form-control" id="email" name="email" formControlName="email">
         <i class="fa fa-user" aria-hidden="true"></i>
-       <!--  <div *ngIf="!logininfo.controls['email'].valid && !logininfo.controls['email'].touched && !logininfo.controls['email'].pristine">
-          Please enter a valid email address
-        </div> -->
-<!-- 
-        <div [hidden]="logininfo.valid || logininfo.pristine" class="error">
-           Please enter a valid email address
-        </div> -->
-        </div>
+      </div>
       <div class="form-group login-password login-email">
         <input type="password" placeholder="password" class="form-control" id="password" name="password" formControlName="password">
         <i class="fa fa-lock" aria-hidden="true"></i>
-<!--         <div *ngIf="!logininfo.controls['password'].valid && !logininfo.controls['email'].touched && !logininfo.controls['email'].pristine">
-          Please enter a password
-        </div> -->
       </div>
     <!-- === Remember and Forgate-Password ===-->
       <div class="form-group row checkbox">
         <div class="col-xs-12">
 	       <input formcontrolname="sidekick" type="checkbox" ng-reflect-name="sidekick" class="" name="checkbox"><span>Remember me</span>
-        </div>
+      </div>
        
       </div>
-
-
-
     <!-- === Link For Login and Sign Up === -->
     	<div class="form-group login-signup-link">
   	      <button type="submit" class="btn btn-success" [disabled]="!logininfo.valid">Login</button>
