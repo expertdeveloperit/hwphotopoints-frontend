@@ -18,24 +18,30 @@
       <!--=== Toggle header after 767 ===-->
       <div class="col-sm-12">
           <div class="navbar-header">
+          <!-- === for mobile view === -->
+          <div class="navbar-left hidden-sm hidden-md hidden-lg mobileview">
+              <button type="submit" class="btn btn-success" *ngIf="serve.data"><a routerLink="login">Login</a></button>
+              <button type="submit" (click)="logoutUser()" class="btn btn-success" *ngIf="!serve.data">Logout</button>
+          </div>
+
           <div class="menu-toggle">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" (click)="toggleli()">
               <span class="sr-only">Toggle navigation</span>
               <i class="fa fa-bars"></i>
             </button>
           </div>
       <!--=== nav link section start ===-->
-            <div id="navbar" class="navbar-collapse collapse">
+            <div id="navbar" class="navbar-collapse collapse" *ngIf="!menuiconshow">
               <ul class="nav navbar-nav header-link">
-                <li class=""><a routerLink="">Home</a></li>
-                <li><a routerLink="imageupload">Image Upload</a></li>
-                <li><a routerLink="photopoints">Photo Points</a></li>
-                <li><a routerLink="saplingsurvival">Sapling Survival</a></li>
-                <li><a routerLink="longterm">Long Term</a></li>
+                <li class=""><a (click)="toggleClass()" routerLink="">Home</a></li>
+                <li><a (click)="toggleClass()" routerLink="imageupload">Image Upload</a></li>
+                <li><a (click)="toggleClass()" routerLink="photopoints">Photo Points</a></li>
+                <li><a (click)="toggleClass()" routerLink="saplingsurvival">Sapling Survival</a></li>
+                <li><a (click)="toggleClass()" routerLink="longterm">Long Term</a></li>
               </ul>
 
       <!--=== login Sign-up button === -->
-              <div class="navbar-right">
+              <div class="navbar-right hidden-xs">
                 <button type="submit" class="btn btn-success" *ngIf="serve.data"><a routerLink="login">Login</a></button>
                 <button type="submit" (click)="logoutUser()" class="btn btn-success" *ngIf="!serve.data">Logout</button>
               </div>
@@ -43,8 +49,6 @@
               </div>
              </div>
           </div>
-
-          
       </div>
     </div>
 </nav>

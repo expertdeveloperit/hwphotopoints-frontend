@@ -6,6 +6,7 @@
   <!-- === Enter Email and Password for Login === -->
 
     <form [formGroup]="logininfo" (ngSubmit)="onSubmit(logininfo.value,logininfo.valid)">
+      <p class="loginerror">{{_loginservice.loginerror}}</p>
       <div class="form-group login-email">
         <input type="email" placeholder="email" class="form-control" id="email" name="email" formControlName="email">
         <i class="fa fa-user" aria-hidden="true"></i>
