@@ -8,7 +8,6 @@ import { Component, OnInit } from '@angular/core';
 export class SaplingsurvivalComponent implements OnInit {
 
   constructor() { }
-  id:number;
   ngOnInit() {
   }
 

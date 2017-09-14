@@ -15,22 +15,22 @@
   </div>
   </div>
   <!-- === Its show heading of location post === -->
-<div class="Asectionview" *ngIf="selectfirstoption">
+<!-- <div class="Asectionview" *ngIf="selectfirstoption">
   <div class="row photo-points-space">
     <div class="col-xs-12 col-sm-4" >
     <h4>Year</h4> 
     </div>
     <div class="col-xs-12 col-sm-8" >
      <ul class="yearlist-section">
-        <li  *ngFor="let postDetail of pageContent">
-        <h4>{{postDetail.year}}</h4>
+        <li  *ngFor="let year of years">
+        <h4>{{year.year}}</h4>
         </li>
       </ul>
     </div>
-  </div>
+  </div> -->
   <!-- === winter section === -->
 
-  <div class="row winter">
+  <!-- <div class="row winter">
     <div class="col-xs-4 col-sm-2">
       <button class="btn btn-success">Winter</button>
     </div>
@@ -38,130 +38,156 @@
       <h4>view</h4> 
     </div>   
   </div>
-  <div class="row photo-points-winter">
+  
+  <div class="row photo-points-winter" *ngFor="let winter of winterData">
     <div class="col-xs-12 col-sm-2 col-sm-offset-2">
-    <h4>3S00</h4> 
+      <h4>{{winter.view}}</h4> 
     </div>
-    <div class="col-xs-3 col-sm-2">
-    <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-    <div class="col-xs-3 col-sm-2">
-   <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-    <div class="col-xs-3 col-sm-2">
-    <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-    <div class="col-xs-3 col-sm-2">
-    <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
+    
+    <div class="col-xs-3 col-sm-2" *ngFor="let mainyear of years" >
+    <a routerLink="../imagedetails" *ngFor="let imagesData of winter.data">
+    
+       <img *ngIf = "mainyear.year==imagesData.year"  src="{{imagesData.file_thumb_location_aws}}" />  
+    </a>
     </div>
   </div>
-   <div class="row photo-points-winter">
-    <div class="col-xs-12 col-sm-2 col-sm-offset-2">
-    <h4>3S00</h4> 
+ -->
+
+
+
+<div class="" *ngIf="selectfirstoption">
+  <div class="row photo-points-space">
+    <div class=" col-sm-3" >
+        <h4>Year</h4> 
+        <div class="row winter">
+          <div class=" col-sm-6">
+            <button class="btn btn-success">WINTER</button>
+          </div>
+            <div class="col-xs-6">
+            <h4>view</h4> 
+          </div>
+          <div class="col-sm-6 col-sm-offset-6 photo-points-id" *ngFor="let winteryear of winterData">
+            {{winteryear.view}}
+          </div>   
+           
+        </div>
+        <div class="row winter">
+          <div class=" col-sm-6">
+            <button class="btn btn-success">SUMMER</button>
+          </div>
+           <div class="col-xs-6">
+            <h4>view</h4> 
+          </div>
+          <div class="col-sm-6 col-sm-offset-6 photo-points-id" *ngFor="let summer of summerData">
+            {{summer.view}}
+          </div>    
+        </div>
+        <div class="row winter">
+          <div class="col-sm-6">
+            <button class="btn btn-success">SPRING</button>
+          </div>
+          <div class="col-xs-6">
+            <h4>view</h4> 
+          </div>
+           <div class="col-sm-6 col-sm-offset-6 photo-points-id" *ngFor="let spring of springData">
+            {{spring.view}}
+          </div> 
+              
+        </div>
+        <div class="row winter">
+          <div class="col-sm-6">
+            <button class="btn btn-success">AUTUMN</button>
+          </div>
+            <div class="col-xs-6">
+            <h4>view</h4> 
+          </div>
+          <div class="col-sm-6 col-sm-offset-6 photo-points-id" *ngFor="let autumn of autumnData">
+            {{autumn.view}}
+          </div>      
+        </div>
     </div>
-    <div class="col-xs-3 col-sm-2">
-    <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-    <div class="col-xs-3 col-sm-2">
-   <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-    <div class="col-xs-3 col-sm-2">
-    <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-    <div class="col-xs-3 col-sm-2">
-    <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-  </div>
-<!-- ===Spring section ===-->
-  <div class="row winter winter-space">
-    <div class="col-xs-4 col-sm-2">
-    <button class="btn btn-success">Spring</button>
-    </div>
-  </div>
-  <div class="row photo-points-winter">
-    <div class="col-xs-12 col-sm-2 col-sm-offset-2">
-    <h4>3S00</h4> 
-    </div>
-    <div class="col-xs-3 col-sm-2">
-    <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-    <div class="col-xs-3 col-sm-2">
-   <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-    <div class="col-xs-3 col-sm-2">
-    <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-    <div class="col-xs-3 col-sm-2">
-    <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-  </div>
-  <!-- ===Summer section === -->
-    <div class="row winter winter-space">
-    <div class="col-xs-4 col-sm-2">
-    <button class="btn btn-success">Summer</button>
-    </div>
-  </div>
-  <div class="row photo-points-winter">
-    <div class="col-xs-12 col-sm-2 col-sm-offset-2">
-    <h4>3S00</h4> 
-    </div>
-    <div class="col-xs-3 col-sm-2">
-    <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-    <div class="col-xs-3 col-sm-2">
-   <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-    <div class="col-xs-3 col-sm-2">
-    <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-    <div class="col-xs-3 col-sm-2">
-    <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-  </div>
-  <!-- ===Autumn section view === -->
-    <div class="row winter winter-space">
-    <div class="col-xs-4 col-sm-2">
-    <button class="btn btn-success">Autumn</button>
-    </div>
-  </div>
-  <div class="row photo-points-winter">
-    <div class="col-xs-12 col-sm-2 col-sm-offset-2">
-    <h4>3S00</h4> 
-    </div>
-    <div class="col-xs-3 col-sm-2">
-    <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-    <div class="col-xs-3 col-sm-2">
-   <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-    <div class="col-xs-3 col-sm-2">
-    <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-    <div class="col-xs-3 col-sm-2">
-    <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
+
+    <div class=" col-sm-9 year-winter-list" >
+      <ul class="yearlist">
+         <li  *ngFor="let year of years">
+        <h4>{{year.year}}</h4>
+        </li>
+      </ul>
+
+      <div class="space-photo-points"></div>
+      <div class="row winter-img">
+        <div class="" *ngFor="let winter of winterData" >
+          <ul class="winterview-list">
+            <li *ngFor="let mainyear of years" >
+              <div class="" *ngFor="let imagesData of winter.data">
+                <a *ngIf = "mainyear.year==imagesData.year" routerLink="../imagedetails" >
+                  <img  src="{{imagesData.file_thumb_location_aws}}" /> 
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+
+
+      <div class="space-photo-points"></div>
+      <div class="row summer-img">
+        <div class="" *ngFor="let summer of summerData" >
+          <ul class="winterview-list">
+            <li *ngFor="let mainyear of years" >
+              <div *ngFor="let simagesData of summer.data">
+                <a *ngIf = "mainyear.year==simagesData.year" routerLink="../imagedetails" >
+                  <img  src="{{simagesData.file_thumb_location_aws}}" /> 
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="space-photo-points"></div>
+      <div class="row spring-img">
+        <div class="" *ngFor="let spring of springData" >
+          <ul class="winterview-list">
+            <li *ngFor="let mainyear of years" >
+              <div *ngFor="let sprimagesData of spring.data">
+                <a *ngIf = "mainyear.year==sprimagesData.year" routerLink="../imagedetails" >
+                  <img  src="{{sprimagesData.file_thumb_location_aws}}" /> 
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+       <div class="space-photo-points"></div>
+      <div class="row autumn-img">
+        <div class="" *ngFor="let autumn of autumnData" >
+          <ul class="winterview-list">
+            <li *ngFor="let mainyear of years" >
+              <div *ngFor="let aimagesData of autumn.data" id="{{aimagesData.id}}">
+              <a *ngIf = "mainyear.year==aimagesData.year" routerLink="../imagedetails" >
+                <img  src="{{aimagesData.file_thumb_location_aws}}" /> 
+              </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
 <!-- === second option View when click on B Button=== -->
 
 <div class="" *ngIf="selectsecondoption">
@@ -171,326 +197,54 @@
       <div class="col-sm-6">
         <h4>VIEW</h4>
       </div>
-        <div class="col-xs-6">
+      <div class="col-xs-6">
         <h4>SEASON</h4> 
       </div>  
     </div>
 
-    <div class="row second-view-space  text-center season-space">
+    <div class="row second-view-space  text-center" *ngFor="let viewData of secondViewsData" >
+       
       <div class=" col-sm-6 ">
-        <p>S300</p>
-      </div>
-      <div class="col-xs-6 ">
-      WINTER      
+        <p>{{viewData.view}}</p>
       </div>    
-    </div>
+    
+    <div class="col-sm-6 rightsectionview">
+      <div class="row second-view-space text-center season-space" *ngFor="let seasonData of viewData.data">
 
-    <div class="row second-view-space text-center season-space">
-      <div class="col-sm-offset-6 ">
-        SPRING
-      </div>     
-    </div>
-
-    <div class="row second-view-space text-center season-space">
-      <div class="col-sm-offset-6  ">
-        SUMMER
-      </div>     
-    </div>
-    <div class="row second-view-space text-center season-space">
-      <div class="col-sm-offset-6 ">
-        AUTUMN
-      </div>     
-    </div>
-  <!-- --- -->
-     <div class="row second-view-space  text-center season-space">
-      <div class=" col-sm-6 ">
-        <p>S300</p>
+        <div class="">
+          {{seasonData.season}}
+        </div>     
       </div>
-      <div class="col-xs-6 ">
-      WINTER      
-      </div>    
-    </div>
-    <div class="row second-view-space text-center season-space">
-      <div class="col-sm-offset-6 ">
-        SPRING
-      </div>     
-    </div>
 
-    <div class="row second-view-space text-center season-space">
-      <div class="col-sm-offset-6  ">
-        SUMMER
-      </div>     
     </div>
-    <div class="row second-view-space text-center season-space">
-      <div class="col-sm-offset-6 ">
-        AUTUMN
-      </div>     
-    </div>
-    </div>
-    <div class="col-sm-9 year-winter-list " >
+  </div>
+  
+</div>
+  <div class="col-sm-9 year-winter-list " >
       <ul class="yearlist second-img-view">
-        <li  *ngFor="let postDetail of pageContent">
-        <h4>{{postDetail.year}}</h4>
+        <li  *ngFor="let year of secondviewyears">
+        <h4>{{year.year}}</h4>
         </li>
       </ul>
 
       <!-- Bsection Image section -->
     <div class="Bsectionview">
-      <div class="row winter-img spring-view">
-       <div class="col-xs-12" >
-       <ul class="winterview-list">
-       <li>
-        <a routerLink="../imagedetails">
-          <img src="../../../assets/images/photopoints-home5.jpg" /> 
-        </a>
-        </li>
-        <li>
-        <a routerLink="../imagedetails">
-          <img src="../../../assets/images/photopoints-home5.jpg" /> 
-        </a>
-        </li>
-        <li>
-        <a routerLink="../imagedetails">
-          <img src="../../../assets/images/photopoints-home5.jpg" /> 
-        </a>
-        </li>
-        <li>
-        <a routerLink="../imagedetails">
-          <img src="../../../assets/images/photopoints-home5.jpg" /> 
-        </a>
-        </li>
-        <li>
-        <a routerLink="../imagedetails">
-          <img src="../../../assets/images/photopoints-home5.jpg" /> 
-        </a>
-        </li>
-        </ul>
+      
+          <div class="row winter-img spring-view" *ngFor="let imagesData of secondViewImagesData">
+            <div class="col-xs-12" >
+               <ul class="winterview-list">
+                 <li *ngFor="let secondviewyear of secondviewyears">
+                  <div *ngFor="let mediainfo of imagesData.info">
+                    <a *ngIf = "secondviewyear.year==mediainfo.year" routerLink="../imagedetails" >
+                      <img src="{{mediainfo.file_thumb_location_aws}}" /> 
+                    </a>
+                  </div>
+                  </li>
+                </ul>
+            </div>
+          </div>
+        
       </div>
-      </div>
-
-      <div class="row winter-img spring-view">
-       <div class="col-xs-12" >
-       <ul class="winterview-list">
-       <li>
-        <a routerLink="../imagedetails">
-          <img src="../../../assets/images/photopoints-home5.jpg" /> 
-        </a>
-        </li>
-        <li>
-        <a routerLink="../imagedetails">
-          <img src="../../../assets/images/photopoints-home5.jpg" /> 
-        </a>
-        </li>
-        <li>
-        <a routerLink="../imagedetails">
-          <img src="../../../assets/images/photopoints-home5.jpg" /> 
-        </a>
-        </li>
-        <li>
-        <a routerLink="../imagedetails">
-          <img src="../../../assets/images/photopoints-home5.jpg" /> 
-        </a>
-        </li>
-        <li>
-        <a routerLink="../imagedetails">
-          <img src="../../../assets/images/photopoints-home5.jpg" /> 
-        </a>
-        </li>
-        </ul>
-      </div>
-      </div>
-
-      <div class="row winter-img spring-view">
-       <div class="col-xs-12" >
-       <ul class="winterview-list">
-       <li>
-        <a routerLink="../imagedetails">
-          <img src="../../../assets/images/photopoints-home5.jpg" /> 
-        </a>
-        </li>
-        <li>
-        <a routerLink="../imagedetails">
-          <img src="../../../assets/images/photopoints-home5.jpg" /> 
-        </a>
-        </li>
-        <li>
-        <a routerLink="../imagedetails">
-          <img src="../../../assets/images/photopoints-home5.jpg" /> 
-        </a>
-        </li>
-        <li>
-        <a routerLink="../imagedetails">
-          <img src="../../../assets/images/photopoints-home5.jpg" /> 
-        </a>
-        </li>
-        <li>
-        <a routerLink="../imagedetails">
-          <img src="../../../assets/images/photopoints-home5.jpg" /> 
-        </a>
-        </li>
-        </ul>
-      </div>
-      </div>
-      <div class="row winter-img spring-view">
-       <div class="col-xs-12" >
-       <ul class="winterview-list">
-       <li>
-        <a routerLink="../imagedetails">
-          <img src="../../../assets/images/photopoints-home5.jpg" /> 
-        </a>
-        </li>
-        <li>
-        <a routerLink="../imagedetails">
-          <img src="../../../assets/images/photopoints-home5.jpg" /> 
-        </a>
-        </li>
-        <li>
-        <a routerLink="../imagedetails">
-          <img src="../../../assets/images/photopoints-home5.jpg" /> 
-        </a>
-        </li>
-        <li>
-        <a routerLink="../imagedetails">
-          <img src="../../../assets/images/photopoints-home5.jpg" /> 
-        </a>
-        </li>
-        <li>
-        <a routerLink="../imagedetails">
-          <img src="../../../assets/images/photopoints-home5.jpg" /> 
-        </a>
-        </li>
-        </ul>
-      </div>
-      </div>
-
-<!-- === -->
-      <div class="row winter-img spring-view">
-       <div class="col-xs-12" >
-       <ul class="winterview-list">
-       <li>
-        <a routerLink="../imagedetails">
-          <img src="../../../assets/images/photopoints-home5.jpg" /> 
-        </a>
-        </li>
-        <li>
-        <a routerLink="../imagedetails">
-          <img src="../../../assets/images/photopoints-home5.jpg" /> 
-        </a>
-        </li>
-        <li>
-        <a routerLink="../imagedetails">
-          <img src="../../../assets/images/photopoints-home5.jpg" /> 
-        </a>
-        </li>
-        <li>
-        <a routerLink="../imagedetails">
-          <img src="../../../assets/images/photopoints-home5.jpg" /> 
-        </a>
-        </li>
-        <li>
-        <a routerLink="../imagedetails">
-          <img src="../../../assets/images/photopoints-home5.jpg" /> 
-        </a>
-        </li>
-        </ul>
-      </div>
-      </div>
-
-      <div class="row winter-img spring-view">
-       <div class="col-xs-12" >
-       <ul class="winterview-list">
-       <li>
-        <a routerLink="../imagedetails">
-          <img src="../../../assets/images/photopoints-home5.jpg" /> 
-        </a>
-        </li>
-        <li>
-        <a routerLink="../imagedetails">
-          <img src="../../../assets/images/photopoints-home5.jpg" /> 
-        </a>
-        </li>
-        <li>
-        <a routerLink="../imagedetails">
-          <img src="../../../assets/images/photopoints-home5.jpg" /> 
-        </a>
-        </li>
-        <li>
-        <a routerLink="../imagedetails">
-          <img src="../../../assets/images/photopoints-home5.jpg" /> 
-        </a>
-        </li>
-        <li>
-        <a routerLink="../imagedetails">
-          <img src="../../../assets/images/photopoints-home5.jpg" /> 
-        </a>
-        </li>
-        </ul>
-      </div>
-      </div>
-
-      <div class="row winter-img spring-view">
-       <div class="col-xs-12" >
-       <ul class="winterview-list">
-       <li>
-        <a routerLink="../imagedetails">
-          <img src="../../../assets/images/photopoints-home5.jpg" /> 
-        </a>
-        </li>
-        <li>
-        <a routerLink="../imagedetails">
-          <img src="../../../assets/images/photopoints-home5.jpg" /> 
-        </a>
-        </li>
-        <li>
-        <a routerLink="../imagedetails">
-          <img src="../../../assets/images/photopoints-home5.jpg" /> 
-        </a>
-        </li>
-        <li>
-        <a routerLink="../imagedetails">
-          <img src="../../../assets/images/photopoints-home5.jpg" /> 
-        </a>
-        </li>
-        <li>
-        <a routerLink="../imagedetails">
-          <img src="../../../assets/images/photopoints-home5.jpg" /> 
-        </a>
-        </li>
-        </ul>
-      </div>
-      </div>
-      <div class="row winter-img spring-view">
-       <div class="col-xs-12" >
-       <ul class="winterview-list">
-       <li>
-        <a routerLink="../imagedetails">
-          <img src="../../../assets/images/photopoints-home5.jpg" /> 
-        </a>
-        </li>
-        <li>
-        <a routerLink="../imagedetails">
-          <img src="../../../assets/images/photopoints-home5.jpg" /> 
-        </a>
-        </li>
-        <li>
-        <a routerLink="../imagedetails">
-          <img src="../../../assets/images/photopoints-home5.jpg" /> 
-        </a>
-        </li>
-        <li>
-        <a routerLink="../imagedetails">
-          <img src="../../../assets/images/photopoints-home5.jpg" /> 
-        </a>
-        </li>
-        <li>
-        <a routerLink="../imagedetails">
-          <img src="../../../assets/images/photopoints-home5.jpg" /> 
-        </a>
-        </li>
-        </ul>
-      </div>
-      </div>
-    </div>
     </div>
   </div>
 </div>
@@ -518,193 +272,40 @@
   </div>
   <!-- === 3S00 view section by id=== -->
 <div class="thirdoption-scroll">
-<div class="thirdoption-year">
-  <div class="row photo-points-winter">
+<div class="thirdoption-year" *ngFor = "let thirdViewInfo of thirdViewsData">
+   <!-- *ngFor = "let thirdViewInfo of thirdViewsData" -->
+  <div class="row photo-points-winter" >
     <div class="col-xs-6 col-sm-2 ">
-      <p class="second-option-id text-center">2014</p>
+      <p class="second-option-id text-center">{{thirdViewInfo.year}}</p>
     </div>
-    <div class="col-xs-6 col-sm-2">
-      <h4>3S00</h4> 
-    </div>
-    <div class="col-xs-3 col-sm-2">
-    <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-    <div class="col-xs-3 col-sm-2">
-   <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-    <div class="col-xs-3 col-sm-2">
-    <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-    <div class="col-xs-3 col-sm-2">
-    <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
+    <div class="thirdviewlist" *ngFor = "let thirdInfo of thirdViewInfo.viewdata">
+        <div class="row text-right">
+          <div class="col-xs-offset-2">
+          <div class="col-xs-6 col-sm-3">
+            <h4>{{thirdInfo.name}}</h4> 
+          </div>
+          
+            <div class="col-xs-3 col-sm-2" *ngFor="let season of totalSeason">
+              <div *ngFor = "let mediaInfo of thirdInfo.data">
+                <a routerLink="../imagedetails" *ngIf="season == mediaInfo.season">
+                  <img src="{{thirdInfo.data[0]['file_thumb_location_aws']}}" /> 
+                </a>
+              </div>
+            </div>
+
+          
+        </div>  
+      </div>
     </div>
   </div>
  <!-- === 3S00 view section by id=== -->
-  <div class="row photo-points-winter">
-    <div class="col-xs-12 col-sm-2 col-sm-offset-2">
-    <h4>3S00</h4> 
-    </div>
-    <div class="col-xs-3 col-sm-2">
-    <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-    <div class="col-xs-3 col-sm-2">
-   <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-    <div class="col-xs-3 col-sm-2">
-    <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-    <div class="col-xs-3 col-sm-2">
-    <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-  </div>
-   <!-- === 3S00 view section by id=== -->
 
-  <div class="row photo-points-winter">
-    <div class="col-xs-12 col-sm-2 col-sm-offset-2">
-    <h4>3S00</h4> 
-    </div>
-    <div class="col-xs-3 col-sm-2">
-    <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-    <div class="col-xs-3 col-sm-2">
-   <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-    <div class="col-xs-3 col-sm-2">
-    <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-    <div class="col-xs-3 col-sm-2">
-    <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-  </div>
-   <!-- === 3S00 view section by id=== -->
-  <div class="row photo-points-winter">
-    <div class="col-xs-12 col-sm-2 col-sm-offset-2">
-    <h4>3S00</h4> 
-    </div>
-    <div class="col-xs-3 col-sm-2">
-    <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-    <div class="col-xs-3 col-sm-2">
-   <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-    <div class="col-xs-3 col-sm-2">
-    <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-    <div class="col-xs-3 col-sm-2">
-    <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-  </div>
-</div>
-<div class="thirdoption-year">
-  <!-- row repeate -->
-  <div class="row photo-points-winter">
-    <div class="col-xs-6 col-sm-2 ">
-      <p class="second-option-id text-center">2015</p>
-    </div>
-    <div class="col-xs-6 col-sm-2">
-      <h4>3S00</h4> 
-    </div>
-    <div class="col-xs-3 col-sm-2">
-    <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-    <div class="col-xs-3 col-sm-2">
-   <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-    <div class="col-xs-3 col-sm-2">
-    <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-    <div class="col-xs-3 col-sm-2">
-    <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-  </div>
- <!-- === 3S00 view section by id=== -->
-  <div class="row photo-points-winter">
-    <div class="col-xs-12 col-sm-2 col-sm-offset-2">
-    <h4>3S00</h4> 
-    </div>
-    <div class="col-xs-3 col-sm-2">
-    <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-    <div class="col-xs-3 col-sm-2">
-   <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-    <div class="col-xs-3 col-sm-2">
-    <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-    <div class="col-xs-3 col-sm-2">
-    <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-  </div>
-   <!-- === 3S00 view section by id=== -->
 
-  <div class="row photo-points-winter">
-    <div class="col-xs-12 col-sm-2 col-sm-offset-2">
-    <h4>3S00</h4> 
-    </div>
-    <div class="col-xs-3 col-sm-2">
-    <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-    <div class="col-xs-3 col-sm-2">
-   <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-    <div class="col-xs-3 col-sm-2">
-    <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-    <div class="col-xs-3 col-sm-2">
-    <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-  </div>
-   <!-- === 3S00 view section by id=== -->
-  <div class="row photo-points-winter">
-    <div class="col-xs-12 col-sm-2 col-sm-offset-2">
-    <h4>3S00</h4> 
-    </div>
-    <div class="col-xs-3 col-sm-2">
-    <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-    <div class="col-xs-3 col-sm-2">
-   <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-    <div class="col-xs-3 col-sm-2">
-    <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-    <div class="col-xs-3 col-sm-2">
-    <a routerLink="../imagedetails">
-    <img src="../../../assets/images/photopoints-home5.jpg" /> </a>
-    </div>
-  </div>
-  </div>
+
+
+
+ 
+
   </div>
 </div>
 </div>
