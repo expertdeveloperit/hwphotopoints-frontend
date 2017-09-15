@@ -1,7 +1,6 @@
 import { Component, OnInit,Input} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ImageDetailService} from './imagedetails.service';
-import 'rxjs/Rx' ;
 
 @Component({
   selector: 'app-imagedetails',
@@ -45,9 +44,6 @@ export class ImagedetailsComponent implements OnInit {
       }
     });
   }
-
-  // ---=== Delete image ---===
-  
   deleteImage(){
      if(this.imageId != 0){
       if(confirm("Are you sure you want to delete this?")){
@@ -66,22 +62,10 @@ export class ImagedetailsComponent implements OnInit {
       
     }
   }
-
-  // ---=== Dawnload Image ---===
-  download(downloadLink){
-       var blob = new Blob([downloadLink], { type: 'text/csv' });
-          var imageUrl= window.URL.createObjectURL(blob);
-        window.open(imageUrl);
-  }
-
-  // ---=== Show Image data ---=== 
-
   showExifdata(){
   	this.exifData = true;
-    this.fileData = false;
   }
   showFiledata(){
   	this.fileData = true;
-    this.exifData = false;
   }
 }

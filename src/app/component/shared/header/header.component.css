@@ -56,19 +56,12 @@ button a{
     margin-right: 0;
 }
 .menu-toggle {
+    width: 100%;
     text-align: right;
-    float: right;
-    display: inline-block;
-}
-.mobileview{
-    display: inline-block;
 }
 .menu-toggle .navbar-toggle {
     float: none;
     margin-right: 0;
-}
-.active .collapse {
-    display: none;
 }
 /*---=== Media Query Start Here ---===*/
 @media only screen and (max-width: 767px) {
@@ -84,25 +77,9 @@ button a{
     .photopoints-description{
         font-size: 12px;
     }
-    .navbar-default .navbar-toggle {
-    border-color: #246f24;
-    background-color: #246f24;
-    color: #fff;
-    }
-    .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
-        background-color: #246f24;
-    }
-    .navbar-toggle {
-    padding: 14px 15px;
-    margin-top: 0;
-    margin-bottom: 0;
-    }
 }
 @media only screen and (max-width: 420px) {
     .photopoints-logo{
-        font-size: 26px;
-    }
-    .loginpage-layout{
-    padding: 25px;
+        font-size: 28px;
     }
 }

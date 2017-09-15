@@ -38,13 +38,3 @@ h2 {
 .row.imagedetails ul li {
     line-height: 28px;
 }
-@media only screen and (max-width: 767px) {
-
-    h2{
-        font-size: 30;
-        margin: 20px 0;
-    }
-    .imagedawnload .col-xs-12 {
-        text-align: center; 
-    }
-}

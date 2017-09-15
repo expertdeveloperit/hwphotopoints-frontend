@@ -22,11 +22,6 @@ border-left: 5px solid #42A948!important; /* green */
   padding: 12px;
   color: red;
 }
-.loginerror {
-    color: #c30606;
-    text-transform: capitalize;
-    font-size: 16px;
-}
 .login-email {
     position: relative;
 }

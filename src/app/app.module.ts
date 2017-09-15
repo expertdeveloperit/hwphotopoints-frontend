@@ -6,19 +6,18 @@ import { RouterModule, Routes} from '@angular/router';//its module using for rou
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { routingcomponent } from './app-routing/app-routing.module';//---import component by app-routing module
 import { AppComponent } from './app.component';
-// ---=== Animation import import---===
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import {trigger,state,style,animate,transition} from '@angular/animations';
-// ---=== shared service import---===
 import { SharedDataService } from './shared-data.service'
-//---=== import cookeieservice ---=== 
+//---=== import cookeieservice  
 import {CookieService} from 'angular2-cookie/core';
-//--- === Shared component import---===
+
+//--- === Shared component import
 
 import { FooterComponent } from './component/shared/footer/footer.component';
+
 import { AuthGuard } from './authguard.service';
 import { NewHeaderComponent } from './component/shared/header/header.component';
+
+
 
 
 @NgModule({
