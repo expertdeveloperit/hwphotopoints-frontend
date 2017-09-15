@@ -15,6 +15,7 @@ import { SaplingsurvivalComponent } from '../component/saplingsurvival/saplingsu
 import { LongtermComponent } from '../component/longterm/longterm.component';
 import { PasswordComponent } from '../component/auth/password/password.component';
 import { ImagedetailsComponent } from '../component/imagedetails/imagedetails.component';
+import { LegalPrivacyComponent } from '../component/legalprivacy/legalprivacy.component';
 
 
 @Injectable()
@@ -38,9 +39,10 @@ export class AlwaysAuthGuard implements CanActivate {
 //--- === define routing path 
 
 const appRoutes: Routes = [
-	{path:'', component:HomeComponent,canActivate: [AlwaysAuthGuard]},
 	{path:'login', component:LoginComponent },
 	{path:'recoverpassword', component:PasswordComponent},
+	{path:'', component:HomeComponent,canActivate: [AlwaysAuthGuard]},
+	{path:'legalprivacy', component:LegalPrivacyComponent, canActivate: [AlwaysAuthGuard]},
 	{path:'imageupload', component:ImageuploadComponent,canActivate: [AlwaysAuthGuard]},
 	{path:'photopoints', component:PhotopointsComponent,canActivate: [AlwaysAuthGuard]},
 	{path:'thumbnailsphotos/:title', component:ThumbnailsphotoComponent,canActivate: [AlwaysAuthGuard]},
@@ -71,5 +73,6 @@ export const routingcomponent =
 		ThumbnailsphotoComponent,
 		SaplingsurvivalComponent,
 		LongtermComponent,
-		ImagedetailsComponent
+		ImagedetailsComponent,
+		LegalPrivacyComponent
 	]

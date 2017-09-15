@@ -1,0 +1,57 @@
+.series{
+	margin: 20px 0 20px 0;
+}
+.series li {
+    padding: 7px 0;
+}
+
+.series .fa {
+    font-size: 15px;
+    color: #246f24;
+    margin-right: 5px;
+}
+.series span, .map-img {
+    font-size: 18px;
+    font-weight: 600;
+}
+.home-title {
+    font-size: 32px;
+    color: #246f24;
+    text-transform: capitalize;
+    margin: 40px 0 15px 0;
+}
+#test h2{
+    font-size: 32px;
+    color: #246f24;
+    text-transform: capitalize;
+    margin: 40px 0 15px 0;
+}
+p {
+    line-height: 26px;
+}
+ h3 {
+    font-size: 22px;
+    font-weight: normal;
+    color: #246f24;
+}
+.photopoints-map {
+    margin-top: 25px;
+}
+
+@media only screen and (max-width: 767px) {
+    .home-title{
+        font-size: 25px;
+    }
+    .photopoints-map{
+        margin-top: 0;
+    }
+}
+@media only screen and (max-width: 420px) {
+
+    .home-title {
+        font-size: 22px;
+    }
+    h3 {
+        font-size: 22px;
+    }
+}
