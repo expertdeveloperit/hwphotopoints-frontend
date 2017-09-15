@@ -2,10 +2,9 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class SharedDataService {
-	data = true;
+  data = true;
   constructor() { }
-  clickme(val:boolean){
-  	
+  hitLogin(val:boolean){
   	this.data = val;
   }
 }

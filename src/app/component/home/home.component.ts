@@ -17,11 +17,10 @@ export class HomeComponent implements OnInit {
   constructor(private _homeservice : HomeService ,public serve : SharedDataService, private _sanitizer: DomSanitizer) {}
 
   ngOnInit() {
-    this.serve.clickme(false);
+    this.serve.hitLogin(false);
     this._homeservice.gethomedata()
       .subscribe(res => {
         this.pageContent = res; 
-        console.log(this.pageContent);   
           console.log(this._sanitizer.bypassSecurityTrustHtml(this.pageContent.data.description));   
           this.temp = this._sanitizer.bypassSecurityTrustHtml(this.pageContent.data.description); 
       }, 

@@ -40,7 +40,7 @@ export class AlwaysAuthGuard implements CanActivate {
 const appRoutes: Routes = [
 	{path:'', component:HomeComponent,canActivate: [AlwaysAuthGuard]},
 	{path:'login', component:LoginComponent },
-	{path:'recoverpassword', component:PasswordComponent,canActivate: [AlwaysAuthGuard]},
+	{path:'recoverpassword', component:PasswordComponent},
 	{path:'imageupload', component:ImageuploadComponent,canActivate: [AlwaysAuthGuard]},
 	{path:'photopoints', component:PhotopointsComponent,canActivate: [AlwaysAuthGuard]},
 	{path:'thumbnailsphotos/:title', component:ThumbnailsphotoComponent,canActivate: [AlwaysAuthGuard]},

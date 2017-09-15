@@ -8,21 +8,23 @@ import {SharedDataService} from '../../../shared-data.service';
   styleUrls: ['./header.component.css']
 })
 export class NewHeaderComponent implements OnInit {
-userAuthenticated:boolean;
+
 
   constructor(private router: Router, private _cookieService:CookieService,public serve : SharedDataService) { 
-  	this.userAuthenticated=false;
   	let loggedinUser = this._cookieService.get("hwUserToken");
    		if(loggedinUser){
-   			this.userAuthenticated=true;
-   		}
+   			this.serve.hitLogin(false);
+   		}else this.serve.hitLogin(true);
   }
 
   ngOnInit() {
+
   }
+
+
   logoutUser(){
-    this.userAuthenticated = false;
-		this._cookieService.remove("hwUserToken",'/');
+    this.serve.hitLogin(true);
+    this._cookieService.remove("hwUserToken",'/');
 		this._cookieService.remove("userDetail",'/');
 		this.router.navigate(['/login']);
 	}
