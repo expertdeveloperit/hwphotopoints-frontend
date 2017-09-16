@@ -202,87 +202,58 @@
     </div>
   </div>
 </div>
+
+
+
+
 <!-- === Third option View when click on C Button=== -->
 <div class="" *ngIf="selectthirdoption">
    <div class="row photo-points-border">
-      <div class=" col-sm-3" >   
+      <div class=" col-sm-1" >   
       <div class="row photo-pointssecond">
-        <div class="col-sm-6">
+        <div class="col-sm-12">
           <h4>VIEW</h4>
-        </div>
-        <div class="col-xs-6">
-          <h4>year</h4> 
         </div>  
       </div>
-      <div class="row second-view-space season-space thirdview text-center">       
+      <div *ngFor="let viewData of thirdViewsData" class="row second-view-space season-space thirdview text-center">       
         <div class=" col-sm-6 ">
-          <p>A001</p>
+          <p>{{viewData.name}}</p>
         </div>    
       </div>
-      <div class="row second-view-space season-space thirdview text-center">       
-        <div class=" col-sm-6 ">
-          <p>A001</p>
-        </div>    
-      </div>
+      
     </div> 
  
   <!-- === 3S00 view section by id=== -->
-    <div class="col-sm-9 year-winter-list " >
-      <ul class="yearlist second-img-view">
-        <li>
-          <h4>2014</h4>
+    <div class="col-sm-11 year-winter-list " >
+      <ul class="yearlist-c second-img-view thirdoption-years">
+        <li *ngFor="let year of thirdviewyears">
+          <h4>{{year.year}}</h4>
         </li>
-        <li>
-          <h4>2015</h4>
-        </li>
-        <li>
-          <h4>2016</h4>
-        </li>
-        <li>
-          <h4>2017</h4>
-        </li>
+        
       </ul>
 
       <!-- Bsection Image section -->
-      <div class="Bsectionview">
-            <div class="row winter-img spring-view">
+      <div class="csectionview">
+            <div class="row option-c-view">
               <div class="col-xs-12" >
-                 <ul class="winterview-list">
-                   <li>       
-                     <a [routerLink]="['/imagedetails']">
-                      <img src="../../../assets/images/photopoints-home5.jpg" /></a>            
-                    </li>
-                    <li>       
-                     <a [routerLink]="['/imagedetails']">
-                      <img src="../../../assets/images/photopoints-home5.jpg" /></a>            
-                    </li>
-                    <li>       
-                     <a [routerLink]="['/imagedetails']">
-                      <img src="../../../assets/images/photopoints-home5.jpg" /></a>            
-                    </li>
-                      <li>       
-                     <a [routerLink]="['/imagedetails']">
-                      <img src="../../../assets/images/photopoints-home5.jpg" /></a>            
-                    </li>
+               <div class="thirdoption-view" *ngFor="let viewData of thirdViewsData">
+                  <ul class="winterview-list " [ngStyle]="{'width': '+thirdViewWidth+'}">
+                    <li class="season-group" *ngFor="let years of thirdviewyears">
+                      <!-- *ngFor="let imagesData of viewData.data" -->
+                      <ul class=" list-view-c" *ngFor="let imagesData of viewData.data">
+                        <div *ngIf="imagesData.year == years.year">
+                          <li  *ngFor="let season of totalSeason"> 
+                            <div  *ngFor="let seasonData of imagesData.data">
+                              <a  *ngIf="season==seasonData.season" [routerLink]="['/imagedetails']">
+                                <img src="{{seasonData.file_thumb_location_aws}}" />
+                              </a>
+                            </div>
+                          </li>
+                        </div>
+                      </ul>
+                    </li>    
                   </ul>
-                  <ul class="winterview-list">
-                   <li>       
-                     <a [routerLink]="['/imagedetails']">
-                      <img src="../../../assets/images/photopoints-home5.jpg" /></a>            
-                    </li>
-                    <li>       
-                     <a [routerLink]="['/imagedetails']">
-                      <img src="../../../assets/images/photopoints-home5.jpg" /></a>            
-                    </li>
-                    <li>       
-                     <a [routerLink]="['/imagedetails']">
-                      <img src="../../../assets/images/photopoints-home5.jpg" /></a>            
-                    </li>
-                      <li>       
-                     <a [routerLink]="['/imagedetails']">
-                      <img src="../../../assets/images/photopoints-home5.jpg" /></a>            
-                    </li>
-                  </ul>
+                </div>                
               </div>
             </div> 
         </div>

@@ -29,6 +29,7 @@ export class ThumbnailsphotoComponent implements OnInit {
   thirdviewyears : any = [];
   thirdViewsData : any = [];
   totalSeason : any[];
+  thirdViewWidth:string;
 
   constructor(private route:ActivatedRoute, private sphotoService : ThumbnailsphotoService) { 
   	this.selectfirstoption =true;
@@ -92,6 +93,9 @@ export class ThumbnailsphotoComponent implements OnInit {
       this.thirdviewyears = res.years;
       this.thirdViewsData = res.ViewsData;
       this.totalSeason=["WIN","SPR","SUM","AUT"];
+      let wid = this.thirdviewyears.length * 430;
+      this.thirdViewWidth = wid.toString();
+      
      });
   }
 
