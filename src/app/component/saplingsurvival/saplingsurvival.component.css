@@ -13,4 +13,8 @@ h3 {
 ul.saplingview li {
     display: inline-block;
     width: 200px;
+    padding: 0 10px;
+}
+.photopoints-info {
+    margin-bottom: 10px;
 }
