@@ -19,7 +19,21 @@ h2 {
     color: #246f24;
 }
 @media only screen and (max-width: 767px) {
-	.photopointslink {
-	    text-align: center;
-	}
+    .photopointslink {
+        text-align: center;
+    }
+    h2{
+    font-size: 30px;
+    margin: 20px 0 20px 0;
+    }
+    .photopointslink {
+        border-bottom: 1px dashed #246f24;
+        margin: 18px 0;
+        padding: 0 16px;
+    }
+
+    .photopointslink:last-child {
+        border: 0;
+        margin: 0;
+    }
 }

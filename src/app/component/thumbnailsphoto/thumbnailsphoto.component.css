@@ -70,9 +70,10 @@ h2 {
     box-sizing: border-box;
     
 }
-.space-photo-points {
+.space-photo-points{
     padding: 18px 0;
     border-top: 1px solid #eaeaea;
+    width: 2000px;
 }
 
 .yearlist.second-img-view, .photo-pointssecond{
@@ -83,10 +84,12 @@ h2 {
 .winter-img.spring-view ul {
     margin-bottom: 13px;
     width: 1500px;
+    border-bottom: 1px dashed #eaeaea;
+    padding: 0 0 15px 0;
 }
 .winterview-list {
     margin: 0 0 25px 0;
-    width: 1500px;
+    width: 2000px;
 }
 .photo-points-id{
     padding: 44px 0 0 0;
@@ -103,12 +106,16 @@ h2 {
 
 .season-space {
     min-height: 107px;
-    padding: 39px 0;
+    padding: 50px 0;
     margin-bottom: 10px;
 }
-.select-option button {
-    width: 70px;
-    border-radius: 0;
+.viwe-option img {
+    width: 35px;
+    display: inline-block;
+}
+.viwe-option a {
+    display: inline-block;
+    line-height: 55px;
 }
 .thirdoption-year {
     border-top: 1px solid #eaeaea;
@@ -140,6 +147,9 @@ h2 {
 .Asectionview .photo-points-space{
     margin-top: 20px;
     margin-bottom: 0; 
+}
+.row.second-view-space.season-space.thirdview {
+    padding: 38px 0;
 }
 @media only screen and (max-width: 992px) {
 

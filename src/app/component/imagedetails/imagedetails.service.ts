@@ -27,7 +27,7 @@ export class ImageDetailService {
           'Authorization':'Bearer'+ token
       })
     });
-  	let _url:string =environment.apiEndpoint+url;
+    let _url:string =environment.apiEndpoint+url;
 
    return this._http.get(_url, options)
     .map((response: Response) => {

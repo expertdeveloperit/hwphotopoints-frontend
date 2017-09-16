@@ -22,6 +22,11 @@ border-left: 5px solid #42A948!important; /* green */
   padding: 12px;
   color: red;
 }
+.loginerror {
+    color: #c30606;
+    text-transform: capitalize;
+    font-size: 16px;
+}
 .login-email {
     position: relative;
 }
@@ -51,7 +56,7 @@ border-left: 5px solid #42A948!important; /* green */
     width: 40%;
 }
 .checkbox{
-	text-align: center;
+    text-align: center;
 }
 .login-signup-link {
     text-align: center;
@@ -82,7 +87,7 @@ border-left: 5px solid #42A948!important; /* green */
     line-height: 47px;
 }
 .login-signup-link{
-	position: relative;
+    position: relative;
 
 }
 .checkbox{

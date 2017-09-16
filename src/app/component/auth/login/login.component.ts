@@ -33,7 +33,9 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(logininfo:any){
-     this._loginservice.logindetails(logininfo).subscribe(res => { this.error = res; 
+     this._loginservice.loginerror = "";
+     this._loginservice.logindetails(logininfo).subscribe(res => { 
+       console.log(res,"in");
       this._cookieService.put("hwUserToken", res.token, '/');
       let user_str = JSON.stringify(res.user);
       this._cookieService.put("userDetail", user_str, '/');

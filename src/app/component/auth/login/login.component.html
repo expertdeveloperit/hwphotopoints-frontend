@@ -6,6 +6,7 @@
   <!-- === Enter Email and Password for Login === -->
 
     <form [formGroup]="logininfo" (ngSubmit)="onSubmit(logininfo.value,logininfo.valid)">
+      <p class="loginerror">{{_loginservice.loginerror}}</p>
       <div class="form-group login-email">
         <input type="email" placeholder="email" class="form-control" id="email" name="email" formControlName="email">
         <i class="fa fa-user" aria-hidden="true"></i>
@@ -17,14 +18,14 @@
     <!-- === Remember and Forgate-Password ===-->
       <div class="form-group row checkbox">
         <div class="col-xs-12">
-	       <input formcontrolname="sidekick" type="checkbox" ng-reflect-name="sidekick" class="" name="checkbox"><span>Remember me</span>
+         <input formcontrolname="sidekick" type="checkbox" ng-reflect-name="sidekick" class="" name="checkbox"><span>Remember me</span>
       </div>
        
       </div>
     <!-- === Link For Login and Sign Up === -->
-    	<div class="form-group login-signup-link">
-  	      <button type="submit" class="btn btn-success" [disabled]="!logininfo.valid">Login</button>
+      <div class="form-group login-signup-link">
+          <button type="submit" class="btn btn-success" [disabled]="!logininfo.valid">Login</button>
           <button type="submit" class="btn btn-success"><a  routerLink="../recoverpassword">Forget Password ?</a></button>
-    	</div>
+      </div>
     </form>
  </div>

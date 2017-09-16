@@ -1,37 +1,44 @@
 <div class="container">
   <h2 class="thumbpoints-title">{{title}}</h2>
   <div class="row imagedawnload">
-	  <div class="col-xs-8 " *ngIf="imageView">  
-	  	<p>{{imageName}}</p> 
-	  </div>
-	  <div class="col-xs-4" *ngIf="imageView">  
-	  	<a (click)="deleteImage()">Delete Image</a> 
-	  	<a>Download Image</a> 
-	  </div>
+		<div class="col-xs-12 col-sm-6 " *ngIf="imageView">  
+			<p>{{imageName}}</p> 
+		</div>
+	 <!-- === Delete and dawnload image link ===-->
+		<div class="col-xs-12 col-sm-6 text-right" *ngIf="imageView">  
+			<a (click)="deleteImage()">Delete Image</a> 
+
+			<a target="_blank" #downloadLink (click)="download(downloadLink)">
+		    Download Image</a>
+		</div>
 	</div>
+
 	<div class="row" class="message" *ngIf="Message">
 		<div class="col-xs-12">  
 			<h3>{{Message}}</h3>
 		</div>
 	</div>
+
 	<div class="row" *ngIf="imageView">
 		<img src="{{imageUrl}}" />
 	</div>
+
+	<!-- === Image detail info ===-->
 	  <div class="row imagedetails" *ngIf="imageView">
-		  <div class="col-xs-6">  
-		  	<a  (click)="showExifdata()" >Show Exif Data</a> 
-		  	<ul *ngIf="exifData">
+		<div class="col-xs-6">  
+			<a  (click)="showExifdata()" >Show Exif Data</a> 
+			<ul *ngIf="exifData">
 		  		<li>FILE.FileName: 2016-WIN-P-P001A-SNG-S330.JPG</li>
 				<li>FILE.FileDateTime: 0<li>
 				<li>FILE.FileSize: 13405508</li>
-		  	</ul>
-		  </div>
-		  <div class="col-xs-6">  
+			</ul>
+		</div>
+		<div class="col-xs-6">  
 		  	<a  (click)="showFiledata()" >Show File Data</a> 
 		  	<ul *ngIf="fileData">
 		  		<li>id: 268</li>
 				<li>0: 268<li>
 		  	</ul>
-		  </div>
+		</div>
 	</div>
 </div>
