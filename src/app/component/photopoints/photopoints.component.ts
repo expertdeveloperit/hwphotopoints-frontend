@@ -18,8 +18,12 @@ export class PhotopointsComponent implements OnInit {
         let length = this.pageContent.length;
         let each = length/3;
         this.splitNumber = Math.floor(each);
+        
+        if(length < 6){
+          this.splitNumber = 6;
+        }
         this.next = this.splitNumber + this.splitNumber;
-        console.log(each);   
+        
       }, 
       error =>{
         console.log(error);

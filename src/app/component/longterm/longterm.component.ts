@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 import {LongtermService} from './longterm.service';
 
 @Component({
@@ -9,20 +10,24 @@ import {LongtermService} from './longterm.service';
 })
 export class LongtermComponent implements OnInit {
 
-   public longtermdata: any;
+  seriesData:any = [];
+  
+  years:any = [];
+  formData:any = [];
+  constructor(private route:ActivatedRoute, private lphotoService : LongtermService) { 
+    this.formData = new FormData();
 
-  constructor(private _longtermService : LongtermService) {}
+  }
 
-  ngOnInit() { }
+  ngOnInit() {
+    
+    let URL = 'seriesdetail';
+    this.formData.append('seriesname', 'L');
+    this.lphotoService.thumbnailsphotoinfo(this.formData,URL).subscribe(res => {
+      
+      this.seriesData = res.seriesData;
+      this.years = res.years;
+    });   
+  }
 
-  public longtermdatashow(){
-    	this._longtermService.getlongtermdata()
-    	.subscribe(res => {this.longtermdata=res;
-    		console.log(this.longtermdata);
-    	}, 
-    	error =>{
-    		console.log(error);
-    	}	
-    	);
-  	}
 }

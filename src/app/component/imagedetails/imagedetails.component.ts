@@ -33,7 +33,11 @@ export class ImagedetailsComponent implements OnInit {
     this.imageDetail.getImageInfo(URL).subscribe(res => {
       if(res.status == "true"){
         let mediaInfo = res.mediaInfo;
-        this.imageName = mediaInfo.year+'-'+mediaInfo.season+'-'+mediaInfo.series+'-'+mediaInfo.post_name +'-'+mediaInfo.image_view+'-'+mediaInfo.views;
+        if(mediaInfo.image_view){
+          this.imageName = mediaInfo.year+'-'+mediaInfo.season+'-'+mediaInfo.series+'-'+mediaInfo.post_name +'-'+mediaInfo.image_view+'-'+mediaInfo.views;
+        }else{
+          this.imageName = mediaInfo.year+'-'+mediaInfo.series+'-'+mediaInfo.post_name;
+        }
         this.imageId = mediaInfo.id;
         this.imageUrl = mediaInfo.file_location_aws;
 

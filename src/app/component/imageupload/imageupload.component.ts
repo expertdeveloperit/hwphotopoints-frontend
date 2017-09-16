@@ -135,7 +135,17 @@ export class ImageuploadComponent implements OnInit {
 
     this.formData.delete('year');
     this.formData.append('year',year);
-    this.selectspringoption = true;
+    let SelectedSeries = this.formData.get('series');
+    if(SelectedSeries != "P"){
+      this.imageupload.getInfo(this.formData,'posts').subscribe(res => {
+        if(res.posts != null){
+            this.allPosts = res.posts;
+            this.selectlocationoption=true;
+        }
+      });
+    }else{
+      this.selectspringoption = true;
+    }
   }
 
 //---on season change
@@ -169,19 +179,25 @@ onLocationChange(location){
     this.loadingimg=true;
     this.formData.delete('location');
     this.formData.append('location',location);
-    this.imageupload.getInfo(this.formData,'imagetype').subscribe(res => {
-      if(res.types != null){
 
-        this.allImageType = res.types;
-        console.log(this.allImageType,"allImageType");
-        this.selectimagetype = true; 
+    let SelectedSeries = this.formData.get('series');
+    if(SelectedSeries != "P"){
+      this.loadingimg=false;
+      this.formSubmit = true;
+    }else{
+      this.imageupload.getInfo(this.formData,'imagetype').subscribe(res => {
+        if(res.types != null){
 
           this.allImageType = res.types;
           this.selectimagetype = true; 
 
-      }
-      this.loadingimg=false;
-    });
+          this.allImageType = res.types;
+          this.selectimagetype = true; 
+
+        }
+        this.loadingimg=false;
+      });
+    }  
   }
 
 //---on imageType change show view
@@ -239,6 +255,13 @@ onLocationChange(location){
   AddAnotherImage(){
     this.imageUploded = false;
     this.disabledButton = false;
+    this.selectimagetype = false; 
+    this.selectview = false; 
+    this.selectlocationoption=false;
+    this.selectspringoption = false;
+    this.selectyearoption = false;
+    this.logo = "";
+    this.name = "";
     this.fileUrl = "";
     this.imageName = "";
     this.imageId = 0; 

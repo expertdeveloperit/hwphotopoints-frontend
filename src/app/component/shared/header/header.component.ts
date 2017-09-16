@@ -19,6 +19,7 @@ import { animate, style, state, transition, trigger} from '@angular/core';
 })
 export class NewHeaderComponent implements OnInit {
 
+<<<<<<< HEAD
 // ---=== These are animation states---===
   state = 'open';
   timeOutRef;
@@ -34,10 +35,20 @@ export class NewHeaderComponent implements OnInit {
        if(loggedinUser){
          this.userAuthenticated=true;
        }
+=======
+
+  constructor(private router: Router, private _cookieService:CookieService,public serve : SharedDataService) { 
+  	let loggedinUser = this._cookieService.get("hwUserToken");
+   		if(loggedinUser){
+   			this.serve.hitLogin(false);
+   		}else this.serve.hitLogin(true);
+>>>>>>> 37486a66ef8d4e7f3c45169775b6ea087344e17f
   }
 
   ngOnInit() {
+
   }
+<<<<<<< HEAD
   
   logoutUser(){
     this.userAuthenticated = false;
@@ -54,4 +65,14 @@ export class NewHeaderComponent implements OnInit {
   // }
 
 
+=======
+
+
+  logoutUser(){
+    this.serve.hitLogin(true);
+    this._cookieService.remove("hwUserToken",'/');
+		this._cookieService.remove("userDetail",'/');
+		this.router.navigate(['/login']);
+	}
+>>>>>>> 37486a66ef8d4e7f3c45169775b6ea087344e17f
 }

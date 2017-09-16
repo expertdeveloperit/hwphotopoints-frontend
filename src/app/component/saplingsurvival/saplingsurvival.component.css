@@ -10,6 +10,7 @@ h3 {
  h4 {
     text-transform: uppercase;
 }
+<<<<<<< HEAD
 @media only screen and (max-width: 767px) {
 	.Survivalview h4 {
 	    text-align: center;
@@ -24,4 +25,9 @@ h3 {
 	    font-size: 30px;
 	    margin: 20px 0 20px 0;
 	}
+=======
+ul.saplingview li {
+    display: inline-block;
+    width: 200px;
+>>>>>>> 37486a66ef8d4e7f3c45169775b6ea087344e17f
 }

@@ -6,7 +6,7 @@
 		<div class="col-sm-4 photopointslink">
 			<ul>
 				<li *ngFor="let series of pageContent | slice:0:splitNumber ">
-					<a routerLink="/thumbnailsphotos/{{series.title}}">CLICK HERE TO VIEW {{series.title}}</a>
+					<a routerLink="/thumbnailsphotos/{{series.post_name}}">CLICK HERE TO VIEW {{series.post_name}}</a>
 				</li>
 		
 			</ul>	
@@ -15,7 +15,7 @@
 		<div class="col-sm-4 photopointslink">
 			<ul>
 				<li *ngFor="let series of pageContent | slice:splitNumber:next ">
-					<a routerLink="/thumbnailsphotos/{{series.title}}">CLICK HERE TO VIEW {{series.title}}</a>
+					<a routerLink="/thumbnailsphotos/{{series.post_name}}">CLICK HERE TO VIEW {{series.post_name}}</a>
 				</li>
 		
 			</ul>	
@@ -24,7 +24,7 @@
 		<div class="col-sm-4 photopointslink">
 			<ul>
 				<li *ngFor="let series of pageContent | slice:next">
-					<a routerLink="/thumbnailsphotos/{{series.title}}">CLICK HERE TO VIEW {{series.title}}</a>
+					<a routerLink="/thumbnailsphotos/{{series.post_name}}">CLICK HERE TO VIEW {{series.post_name}}</a>
 				</li>
 		
 			</ul>	

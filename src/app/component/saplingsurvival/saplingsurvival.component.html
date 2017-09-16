@@ -1,6 +1,7 @@
 <div class="container">
   <h2>Sapling Survival</h2>
   <div class="row photo-points-space">
+<<<<<<< HEAD
     <div class="col-xs-12 col-sm-1 Survivalview">
     <h4>View</h4>
     </div>
@@ -29,10 +30,36 @@
     <img src="../../../assets/images/photopoints-home5.jpg" /></a>
     </div>
     <div class="col-xs-3">  
+=======
+  	<div class="col-xs-1">
+  	<h4>View</h4>
+  	</div>
+  	<div class="col-xs-10">
+      <ul class="saplingview ">
+        <li class="text-center" *ngFor="let year of years">
+          <h4>{{year.year}}</h4>
+        </li>
+        
+      </ul>  			
+  	</div>
+  </div>
+  <div class="row photopoints-info" *ngFor="let postData of seriesData">
+    <div class="col-xs-1">
+      <p>{{postData.view}}</p>
+>>>>>>> 37486a66ef8d4e7f3c45169775b6ea087344e17f
     </div>
-    <div class="col-xs-3">
-    </div>    
-    <div class="col-xs-2">
+    <div class="col-xs-10">
+      <ul class="saplingview">
+        <li  *ngFor="let year of years">
+          <div  *ngFor="let imageData of postData.data">  
+            <a *ngIf = "year.year==imageData.year" [routerLink]="['/imagedetails',imageData.id]">
+              <img src="{{imageData.file_thumb_location_aws}}" />
+            </a>
+        </div>
+        </li>
+        
+      </ul>
     </div>
   </div>
+ 
 </div>
