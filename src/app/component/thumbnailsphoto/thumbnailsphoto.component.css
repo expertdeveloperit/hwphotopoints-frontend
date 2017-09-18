@@ -109,12 +109,7 @@ h2 {
     border-bottom: 1px solid #eaeaea;
     margin-bottom: 30px;
 }
-.winter-img.spring-view ul {
-    margin-bottom: 13px;
-    width: 1500px;
-    border-bottom: 1px dashed #eaeaea;
-    padding: 0 0 15px 0;
-}
+
 .winterview-list {
     margin: 0 0 25px 0;
     width: 2000px;
@@ -148,6 +143,23 @@ h2 {
 .thirdoption-year {
     border-top: 1px solid #eaeaea;
 }
+.thirdoption-view .winterview-list li
+ a {
+    min-height: auto;
+    display: inline-block;
+    line-height: normal;
+}
+.season-space {
+    min-height: 135px;
+    padding: 57px 0;
+    margin-bottom: 0;
+}
+.second-view .winter-img.spring-view ul {
+    margin-bottom: 0;
+    width: 1500px;
+    border-bottom: 1px dashed #eaeaea;
+    padding:15px 0;
+}
 .photo-points-border {
     border-top: 1px solid #eaeaea;
     border-bottom: 1px solid #eaeaea;
@@ -177,9 +189,10 @@ h2 {
     margin-bottom: 0; 
 }
 .row.second-view-space.season-space.thirdview {
-    padding: 38px 0;padding: 17px 0;
+    padding: 19px 0;
     min-height: auto;
     margin-bottom: 20px;
+    line-height: 20px;
 }
 img.loader {
     width: auto;
@@ -191,7 +204,12 @@ img.loader {
     text-align: center;
     padding: 40px 0;
 }
-
+.winterview-list li
+ a {
+    min-height: 104px;
+    display: inline-block;
+    line-height: 100px;
+}
 @media only screen and (max-width: 767px) {
 
 .row.photo-points-winter h4{
