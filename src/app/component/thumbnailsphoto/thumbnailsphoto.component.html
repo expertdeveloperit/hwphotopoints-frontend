@@ -17,6 +17,11 @@
   </div>
   </div>
 
+<div class="loading-img" *ngIf="loadingimg">
+  <img class="loader" src="../../../assets/images/loader.gif" >
+</div>
+<div class="views-section" *ngIf="!loadingimg">
+
 <div class="" *ngIf="selectfirstoption">
   <div class="row photo-points-space">
     <div class=" col-sm-3" >
@@ -30,8 +35,7 @@
           </div>
           <div class="col-sm-6 col-sm-offset-6 photo-points-id" *ngFor="let winteryear of winterData">
             {{winteryear.view}}
-          </div>   
-           
+          </div>              
         </div>
         <div class="row winter">
           <div class=" col-sm-6">
@@ -68,14 +72,12 @@
           </div>      
         </div>
     </div>
-
     <div class=" col-sm-9 year-winter-list" >
       <ul class="yearlist">
          <li  *ngFor="let year of years">
         <h4>{{year.year}}</h4>
         </li>
       </ul>
-
       <div class="space-photo-points"></div>
       <div class="row winter-img">
         <div class="" *ngFor="let winter of winterData" >
@@ -90,9 +92,6 @@
           </ul>
         </div>
       </div>
-
-
-
       <div class="space-photo-points"></div>
       <div class="row summer-img">
         <div class="" *ngFor="let summer of summerData" >
@@ -107,7 +106,6 @@
           </ul>
         </div>
       </div>
-
       <div class="space-photo-points"></div>
       <div class="row spring-img">
         <div class="" *ngFor="let spring of springData" >
@@ -121,8 +119,7 @@
             </li>
           </ul>
         </div>
-      </div>
-      
+      </div>      
        <div class="space-photo-points"></div>
       <div class="row autumn-img">
         <div class="" *ngFor="let autumn of autumnData" >
@@ -202,10 +199,6 @@
     </div>
   </div>
 </div>
-
-
-
-
 <!-- === Third option View when click on C Button=== -->
 <div class="" *ngIf="selectthirdoption">
    <div class="row photo-points-border">
@@ -258,5 +251,7 @@
             </div> 
         </div>
     </div>
+</div>
+</div>
 </div>
 </div>
