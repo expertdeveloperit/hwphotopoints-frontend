@@ -179,6 +179,16 @@ h2 {
     min-height: auto;
     margin-bottom: 20px;
 }
+img.loader {
+    width: auto;
+    max-width: 80px;
+    margin: 0 auto;
+}
+
+.loading-img {
+    text-align: center;
+    padding: 40px 0;
+}
 
 @media only screen and (max-width: 767px) {
 

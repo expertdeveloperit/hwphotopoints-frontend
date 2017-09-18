@@ -1,7 +1,7 @@
 import { Component, OnInit, Input} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ThumbnailsphotoService} from './thumbnailsphoto.service';
-
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-thumbnailsphoto',
   templateUrl: './thumbnailsphoto.component.html',
@@ -15,6 +15,7 @@ export class ThumbnailsphotoComponent implements OnInit {
   selectsecondoption:boolean;
   selectfirstoption:boolean;
   selectthirdoption:boolean;
+  loadingimg:boolean;
   sphotoTitle : any =[];
   formData:any = [];
   pageContent : any = [];
@@ -35,6 +36,7 @@ export class ThumbnailsphotoComponent implements OnInit {
   	this.selectfirstoption =true;
   	this.selectsecondoption =false;
   	this.selectthirdoption =false;
+    this.loadingimg =false;
     this.formData = new FormData();
 
   }
@@ -45,6 +47,7 @@ export class ThumbnailsphotoComponent implements OnInit {
   } 
 
   getFirstView(){
+    this.loadingimg =true;
     let URL = 'pseriesdetail/firstview';
     this.formData.append('postname', this.sphotoTitle);
     this.sphotoService.thumbnailsphotoinfo(this.formData,URL).subscribe(res => {
@@ -53,6 +56,14 @@ export class ThumbnailsphotoComponent implements OnInit {
       this.autumnData = res.autumnData;
       this.springData = res.springData;
       this.years = res.years;
+      Observable.interval(1000)
+      .takeWhile(() => this.loadingimg =false)
+      .subscribe(i => { 
+          
+      })
+
+        
+
     });
   }
 
@@ -65,6 +76,7 @@ export class ThumbnailsphotoComponent implements OnInit {
  }
 
   secondoption(){
+    this.loadingimg =true;
   	this.selectsecondoption =true;
   	this.selectfirstoption =false;
   	this.selectthirdoption =false;
@@ -76,12 +88,15 @@ export class ThumbnailsphotoComponent implements OnInit {
       this.secondviewyears = res.years;
       this.secondViewsData = res.ViewsData;
       this.secondViewImagesData = res.information;
+      this.loadingimg =false;
+
      });
   }
 
 
 
   thirdoption(){
+    this.loadingimg =true;
   	this.selectthirdoption =true;
   	this.selectsecondoption =false;
   	this.selectfirstoption =false;
@@ -95,6 +110,7 @@ export class ThumbnailsphotoComponent implements OnInit {
       this.totalSeason=["WIN","SPR","SUM","AUT"];
       let wid = this.thirdviewyears.length * 430;
       this.thirdViewWidth = wid.toString();
+      this.loadingimg =false;
       
      });
   }
