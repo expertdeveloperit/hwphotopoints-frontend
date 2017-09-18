@@ -17,7 +17,6 @@
    <a  (click)="thirdoption()"><img src="../../../assets/images/Group3.png" /></a>
   </div>
   </div>
-  
 <!-- ===Show loading image === -->
 <div class="loading-img" *ngIf="loadingimg">
   <img class="loader" src="../../../assets/images/loader.gif" >
@@ -103,7 +102,7 @@
           <ul class="winterview-list" [style.width]="firstViewWidth">
             <li *ngFor="let mainyear of years" >
               <div *ngFor="let simagesData of summer.data">
-                <a *ngIf = "mainyear.year==simagesData.year" routerLink="/imagedetails/{{imagesData.id}}" >
+                <a *ngIf = "mainyear.year==simagesData.year" routerLink="/imagedetails/{{simagesData.id}}" >
                   <img  src="{{simagesData.file_thumb_location_aws}}" /> 
                 </a>
               </div>
@@ -117,7 +116,7 @@
           <ul class="winterview-list" [style.width]="firstViewWidth">
             <li *ngFor="let mainyear of years" >
               <div *ngFor="let sprimagesData of spring.data">
-                <a *ngIf = "mainyear.year==sprimagesData.year" routerLink="/imagedetails/{{imagesData.id}}" >
+                <a *ngIf = "mainyear.year==sprimagesData.year" routerLink="/imagedetails/{{sprimagesData.id}}" >
                   <img  src="{{sprimagesData.file_thumb_location_aws}}" /> 
                 </a>
               </div>
@@ -131,7 +130,7 @@
           <ul class="winterview-list" [style.width]="firstViewWidth">
             <li *ngFor="let mainyear of years" >
               <div *ngFor="let aimagesData of autumn.data" id="{{aimagesData.id}}">
-              <a *ngIf = "mainyear.year==aimagesData.year" routerLink="/imagedetails/{{imagesData.id}}" >
+              <a *ngIf = "mainyear.year==aimagesData.year" routerLink="/imagedetails/{{aimagesData.id}}" >
                 <img  src="{{aimagesData.file_thumb_location_aws}}" /> 
               </a>
               </div>
