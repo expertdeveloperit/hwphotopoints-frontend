@@ -1,27 +1,15 @@
 $(document).ready(function(){
-	setTimeout(function(){
+	
 	  var bodyHeight = $("body").height();
 	  var winHeight = $(window).height();
+  	  var header =  $(".header-area").height();
+  	 var footer =  $(".footer-area").height(); 
+  	 
 	  if(winHeight > bodyHeight){
-	    $("body").css("min-height",winHeight);
-	    $(".copyright").addClass("fixed-footer");
-	  }
-	  console.log("onload");
-	},1000);  
+	  	var headerFooter = header + footer;
+	  	var calculate  = winHeight - headerFooter -150;
 
-  	$(".navbar a").click(function(){
-  	  	setTimeout(function(){
-		  var bodyHeight = $("body").height();
-		  var winHeight = $(window).height();
-		  console.log(bodyHeight +" "+winHeight );
-		  if(winHeight >= bodyHeight){
-		    $("body").css("min-height",winHeight);
-		    $(".copyright").addClass("fixed-footer");
-		  }else{
-		  	$("body").removeAttr("min-height");
-		    $(".copyright").removeClass("fixed-footer");
-		  }  
-		  console.log("click");
-		},1000);
-  	});
+	    $(".body-data").css("min-height",calculate);
+	  }
+	
 });

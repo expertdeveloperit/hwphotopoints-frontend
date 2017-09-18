@@ -8,7 +8,7 @@
 		<div class="col-xs-12 col-sm-6 text-right" *ngIf="imageView">  
 			<a (click)="deleteImage()">Delete Image</a> 
 
-			<a target="_blank" #downloadLink (click)="download(downloadLink)">
+			<a target="_blank" href="{{imageUrl}}" download="{{imageUrl}}">
 		    Download Image</a>
 		</div>
 	</div>
@@ -36,8 +36,19 @@
 		<div class="col-xs-6">  
 		  	<a  (click)="showFiledata()" >Show File Data</a> 
 		  	<ul *ngIf="fileData">
-		  		<li>id: 268</li>
-				<li>0: 268<li>
+				<li><strong>Uploaded By:</strong> {{allFileData.uploaded_by}}</li>
+		  		<li><strong>ID:</strong> {{allFileData.id}}</li>
+				<li><strong>File Name:</strong> {{allFileData.file_name}}</li>
+				<li><strong>Original Image Location:</strong> {{allFileData.file_location_aws}}</li>
+				<li><strong>Thumb Image Location:</strong> {{allFileData.file_thumb_location_aws}}</li>
+				<li><strong>Series:</strong> {{allFileData.series}}</li>
+				<li><strong>Post Name:</strong> {{allFileData.post_name}}</li>
+				<li><strong>Year:</strong> {{allFileData.year}}</li>
+				<li><strong>Season: </strong>{{allFileData.season}}</li>
+				<li><strong>Image View:</strong> {{allFileData.image_view}}</li>
+				<li><strong>Views:</strong> {{allFileData.views}}</li>
+				<li><strong>Uploaded Date:</strong> {{allFileData.uploading_date}}</li>
+				
 		  	</ul>
 		</div>
 	</div>

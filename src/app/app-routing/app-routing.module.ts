@@ -16,7 +16,7 @@ import { LongtermComponent } from '../component/longterm/longterm.component';
 import { PasswordComponent } from '../component/auth/password/password.component';
 import { ImagedetailsComponent } from '../component/imagedetails/imagedetails.component';
 import { LegalPrivacyComponent } from '../component/legalprivacy/legalprivacy.component';
-
+import { ResetpasswordComponent } from '../component/auth/resetpassword/resetpassword.component';
 
 @Injectable()
 export class AlwaysAuthGuard implements CanActivate {
@@ -41,6 +41,7 @@ export class AlwaysAuthGuard implements CanActivate {
 const appRoutes: Routes = [
 	{path:'login', component:LoginComponent },
 	{path:'recoverpassword', component:PasswordComponent},
+	{path:'reset/password', component:ResetpasswordComponent},
 	{path:'', component:HomeComponent,canActivate: [AlwaysAuthGuard]},
 	{path:'legalprivacy', component:LegalPrivacyComponent, canActivate: [AlwaysAuthGuard]},
 	{path:'imageupload', component:ImageuploadComponent,canActivate: [AlwaysAuthGuard]},
@@ -74,5 +75,6 @@ export const routingcomponent =
 		SaplingsurvivalComponent,
 		LongtermComponent,
 		ImagedetailsComponent,
-		LegalPrivacyComponent
+		LegalPrivacyComponent,
+		ResetpasswordComponent
 	]

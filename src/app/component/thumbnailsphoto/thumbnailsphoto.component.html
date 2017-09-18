@@ -17,6 +17,7 @@
    <a  (click)="thirdoption()"><img src="../../../assets/images/Group3.png" /></a>
   </div>
   </div>
+  
 <!-- ===Show loading image === -->
 <div class="loading-img" *ngIf="loadingimg">
   <img class="loader" src="../../../assets/images/loader.gif" >
@@ -76,19 +77,19 @@
         </div>
     </div>
     <div class=" col-sm-9 year-winter-list" >
-      <ul class="yearlist">
+      <ul class="yearlist" [style.width]="firstViewWidth">
          <li  *ngFor="let year of years">
         <h4>{{year.year}}</h4>
         </li>
       </ul>
       <!-- ===selectfirstoption image section === -->
-      <div class="space-photo-points"></div>
+      <div class="space-photo-points" [style.width]="firstViewWidth"></div>
       <div class="row winter-img">
         <div class="" *ngFor="let winter of winterData" >
-          <ul class="winterview-list">
+          <ul class="winterview-list" [style.width]="firstViewWidth">
             <li *ngFor="let mainyear of years" >
               <div class="" *ngFor="let imagesData of winter.data">
-                <a *ngIf = "mainyear.year==imagesData.year" routerLink="../imagedetails" >
+                <a *ngIf = "mainyear.year==imagesData.year" routerLink="/imagedetails/{{imagesData.id}}" >
                   <img  src="{{imagesData.file_thumb_location_aws}}" /> 
                 </a>
               </div>
@@ -96,13 +97,13 @@
           </ul>
         </div>
       </div>
-      <div class="space-photo-points"></div>
+      <div class="space-photo-points" [style.width]="firstViewWidth"></div>
       <div class="row summer-img">
         <div class="" *ngFor="let summer of summerData" >
-          <ul class="winterview-list">
+          <ul class="winterview-list" [style.width]="firstViewWidth">
             <li *ngFor="let mainyear of years" >
               <div *ngFor="let simagesData of summer.data">
-                <a *ngIf = "mainyear.year==simagesData.year" routerLink="../imagedetails" >
+                <a *ngIf = "mainyear.year==simagesData.year" routerLink="/imagedetails/{{imagesData.id}}" >
                   <img  src="{{simagesData.file_thumb_location_aws}}" /> 
                 </a>
               </div>
@@ -110,13 +111,13 @@
           </ul>
         </div>
       </div>
-      <div class="space-photo-points"></div>
+      <div class="space-photo-points" [style.width]="firstViewWidth"></div>
       <div class="row spring-img">
         <div class="" *ngFor="let spring of springData" >
-          <ul class="winterview-list">
+          <ul class="winterview-list" [style.width]="firstViewWidth">
             <li *ngFor="let mainyear of years" >
               <div *ngFor="let sprimagesData of spring.data">
-                <a *ngIf = "mainyear.year==sprimagesData.year" routerLink="../imagedetails" >
+                <a *ngIf = "mainyear.year==sprimagesData.year" routerLink="/imagedetails/{{imagesData.id}}" >
                   <img  src="{{sprimagesData.file_thumb_location_aws}}" /> 
                 </a>
               </div>
@@ -124,13 +125,13 @@
           </ul>
         </div>
       </div>      
-       <div class="space-photo-points"></div>
+       <div class="space-photo-points" [style.width]="firstViewWidth"></div>
       <div class="row autumn-img">
         <div class="" *ngFor="let autumn of autumnData" >
-          <ul class="winterview-list">
+          <ul class="winterview-list" [style.width]="firstViewWidth">
             <li *ngFor="let mainyear of years" >
               <div *ngFor="let aimagesData of autumn.data" id="{{aimagesData.id}}">
-              <a *ngIf = "mainyear.year==aimagesData.year" routerLink="../imagedetails" >
+              <a *ngIf = "mainyear.year==aimagesData.year" routerLink="/imagedetails/{{imagesData.id}}" >
                 <img  src="{{aimagesData.file_thumb_location_aws}}" /> 
               </a>
               </div>
@@ -171,7 +172,7 @@
     </div>
   </div>
   <div class="col-sm-9 year-winter-list " >
-      <ul class="yearlist second-img-view">
+      <ul class="yearlist second-img-view" [style.width]="secondViewWidth">
         <li  *ngFor="let year of secondviewyears">
         <h4>{{year.year}}</h4>
         </li>
@@ -180,10 +181,10 @@
     <div class="Bsectionview">
           <div class="row winter-img spring-view" *ngFor="let imagesData of secondViewImagesData">
             <div class="col-xs-12" >
-               <ul class="winterview-list">
+               <ul class="winterview-list" [style.width]="secondViewWidth">
                  <li *ngFor="let secondviewyear of secondviewyears">
                   <div *ngFor="let mediainfo of imagesData.info">
-                    <a *ngIf = "secondviewyear.year==mediainfo.year" routerLink="../imagedetails" >
+                    <a *ngIf = "secondviewyear.year==mediainfo.year" routerLink="/imagedetails/{{mediainfo.id}}" >
                       <img src="{{mediainfo.file_thumb_location_aws}}" /> 
                     </a>
                   </div>
@@ -213,23 +214,23 @@
       </div> 
     <!-- ===view section by id=== -->
       <div class="col-sm-11 year-winter-list " >
-        <ul class="yearlist-c second-img-view thirdoption-years">
+        <ul class="yearlist-c second-img-view thirdoption-years" [style.width]="thirdViewWidth">
           <li *ngFor="let year of thirdviewyears">
             <h4>{{year.year}}</h4>
           </li>     
         </ul>
     <!-- selectthirdoption Image section -->
       <div class="csectionview">
-        <div class="row option-c-view">
+        <div class="row option-c-view" [style.width]="thirdViewWidth">
           <div class="col-xs-12" >
            <div class="thirdoption-view" *ngFor="let viewData of thirdViewsData">
-              <ul class="winterview-list " [ngStyle]="{'width': '+thirdViewWidth+'}">
+              <ul class="winterview-list" >
                 <li class="season-group" *ngFor="let years of thirdviewyears">
                   <ul class=" list-view-c" *ngFor="let imagesData of viewData.data">
                     <div *ngIf="imagesData.year == years.year">
                       <li  *ngFor="let season of totalSeason"> 
                         <div  *ngFor="let seasonData of imagesData.data">
-                          <a  *ngIf="season==seasonData.season" [routerLink]="['/imagedetails']">
+                          <a  *ngIf="season==seasonData.season" routerLink="/imagedetails/{{seasonData.id}}">
                             <img src="{{seasonData.file_thumb_location_aws}}" />
                           </a>
                         </div>

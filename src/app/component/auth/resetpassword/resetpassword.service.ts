@@ -7,15 +7,21 @@ import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs';
 
 @Injectable()
-export class ForgetpasswordService {
+export class ResetpasswordService {
 
-      constructor(private _http : Http) {}
+   constructor(private _http : Http) {}
 
-  public passworddetails(formdata: any){
-  	let _url:string = environment.apiEndpoint+'forgetpassword';
+  public resetdetails(formdata: any){
+  	let _url:string = environment.apiEndpoint+'user/login';
   	return this._http.post(_url,formdata)
   	.map((response: Response) => {
       return response.json();
-    })
+    }).catch((error: any) => {
+        if(error.status === 401)          
+        {
+        	return Observable.throw(error)
+        }
+          
+      });
 }
 }

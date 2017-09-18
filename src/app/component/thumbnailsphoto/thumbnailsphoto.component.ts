@@ -31,6 +31,8 @@ export class ThumbnailsphotoComponent implements OnInit {
   thirdViewsData : any = [];
   totalSeason : any[];
   thirdViewWidth:string;
+  secondViewWidth:string;
+  firstViewWidth:string;
 
   constructor(private route:ActivatedRoute, private sphotoService : ThumbnailsphotoService) { 
   	this.selectfirstoption =true;
@@ -56,6 +58,8 @@ export class ThumbnailsphotoComponent implements OnInit {
       this.autumnData = res.autumnData;
       this.springData = res.springData;
       this.years = res.years;
+      let wid = this.years.length * 170 + 200 ;
+      this.firstViewWidth = wid.toString()+"px";
       Observable.interval(1000)
       .takeWhile(() => this.loadingimg =false)
       .subscribe(i => {     
@@ -84,6 +88,8 @@ export class ThumbnailsphotoComponent implements OnInit {
       this.secondviewyears = res.years;
       this.secondViewsData = res.ViewsData;
       this.secondViewImagesData = res.information;
+       let wid = this.secondviewyears.length * 170 +200;
+      this.secondViewWidth = wid.toString()+"px";
        Observable.interval(1000)
       .takeWhile(() => this.loadingimg =false)
       .subscribe(i => { 
@@ -105,8 +111,9 @@ export class ThumbnailsphotoComponent implements OnInit {
       this.thirdviewyears = res.years;
       this.thirdViewsData = res.ViewsData;
       this.totalSeason=["WIN","SPR","SUM","AUT"];
-      let wid = this.thirdviewyears.length * 430;
-      this.thirdViewWidth = wid.toString();
+      let wid = this.thirdviewyears.length * 460 ;
+      this.thirdViewWidth = wid.toString()+"px";
+      console.log(this.thirdViewWidth);
       Observable.interval(1000)
       .takeWhile(() => this.loadingimg =false)
       .subscribe(i => { 

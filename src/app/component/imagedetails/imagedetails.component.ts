@@ -21,6 +21,8 @@ export class ImagedetailsComponent implements OnInit {
   imageID : number ;
   Message : string = "";
   imageView :boolean;
+  allFileData : any = [];
+
   constructor(private route:ActivatedRoute, private imageDetail : ImageDetailService) {
     this.exifData = false;
     this.fileData = false;
@@ -32,6 +34,7 @@ export class ImagedetailsComponent implements OnInit {
     let URL = 'imagedetail/'+ this.imageId;
     this.imageDetail.getImageInfo(URL).subscribe(res => {
       if(res.status == "true"){
+        this.allFileData = res.mediaInfo;
         let mediaInfo = res.mediaInfo;
         if(mediaInfo.image_view){
           this.imageName = mediaInfo.year+'-'+mediaInfo.season+'-'+mediaInfo.series+'-'+mediaInfo.post_name +'-'+mediaInfo.image_view+'-'+mediaInfo.views;
@@ -71,12 +74,6 @@ export class ImagedetailsComponent implements OnInit {
     }
   }
 
-  // ---=== Dawnload Image ---===
-  download(downloadLink){
-       var blob = new Blob([downloadLink], { type: 'text/csv' });
-          var imageUrl= window.URL.createObjectURL(blob);
-        window.open(imageUrl);
-  }
 
   // ---=== Show Image data ---=== 
 

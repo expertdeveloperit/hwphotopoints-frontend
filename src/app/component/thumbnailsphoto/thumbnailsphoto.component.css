@@ -61,16 +61,14 @@ h2 {
     margin: 20px 0;
 }
 .yearlist {
-    width: 2000px;
+    /*width: 2000px;*/
     margin: 0;
 }
 .yearlist-c{
-    min-width: 4000px;
+
     margin: 0;
 }
-.option-c-view{
-    min-width: 4000px;
-}
+
 .year-winter-list ul
  li {
     display: inline-block;
@@ -101,7 +99,7 @@ h2 {
 .space-photo-points{
     padding: 18px 0;
     border-top: 1px solid #eaeaea;
-    width: 2000px;
+/*    width: 2000px;*/
 }
 
 .yearlist.second-img-view, .photo-pointssecond,.yearlist-c.second-img-view{
@@ -112,7 +110,7 @@ h2 {
 
 .winterview-list {
     margin: 0 0 25px 0;
-    width: 2000px;
+   /* width: 2000px;*/
 }
 .photo-points-id{
     padding: 44px 0 0 0;
