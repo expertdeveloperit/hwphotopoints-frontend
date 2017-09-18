@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 export class ThumbnailsphotoComponent implements OnInit {
 
   @Input() title:string="View Thumbnails Photo Points"; //--- ===create input for title 
-
+//--=== variable defined --===
   selectsecondoption:boolean;
   selectfirstoption:boolean;
   selectthirdoption:boolean;
@@ -45,7 +45,7 @@ export class ThumbnailsphotoComponent implements OnInit {
     this.sphotoTitle = this.route.snapshot.params['title'];
     this.getFirstView();    
   } 
-
+// --- responce from service---===
   getFirstView(){
     this.loadingimg =true;
     let URL = 'pseriesdetail/firstview';
@@ -58,23 +58,19 @@ export class ThumbnailsphotoComponent implements OnInit {
       this.years = res.years;
       Observable.interval(1000)
       .takeWhile(() => this.loadingimg =false)
-      .subscribe(i => { 
-          
+      .subscribe(i => {     
       })
-
-        
-
     });
   }
 
- // ---=== View select---====
+ // ---=== first View option select---====
  firstoption(){
  	  this.selectfirstoption=true;
  	  this.selectsecondoption =false;
   	this.selectthirdoption =false;
     this.getFirstView();  
  }
-
+// ---=== secondoption select---====
   secondoption(){
     this.loadingimg =true;
   	this.selectsecondoption =true;
@@ -88,13 +84,14 @@ export class ThumbnailsphotoComponent implements OnInit {
       this.secondviewyears = res.years;
       this.secondViewsData = res.ViewsData;
       this.secondViewImagesData = res.information;
-      this.loadingimg =false;
-
+       Observable.interval(1000)
+      .takeWhile(() => this.loadingimg =false)
+      .subscribe(i => { 
+          
+      })
      });
   }
-
-
-
+// ---=== thirdoption select---==== 
   thirdoption(){
     this.loadingimg =true;
   	this.selectthirdoption =true;
@@ -110,7 +107,11 @@ export class ThumbnailsphotoComponent implements OnInit {
       this.totalSeason=["WIN","SPR","SUM","AUT"];
       let wid = this.thirdviewyears.length * 430;
       this.thirdViewWidth = wid.toString();
-      this.loadingimg =false;
+      Observable.interval(1000)
+      .takeWhile(() => this.loadingimg =false)
+      .subscribe(i => { 
+          
+      })
       
      });
   }

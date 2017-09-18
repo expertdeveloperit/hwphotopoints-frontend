@@ -14,3 +14,13 @@ ul.saplingview li {
     display: inline-block;
     width: 200px;
 }
+img.loader {
+    width: auto;
+    max-width: 80px;
+    margin: 0 auto;
+}
+
+.loading-img {
+    text-align: center;
+    padding: 40px 0;
+}

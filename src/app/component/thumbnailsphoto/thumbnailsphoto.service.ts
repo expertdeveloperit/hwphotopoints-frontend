@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions} from '@angular/http';
 import { environment } from '../../../environments/environment';
-import {CookieService} from 'angular2-cookie/core';
+import { CookieService} from 'angular2-cookie/core';
 import { AuthGuard } from '../../authguard.service';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/catch';
@@ -17,18 +17,15 @@ export class ThumbnailsphotoService {
 	public thumbnailsphotoinfo(formdata:any,url:any){
 	    let token = this._cookieService.get("hwUserToken");
 	    let options = new RequestOptions({
-
-	      headers: new Headers({
-	          'Accept': 'application/json',
-	          'Authorization':'Bearer'+ token
+	    headers: new Headers({
+	        'Accept': 'application/json',
+	        'Authorization':'Bearer'+ token
 	      })
 	    });
 	  	let _url:string =environment.apiEndpoint+url;
-
-	   return this._http.post(_url,formdata, options)
+	   	return this._http.post(_url,formdata, options)
 	    .map((response: Response) => {
 	      console.log(response.status,"st");
-	      
 	      return response.json();
 
 	    }).catch((error: any) => {
