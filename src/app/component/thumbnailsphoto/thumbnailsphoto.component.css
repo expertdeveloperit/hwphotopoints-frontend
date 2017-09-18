@@ -57,7 +57,9 @@ h2 {
     overflow-x: scroll;
     padding-left: 0;
 }
-
+.second-view{
+    margin: 20px 0;
+}
 .yearlist {
     width: 2000px;
     margin: 0;
@@ -80,7 +82,7 @@ h2 {
 .csectionview .winterview-list li ul li {
     max-width: 100px!important;
     width: auto!important;
-    padding-left: 0px;
+    padding: 0 2px;
 }
 
 .year-winter-list li.season-group {
