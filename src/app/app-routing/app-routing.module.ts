@@ -52,7 +52,7 @@ const appRoutes: Routes = [
 	{path:'saplingsurvival', component:SaplingsurvivalComponent,canActivate: [AlwaysAuthGuard]},
 	{path:'longterm', component:LongtermComponent,canActivate: [AlwaysAuthGuard]},
 	{path:'imagedetails/:id', component:ImagedetailsComponent,canActivate: [AlwaysAuthGuard]},
-	{path:'Updatethumbnails', component:UpdatethumbnailsphotoComponent,canActivate: [AlwaysAuthGuard]}
+	{path:'updateimage/:id', component:UpdatethumbnailsphotoComponent,canActivate: [AlwaysAuthGuard]}
 
 ];
 

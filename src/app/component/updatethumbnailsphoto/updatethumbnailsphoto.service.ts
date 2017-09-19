@@ -41,4 +41,28 @@ constructor(private _http : Http, private _cookieService:CookieService  , privat
   }
 
 
+ public getImageInfo(url:any){
+    let token = this._cookieService.get("hwUserToken");
+    let options = new RequestOptions({
+
+      headers: new Headers({
+          'Accept': 'application/json',
+          'Authorization':'Bearer'+ token
+      })
+    });
+    let _url:string =environment.apiEndpoint+url;
+
+   return this._http.get(_url, options)
+    .map((response: Response) => {
+      return response.json();
+
+    }).catch((error: any) => {
+      if(error.status === 401)          
+      {
+        this.auth.logOut(error); 
+      }
+        return Observable.throw(error)
+    });
+  }
+
 }

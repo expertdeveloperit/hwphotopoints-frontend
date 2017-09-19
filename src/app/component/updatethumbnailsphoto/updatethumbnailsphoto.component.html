@@ -1,15 +1,19 @@
 <div class="container bg-img">
-	<h2>Image Upload</h2>
-	<div class="row" *ngIf="!imageUploded">
+	<h2>Update Post Data</h2>
+	<div class="row text-center" *ngIf="pageload">
+		<img class="loader" src="../../../assets/images/loader.gif" >
+	</div>
+	<div *ngIf="!pageload">
+	<div class="row" *ngIf="!imageUploded" >
 		<form #imageinfo="ngForm"  (ngSubmit)="onSubmit(imageinfo.value)" >
 			<div class="col-sm-4 photo-id form-group text-center">
 			<!-- === select file (note:if we want single image select remove multiple in input) === -->
 				<input name="myFile" #fileInput class="image-upload" type="file" hidden (change)="uploadFile($event)" ngModel accept="image/*" />
 				<div class="choose-file">
 				<p><i class="fa fa-cloud-upload" aria-hidden="true"></i></p>
-				<a (click)="chooseFileEnable()"  class="btn btn-success">Choose File</a>
+				<a (click)="chooseFileEnable()"  class="btn btn-success">Change Image</a>
 					<div class="img-info">
-						<img [src]="logo">
+						<img [src]="imageUrl">
 						<p>{{name}}</p>
 					</div>
 				</div>
@@ -22,9 +26,9 @@
 				<div *ngIf="imageUplodedStatus" class="selectseriesoption">
 					<select name="series" class="select" placeholder="Series" #seriesType (change)="onItemChange(seriesType.value)" ngModel>
 					  <option value="">--Select Series--</option>
-					  <option value="P">P</option>
-					  <option value="S">S</option>
-					  <option value="L">L</option>
+					  <option  [selected]="mediaInfo.series == 'P'"  value="P">P</option>
+					  <option [selected]="mediaInfo.series == 'S'"  value="S">S</option>
+					  <option  [selected]="mediaInfo.series == 'L'" value="L">L</option>
 					</select>
 					</div>
 				</div>
@@ -32,40 +36,40 @@
 
 			<!-- === These select input show when above select choose any option === -->
 			<div class="form-group">      
-				<select name="year" class="select select-year" #year *ngIf="selectyearoption" (change)="onyearChange(year.value)" ngModel>
+				<select name="year" class="select select-year" #year *ngIf="selectyearoption" (change)="onyearChange(year.value)" [(ngModel)]="mediaInfo.year" >
 				  <option value="">--Select year--</option>
-				  <option *ngFor="let year of allYears; let i = index" value="{{year}}">{{year}}</option>
+				  <option *ngFor="let year of allYears; let i = index" [selected]="mediaInfo.year == year" value="{{year}}" >{{year}}</option>
 				</select>
 			</div>
 			<div class="form-group">      
 				<select name="Season" class="select select-year" #season *ngIf="selectspringoption" (change)="onSeasonChange(season.value)" ngModel>
 				  <option value="">----Select Season----</option>
-				  <option value="winter">Winter</option>
-				  <option value="spring">Spring</option>
-				  <option value="summer">Summer</option>
-				  <option value="autumn">Autumn</option>
+				  <option  [selected]="mediaInfo.season === 'WIN' "  value="WIN">Winter</option>
+				  <option  [selected]="mediaInfo.season === 'SPR'"  value="SPR">Spring</option>
+				  <option  [selected]="mediaInfo.season === 'SUM'" value="SUM">Summer</option>
+				  <option  [selected]="mediaInfo.season === 'AUT'" value="AUT">Autumn</option>
 				</select>
 			</div>
 			<div class="form-group">      
-				<select name="Location" class="select select-year" #location *ngIf="selectlocationoption" (change)="onLocationChange(location.value)" ngModel>
+				<select name="Location" class="select select-year" #location *ngIf="selectlocationoption" (change)="onLocationChange(location.value)" [(ngModel)]="mediaInfo.post_name">
 				  <option value="">----Select Location----</option>
-				  <option *ngFor="let post of allPosts; let i = index" value="{{post.title}}">{{post.title}}</option>
+				  <option *ngFor="let post of allPosts; let i = index" [ngValue]="post.title" [selected]="post.title == mediaInfo.post_name">{{post.title}}</option>
 				  
 				</select>
 			</div>
 
 			<div class="form-group">      
-				<select name="Image" class="select select-year" #imageType *ngIf="selectimagetype" (change)="onImageChange(imageType.value)" ngModel>
+				<select name="Image" class="select select-year" #imageType *ngIf="selectimagetype" (change)="onImageChange(imageType.value)" [(ngModel)]="mediaInfo.image_view">
 				  <option value="">----Select Image Type----</option>
-				  <option *ngFor="let type of allImageType; let i = index" value="{{type}}">{{type}}</option>
+				  <option *ngFor="let type of allImageType; let i = index" value="{{type}}" [selected]="type == mediaInfo.image_view">{{type}}</option>
 			
 				</select>
 			</div>
 
 			<div class="form-group">      
-				<select name="View" class="select select-year" #view *ngIf="selectview" (change)="onViewChange(view.value)" ngModel>
+				<select name="View" class="select select-year" #view *ngIf="selectview" (change)="onViewChange(view.value)" [(ngModel)]="mediaInfo.views">
 				  <option value="">----Select View----</option>
-				  <option *ngFor="let values of allvalues; let i = index" value="{{values}}">{{values}}</option>
+				  <option *ngFor="let values of allvalues; let i = index" value="{{values}}" [selected]="values == mediaInfo.views">{{values}}</option>
 				</select>
 			</div>
 
@@ -115,4 +119,5 @@
 			<a class="btn btn-success" routerLink="">Back to Home Page</a>
 		</div>	
 	</div>	
+</div>
 </div>
