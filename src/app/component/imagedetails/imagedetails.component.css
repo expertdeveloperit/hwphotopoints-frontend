@@ -18,10 +18,13 @@ h2 {
     font-size: 16px;
 }
 
-.row.imagedawnload a:first-child {
+.row.imagedawnload a{
     margin-right: 9px;
     border-right: 2px solid #246f24;
     padding-right: 10px;
+}
+.row.imagedawnload a:last-child {
+    border-right: 0;
 }
 
 .row.imagedawnload a:hover {

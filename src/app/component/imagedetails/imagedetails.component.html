@@ -1,11 +1,13 @@
 <div class="container">
   <h2 class="thumbpoints-title">{{title}}</h2>
   <div class="row imagedawnload">
-		<div class="col-xs-12 col-sm-6 " *ngIf="imageView">  
+		<div class="col-xs-12 col-sm-4 " *ngIf="imageView">  
 			<p>{{imageName}}</p> 
 		</div>
 	 <!-- === Delete and dawnload image link ===-->
-		<div class="col-xs-12 col-sm-6 text-right" *ngIf="imageView">  
+		<div class="col-xs-12 col-sm-8 text-right" *ngIf="imageView"> 
+			<a routerLink="/Updatethumbnails" (click)="editImage()" >Edit Image</a> 
+			
 			<a (click)="deleteImage()">Delete Image</a> 
 
 			<a target="_blank" href="{{imageUrl}}" download="{{imageUrl}}">
