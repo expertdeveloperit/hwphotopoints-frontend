@@ -66,6 +66,9 @@ img.loader {
     color: #fff;
     margin-right: 10px;
 }
+.batchupload {
+    margin-top: 35px;
+}
 /*---=== Media Query Start Here ---===*/
 @media only screen and (max-width: 992px) {
     .imgselectoption .btn{
