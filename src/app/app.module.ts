@@ -13,12 +13,8 @@ import {CookieService} from 'angular2-cookie/core';
 //--- === Shared component import
 
 import { FooterComponent } from './component/shared/footer/footer.component';
-
 import { AuthGuard } from './authguard.service';
 import { NewHeaderComponent } from './component/shared/header/header.component';
-
-
-
 
 
 @NgModule({
@@ -27,7 +23,6 @@ import { NewHeaderComponent } from './component/shared/header/header.component';
     routingcomponent,
     FooterComponent,
     NewHeaderComponent
-   
   ],
   imports: [
     BrowserModule,

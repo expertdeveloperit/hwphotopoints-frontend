@@ -5,6 +5,7 @@ import { RouterModule, Routes, Router, CanActivate, ActivatedRouteSnapshot } fro
 import { AppRoutingRoutingModule } from './app-routing-routing.module';
 import {CookieService} from 'angular2-cookie/core';
 import {SharedDataService} from '../shared-data.service';
+
 //--- === conponent import for routing
 import { LoginComponent } from '../component/auth/login/login.component';
 import { HomeComponent } from '../component/home/home.component';
@@ -17,6 +18,7 @@ import { PasswordComponent } from '../component/auth/password/password.component
 import { ImagedetailsComponent } from '../component/imagedetails/imagedetails.component';
 import { LegalPrivacyComponent } from '../component/legalprivacy/legalprivacy.component';
 import { ResetpasswordComponent } from '../component/auth/resetpassword/resetpassword.component';
+import { UpdatethumbnailsphotoComponent } from '../component/updatethumbnailsphoto/updatethumbnailsphoto.component';
 
 @Injectable()
 export class AlwaysAuthGuard implements CanActivate {
@@ -49,7 +51,8 @@ const appRoutes: Routes = [
 	{path:'thumbnailsphotos/:title', component:ThumbnailsphotoComponent,canActivate: [AlwaysAuthGuard]},
 	{path:'saplingsurvival', component:SaplingsurvivalComponent,canActivate: [AlwaysAuthGuard]},
 	{path:'longterm', component:LongtermComponent,canActivate: [AlwaysAuthGuard]},
-	{path:'imagedetails/:id', component:ImagedetailsComponent,canActivate: [AlwaysAuthGuard]}
+	{path:'imagedetails/:id', component:ImagedetailsComponent,canActivate: [AlwaysAuthGuard]},
+	{path:'Updatethumbnails', component:UpdatethumbnailsphotoComponent,canActivate: [AlwaysAuthGuard]}
 
 ];
 
@@ -76,5 +79,6 @@ export const routingcomponent =
 		LongtermComponent,
 		ImagedetailsComponent,
 		LegalPrivacyComponent,
-		ResetpasswordComponent
+		ResetpasswordComponent,
+		UpdatethumbnailsphotoComponent
 	]
