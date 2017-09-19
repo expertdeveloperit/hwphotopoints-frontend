@@ -208,6 +208,9 @@ img.loader {
     display: inline-block;
     line-height: 100px;
 }
+.viwe-option .active {
+    border-bottom: 2px solid #256f24;
+}
 @media only screen and (max-width: 767px) {
 
 .row.photo-points-winter h4{
