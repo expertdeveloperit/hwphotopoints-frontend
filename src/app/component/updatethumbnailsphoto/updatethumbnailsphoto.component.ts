@@ -1,5 +1,6 @@
 import { Component, OnInit, ElementRef,ViewChild } from '@angular/core';
 import {Updatethumbnailsphotoservice} from './updatethumbnailsphoto.service'; 
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-updatethumbnailsphoto',
@@ -33,16 +34,24 @@ export class UpdatethumbnailsphotoComponent implements OnInit {
   imageName : string = "";
   imageId : number ;
   disabledButton: boolean;
+  allFileData: any=[];
+  imageUrl : string;
+  imageView : boolean;
+  Message : string;
+  mediaInfo:any = [];
+  pageload:boolean;
 
-  constructor(private updatethumbnails: Updatethumbnailsphotoservice) {
+
+  constructor(private route:ActivatedRoute, private updatethumbnails: Updatethumbnailsphotoservice) {
+    this.pageload = false;
     this.imageUploded = false;    
-    this.imageUplodedStatus = false;
+    this.imageUplodedStatus = true;
     this.disabledButton =  false;
-    this.selectyearoption = false;
-    this.selectspringoption = false;
-    this.selectlocationoption = false;
-    this.selectimagetype = false;
-    this.selectview = false;
+    this.selectyearoption = true;
+    this.selectspringoption = true;
+    this.selectlocationoption = true;
+    this.selectimagetype = true;
+    this.selectview = true;
     this.formSubmit= false;
     this.loadingimg=false;
     this.formData = new FormData();                     
@@ -50,6 +59,41 @@ export class UpdatethumbnailsphotoComponent implements OnInit {
 
 //--- === this function used for show the title of upload image---
   ngOnInit() {
+    this.pageload = true;
+    this.imageId = this.route.snapshot.params['id'];
+    let URL = 'imagedetail/'+ this.imageId;
+    this.updatethumbnails.getImageInfo(URL).subscribe(res => {
+      if(res.status == "true"){
+        this.allFileData = res.mediaInfo;
+        this.mediaInfo = res.mediaInfo;
+        if(this.mediaInfo.image_view){
+          this.imageName = this.mediaInfo.year+'-'+this.mediaInfo.season+'-'+this.mediaInfo.series+'-'+this.mediaInfo.post_name +'-'+this.mediaInfo.image_view+'-'+this.mediaInfo.views;
+        }else{
+          this.imageName = this.mediaInfo.year+'-'+this.mediaInfo.series+'-'+this.mediaInfo.post_name;
+        }
+        this.imageId = this.mediaInfo.id;
+        this.imageUrl = this.mediaInfo.file_location_aws;
+
+      }else{
+        this.imageView= false;
+        this.Message = res.msg;
+        this.imageName = "";
+        this.imageId = 0 ;
+      }
+      this.formData.delete('media_id');
+      this.formData.append('media_id',this.imageId);
+
+      this.onItemChange(this.mediaInfo.series);
+      this.onyearChange(this.mediaInfo.year);
+      this.onSeasonChange(this.mediaInfo.season);
+      this.onLocationChange(this.mediaInfo.post_name);
+      this.onImageChange(this.mediaInfo.image_view);
+      this.onViewChange(this.mediaInfo.views);
+      this.pageload = false;
+    });
+
+
+
   }
   chooseFileEnable(){
 		 this.fileInput.nativeElement.click()
@@ -61,13 +105,14 @@ export class UpdatethumbnailsphotoComponent implements OnInit {
 
       let fileList = event.target.files; 
       let file = fileList[0];  
+      this.formData.delete('image');
       this.formData.append('image', file);
        
   	this.logo = event.target.files[0]; 
 
     let reader = new FileReader(); 
     reader.onload = (e: any) => {             //---=== this function used for show upload image-name ---
-      this.logo = e.target.result;
+      this.imageUrl = e.target.result;
     }
     reader.readAsDataURL(event.target.files[0]); //---=== this function used for show upload image---
     this.imageUplodedStatus = true; //---===when it true it show right(select) section
@@ -189,9 +234,6 @@ onLocationChange(location){
           this.allImageType = res.types;
           this.selectimagetype = true; 
 
-          this.allImageType = res.types;
-          this.selectimagetype = true; 
-
         }
         this.loadingimg=false;
       });
@@ -213,12 +255,7 @@ onLocationChange(location){
       if(res.values != null){
 
         this.allvalues = res.values;
-        console.log(this.allvalues,"allvalues");
         this.selectview = true;  
-
-          this.allvalues = res.values;
-          this.selectview = true;  
-
 
       }
       this.loadingimg=false;
@@ -237,15 +274,16 @@ onLocationChange(location){
 
 
   onSubmit(){
-    this.disabledButton = true;
+    this.disabledButton = false;
     this.loadingimg=true;
-    this.updatethumbnails.getInfo(this.formData,'uploaddata').subscribe(res => {
+    this.updatethumbnails.getInfo(this.formData,'updatemediadata').subscribe(res => {
       if(res.response == 'succes'){
         this.fileUrl = res.thumbImageUrl;
         this.imageName = res.image_name;
         this.imageId = res.imageId; 
         this.imageUploded = true;
         this.loadingimg=false;
+        this.disabledButton = false;
       }
     });
   }
@@ -258,7 +296,7 @@ onLocationChange(location){
     this.selectlocationoption=false;
     this.selectspringoption = false;
     this.selectyearoption = false;
-    this.logo = "";
+    this.imageUrl = "";
     this.name = "";
     this.fileUrl = "";
     this.imageName = "";

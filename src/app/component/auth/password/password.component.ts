@@ -13,6 +13,8 @@ export class PasswordComponent {
 	
 	@Input() title:string="Forget Password";
   passwordinfo: FormGroup;
+  error : string; 
+  success : string;
 
   constructor( private forgetpassword:ForgetpasswordService, private formData: FormBuilder) {
   //--=== Validation for email--===
@@ -24,8 +26,14 @@ export class PasswordComponent {
   // --===submit data on click function --===
   
   onSubmit(passwordinfo:any){
-  	console.log(passwordinfo);
+  	this.error = "";
+    this.success = "";
       this.forgetpassword.passworddetails(passwordinfo).subscribe(res => { 
+        if(res.status == "true"){
+          this.success = res.msg;
+        }else{
+          this.error = res.msg;
+        }
     });
 
   }

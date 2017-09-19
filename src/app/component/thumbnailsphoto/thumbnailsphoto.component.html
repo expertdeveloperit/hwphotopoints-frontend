@@ -6,15 +6,15 @@
   </div>
 <!-- === View Options ===-->
   <div class="col-xs-4 col-sm-1 viwe-option">
-   <a (click)="firstoption()">
+   <a (click)="firstoption()" [class.active]="selectfirstoption">
       <img src="../../../assets/images/Group1.png" />
     </a>   
   </div>
   <div class="col-xs-4 col-sm-1 viwe-option">
-   <a  (click)="secondoption()"><img src="../../../assets/images/Group2.png" /></a>
+   <a  (click)="secondoption()" [class.active]="selectsecondoption" ><img src="../../../assets/images/Group2.png" /></a>
   </div>
   <div class="col-xs-4 col-sm-1 viwe-option">
-   <a  (click)="thirdoption()"><img src="../../../assets/images/Group3.png" /></a>
+   <a  (click)="thirdoption()" [class.active]="selectthirdoption"><img src="../../../assets/images/Group3.png" /></a>
   </div>
   </div>
 <!-- ===Show loading image === -->

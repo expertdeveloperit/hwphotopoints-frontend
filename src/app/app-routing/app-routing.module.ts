@@ -44,7 +44,7 @@ export class AlwaysAuthGuard implements CanActivate {
 const appRoutes: Routes = [
 	{path:'login', component:LoginComponent },
 	{path:'recoverpassword', component:PasswordComponent},
-	{path:'reset/password', component:ResetpasswordComponent},
+	{path:'reset/password/:key', component:ResetpasswordComponent},
 	{path:'', component:HomeComponent,canActivate: [AlwaysAuthGuard]},
 	{path:'legalprivacy', component:LegalPrivacyComponent, canActivate: [AlwaysAuthGuard]},
 	{path:'imageupload', component:ImageuploadComponent,canActivate: [AlwaysAuthGuard]},
@@ -53,8 +53,12 @@ const appRoutes: Routes = [
 	{path:'saplingsurvival', component:SaplingsurvivalComponent,canActivate: [AlwaysAuthGuard]},
 	{path:'longterm', component:LongtermComponent,canActivate: [AlwaysAuthGuard]},
 	{path:'imagedetails/:id', component:ImagedetailsComponent,canActivate: [AlwaysAuthGuard]},
+<<<<<<< HEAD
 	{path:'Updatethumbnails', component:UpdatethumbnailsphotoComponent,canActivate: [AlwaysAuthGuard]},
 	{path:'batchimagesupload', component:BatchuploadComponent,canActivate: [AlwaysAuthGuard]}
+=======
+	{path:'updateimage/:id', component:UpdatethumbnailsphotoComponent,canActivate: [AlwaysAuthGuard]}
+>>>>>>> 2488544d60524c849f48b9a8d327e0318c56924e
 
 ];
 

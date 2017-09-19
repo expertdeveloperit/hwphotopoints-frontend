@@ -11,17 +11,22 @@ export class ResetpasswordService {
 
    constructor(private _http : Http) {}
 
-  public resetdetails(formdata: any){
-  	let _url:string = environment.apiEndpoint+'user/login';
+  public resetdetails(formdata: any,url:any){
+  	let _url:string = environment.apiEndpoint+url;
   	return this._http.post(_url,formdata)
   	.map((response: Response) => {
       return response.json();
-    }).catch((error: any) => {
-        if(error.status === 401)          
-        {
-        	return Observable.throw(error)
-        }
-          
-      });
-}
+    });
+  }
+
+  public checkkey(url:any){
+    let _url:string = environment.apiEndpoint+url;
+    return this._http.get(_url)
+    .map((response: Response) => {
+      return response.json();
+    });
+  }
+
+
+  
 }

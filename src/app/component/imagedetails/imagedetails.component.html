@@ -6,7 +6,7 @@
 		</div>
 	 <!-- === Delete and dawnload image link ===-->
 		<div class="col-xs-12 col-sm-8 text-right" *ngIf="imageView"> 
-			<a routerLink="/Updatethumbnails" (click)="editImage()" >Edit Image</a> 
+			<a routerLink="/updateimage/{{imageId}}" >Edit Image</a> 
 			
 			<a (click)="deleteImage()">Delete Image</a> 
 
