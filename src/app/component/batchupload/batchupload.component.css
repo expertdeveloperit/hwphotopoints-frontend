@@ -69,3 +69,18 @@ img.loader {
 .batchupload {
     margin-top: 35px;
 }
+
+.images-list li{
+    display: inline-block;
+    width: auto;
+    max-width: 250px;
+    padding:  0 20px;
+}
+
+.controls-area{
+    padding: 30px 0;
+}
+.after-upload p{
+    color: #246f24;
+    font-size: 16px;
+}

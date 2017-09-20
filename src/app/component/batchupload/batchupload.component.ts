@@ -9,46 +9,42 @@ import{BatchuploadService}from './batchupload.service'
 })
 export class BatchuploadComponent implements OnInit {
 
+//--viewChild defined---
 @ViewChild('fileInput') fileInput:ElementRef;
 @ViewChild('CsvfileInput') CsvfileInput:ElementRef;
+
+// --===Variable defined --====
   name:string;
   logo:string;
   CsvFile:string;
   CsvName:string;
-  imageUplodedStatus:boolean;
-  selectyearoption:boolean;
-  selectspringoption :boolean;
-  selectSeasonoption :boolean;
-  selectimagetype:boolean;
-  selectlocationoption:boolean;
-  selectview:boolean;
   formSubmit:boolean;
   loadingimg:boolean;
 	formData:any = [];
-  allYears :any= [];
-  allPosts:any = [];
-  allImageType:any = [];
-  allvalues:any = [];
   imageinfo:any = [];
   imageUploded:boolean;
   fileUrl : string = "";
   imageName : string = "";
   imageId : number ;
   disabledButton: boolean;
-
-
+  imageUplodedStatus:boolean;
+  imagesList :any = [];
+  imagesName :any = [];
+  CsvUploaded : boolean;
+  ImageUploaded : boolean;
+  message:string;
+  error : string;
+// ---constructor--
   constructor(private Batchupload:BatchuploadService ) {
-  	    this.imageUploded = false;    
-    this.imageUplodedStatus = false;
-    this.disabledButton =  false;
-    this.selectyearoption = false;
-    this.selectspringoption = false;
-    this.selectlocationoption = false;
-    this.selectimagetype = false;
-    this.selectview = false;
+  	this.imageUploded = false; 
+    this.imageUplodedStatus = false;   
+    this.disabledButton =  false;    
     this.formSubmit= false;
     this.loadingimg=false;
     this.formData = new FormData();  
+    this.CsvUploaded = false;
+    this.ImageUploaded = false;
+   
   }
   chooseFileEnable(){
 		 this.fileInput.nativeElement.click()
@@ -58,71 +54,68 @@ export class BatchuploadComponent implements OnInit {
 	}
   ngOnInit() {
   }
+
+// --===upload multiple file--===
+
     uploadFile(event) 
   {   
 
+    this.imagesList = [];
       let fileList = event.target.files; 
-      let file = fileList[0];  
-      this.formData.append('image', file);
-       
-	  	//this.logo = event.target.files[0]; 
+      console.log(fileList.length);
+      let fileIndex = [];
+      for(let i = 0; i < fileList.length ; i++) {
+        let reader = new FileReader(); 
+        reader.onload = (e: any) => {             //---=== this function used for show upload image-name ---
+          this.imagesList.push( e.target.result);
+        }
 
-	    let reader = new FileReader(); 
-	    reader.onload = (e: any) => {             //---=== this function used for show upload image-name ---
-	      this.logo = e.target.result;
-	    }
-
-	    reader.readAsDataURL(event.target.files[0]); //---=== this function used for show upload image---
-	    this.imageUplodedStatus = true; //---===when it true it show right(select) section
-	    let element = event.target; 
-	  	this.name = element.files[0].name;
-	  	if(element.files.length > 0){       
-
-	 	 	if(element.files.length > 0){       
-	 
-
-	    }
-	  }
+        let file = fileList[i];  
+        this.formData.append('fileIndex[]', file);  
+      
+        reader.readAsDataURL(event.target.files[i]); //---=== this function used for show upload image---
+  	    let element = event.target; 
+  	  	this.imagesName.push(element.files[i].name);
+      }
+      
+      this.ImageUploaded = true;  
+      
+      if(this.CsvUploaded && this.ImageUploaded){
+        this.disabledButton = false;
+        this.formSubmit = true;
+      }
+      this.imageUplodedStatus = true;	
 	}
+// --===CSV file upload--===
 
 	uploadCsvFile(csvevent) 
   	{   
-
       let fileList = csvevent.target.files; 
       let file = fileList[0];  
-      this.formData.append('CSV', file);
-       
-	  	this.CsvFile = csvevent.target.files[0]; 
-
-	    let reader = new FileReader(); 
-	    reader.onload = (e: any) => {             //---=== this function used for show upload image-name ---
-	      this.CsvFile = e.target.result;
-	    }
-	    reader.readAsDataURL(csvevent.target.files[0]); //---=== this function used for show upload image---
-	    this.imageUplodedStatus = true; //---===when it true it show right(select) section
+      this.formData.append('csv', file);
 	    let element = csvevent.target; 
 	  	this.CsvName = element.files[0].name;
-	  	if(element.files.length > 0){       
-
-	 	 	if(element.files.length > 0){       
-	 
-
-	    }
+      this.CsvUploaded = true;  
+      if(this.CsvUploaded && this.ImageUploaded){
+        this.disabledButton = false;
+        this.formSubmit = true;
+      }
+      this.imageUplodedStatus = true;
 	  }
-	}
-
-
-
+// ---== Submit all images---===
   onSubmit(){
+    this.message = "";
+    this.error = "";
     this.disabledButton = true;
     this.loadingimg=true;
-    this.Batchupload.getInfo(this.formData,'uploaddata').subscribe(res => {
-      if(res.response == 'succes'){
-        this.fileUrl = res.thumbImageUrl;
-        this.imageName = res.image_name;
-        this.imageId = res.imageId; 
-        this.imageUploded = true;
+    this.Batchupload.getInfo(this.formData,'uploadbatchdata').subscribe(res => {
+      if(res.status == 'true'){
         this.loadingimg=false;
+        this.message = res.msg;
+        this.imageUploded = true;
+      }else{
+          this.loadingimg=false;
+          this.error = res.msg;
       }
     });
   }

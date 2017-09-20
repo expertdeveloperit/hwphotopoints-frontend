@@ -1,38 +1,47 @@
 <div class="container">
 	<h2>Multiple Images Upload</h2>
-	<div class="row">
+	<div class="row" *ngIf="!imageUploded">
 		<form #imageinfo="ngForm"  (ngSubmit)="onSubmit(imageinfo.value)" >
+			<!-- === Multiple Images upload ===-->
 			<div class="col-sm-6 photo-id form-group text-center">
-			<!-- === select file (note:if we want single image select remove multiple in input) === -->
 				<input name="myFile" #fileInput class="image-upload" type="file" hidden (change)="uploadFile($event)" ngModel accept="image/*" multiple/>
 				<div class="choose-file">
-				<p><i class="fa fa-cloud-upload" aria-hidden="true"></i></p>
-				<a (click)="chooseFileEnable()"  class="btn btn-success">Choose Multiple File</a>
-					<div class="img-info">
-						<img [src]="logo">
-						<p>{{name}}</p>
-					</div>
+					<p><i class="fa fa-cloud-upload" aria-hidden="true"></i></p>
+					<a (click)="chooseFileEnable()"  class="btn btn-success">Choose Multiple File</a>
+						
 				</div>
 			</div>
-
+	<!-- ===CSV File upload===-->
 		<div class="col-sm-6 form-group photo-id text-center">
-				<!-- === select file (note:if we want single image select remove multiple in input) === -->
-					<input name="myFile" #CsvfileInput class="image-upload" type="file" hidden (change)="uploadCsvFile($event)" ngModel accept=".csv"/>
-					<div class="choose-file">
+			<input name="myFile" #CsvfileInput class="image-upload" type="file" hidden (change)="uploadCsvFile($event)" ngModel accept=".csv"/>
+				<div class="choose-file">
 					<p><i class="fa fa-cloud-upload" aria-hidden="true"></i></p>
 					<a (click)="choosecsvEnable()"  class="btn btn-success">Choose CSV File</a>
-						<div class="img-info">
-							<img [src]="CsvFile">
-							<p>{{CsvName}}</p>
-						</div>
-					</div>	
-			</div>
-				<div class="form-group form-controls">
-					<img class="loader" src="../../../assets/images/loader.gif" *ngIf="loadingimg">
-					<!-- === Button for save and cancle the process === -->
-					<button [disabled]="disabledButton" type="submit" class="btn btn-success pull-right" *ngIf="formSubmit"><a>save</a></button>
-					<button type="" class="btn btn-success pull-right cancel"  *ngIf="imageUplodedStatus"><a routerLink="">cancel</a></button>
-				</div>
-		</form>
+					<div class="img-info">
+						<img [src]="CsvFile">
+						<p>{{CsvName}}</p>
+					</div>
+				</div>	
+		</div>
+		<div class="row">
+			<ul class="images-list">
+				<li *ngFor="let image of imagesList; let i = index">
+					<img [src]="image">
+					<p>{{imagesName[i]}}</p>
+				</li>
+			</ul>						
+		</div>
+
+		<!-- ==loaging img== -->
+		<div class="form-group form-controls text-center controls-area">
+			<img class="loader" src="../../../assets/images/loader.gif" *ngIf="loadingimg">
+			<!-- === Button for save and cancle the process === -->
+			<button [disabled]="disabledButton" type="submit" class="btn btn-success pull-right" *ngIf="formSubmit"><a>save</a></button>
+			<button type="" class="btn btn-success pull-right cancel"  *ngIf="imageUplodedStatus"><a routerLink="">cancel</a></button>
+		</div>
+	</form>
+	</div>
+	<div class="row after-upload text-center" *ngIf="imageUploded">
+		<p>{{message}}</p>
 	</div>
 </div>

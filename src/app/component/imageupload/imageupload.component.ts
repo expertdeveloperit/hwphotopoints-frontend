@@ -75,13 +75,8 @@ export class ImageuploadComponent implements OnInit {
     this.imageUplodedStatus = true; //---===when it true it show right(select) section
     let element = event.target; 
   	this.name = element.files[0].name;
-  	if(element.files.length > 0){       
-
- 	 	if(element.files.length > 0){       
- 
-
-    }
-  }
+  	
+    console.log(this.formData);
 }
 //---=== Right section functionality 
 

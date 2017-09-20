@@ -199,20 +199,20 @@
 <!-- === selectthirdoption Show when click on third option ===-->
   <div class="" *ngIf="selectthirdoption">
      <div class="row photo-points-border">
-        <div class=" col-sm-1" >   
+        <div class=" col-sm-2" >   
         <div class="row photo-pointssecond">
           <div class="col-sm-12">
             <h4>VIEW</h4>
           </div>  
         </div>
         <div *ngFor="let viewData of thirdViewsData" class="row second-view-space season-space thirdview text-center">   
-          <div class=" col-sm-6 ">
+          <div class=" col-sm-12 ">
             <p>{{viewData.name}}</p>
           </div>    
         </div>  
       </div> 
     <!-- ===view section by id=== -->
-      <div class="col-sm-11 year-winter-list " >
+      <div class="col-sm-10 year-winter-list " >
         <ul class="yearlist-c second-img-view thirdoption-years" [style.width]="thirdViewWidth">
           <li *ngFor="let year of thirdviewyears">
             <h4>{{year.year}}</h4>
