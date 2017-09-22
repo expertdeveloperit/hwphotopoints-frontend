@@ -45,7 +45,7 @@ const appRoutes: Routes = [
 	{path:'login', component:LoginComponent },
 	{path:'recoverpassword', component:PasswordComponent},
 	{path:'reset/password/:key', component:ResetpasswordComponent},
-	{path:'home', component:HomeComponent,canActivate: [AlwaysAuthGuard]},
+	{path:'', component:HomeComponent,canActivate: [AlwaysAuthGuard]},
 	{path:'legalprivacy', component:LegalPrivacyComponent, canActivate: [AlwaysAuthGuard]},
 	{path:'imageupload', component:ImageuploadComponent,canActivate: [AlwaysAuthGuard]},
 	{path:'photopoints', component:PhotopointsComponent,canActivate: [AlwaysAuthGuard]},

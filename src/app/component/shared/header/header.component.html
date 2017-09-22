@@ -33,11 +33,11 @@
       <!--=== nav link section start ===-->
             <div id="navbar" class="navbar-collapse collapse" *ngIf="!menuiconshow">
               <ul class="nav navbar-nav header-link">
-                <li  routerLink="home" [routerLinkActive]="['active']"><a  >Home</a></li>
-                <li routerLink="imageupload" [routerLinkActive]="['active']"><a>Image Upload</a></li>
-                <li routerLink="photopoints" [routerLinkActive]="['active']"><a>Photo Points</a></li>
-                <li routerLink="saplingsurvival" [routerLinkActive]="['active']"><a>Sapling Survival</a></li>
-                <li routerLink="longterm" [routerLinkActive]="['active']"><a>Long Term</a></li>
+                <li  routerLink="" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}"><a  >Home</a></li>
+                <li routerLink="imageupload" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}"><a>Image Upload</a></li>
+                <li routerLink="photopoints" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}"><a>Photo Points</a></li>
+                <li routerLink="saplingsurvival" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}"><a>Sapling Survival</a></li>
+                <li routerLink="longterm" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}"><a>Long Term</a></li>
               </ul>
 
       <!--=== login Sign-up button === -->
