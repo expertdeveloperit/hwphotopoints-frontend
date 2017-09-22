@@ -102,6 +102,15 @@ export class BatchuploadComponent implements OnInit {
       }
       this.imageUplodedStatus = true;
 	  }
+
+    flushSelectedData(){
+      
+      this.formData.delete("fileIndex[]");
+      this.formData.delete('csv');
+      this.imagesList = [];
+      this.CsvName = "";
+    }
+
 // ---== Submit all images---===
   onSubmit(){
     this.message = "";

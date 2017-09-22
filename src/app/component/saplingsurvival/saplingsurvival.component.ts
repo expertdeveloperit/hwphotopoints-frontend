@@ -16,6 +16,8 @@ export class SaplingsurvivalComponent implements OnInit {
   loadingimg:boolean;
 	years:any = [];
 	formData:any = [];
+  saplingWidth : string;
+
   constructor(private route:ActivatedRoute, private sphotoService : SaplingsurvivalService) { 
   	this.formData = new FormData();
     this.loadingimg =false;
@@ -30,6 +32,10 @@ export class SaplingsurvivalComponent implements OnInit {
       
     this.seriesData = res.seriesData;
     this.years = res.years;
+    this.years = res.years;
+    let wid = this.years.length * 200 + 200 ;
+    this.saplingWidth = wid.toString()+"px"; 
+
     Observable.interval(1000)
       .takeWhile(() => this.loadingimg =false)
       .subscribe(i => {     

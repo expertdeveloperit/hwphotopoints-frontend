@@ -28,3 +28,10 @@ img.loader {
     text-align: center;
     padding: 40px 0;
 }
+.sl-view-name {
+    min-height: 130px;
+}
+.ss-scroll {
+    overflow: scroll;
+    overflow-y: hidden;
+}

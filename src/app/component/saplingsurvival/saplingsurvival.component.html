@@ -7,7 +7,7 @@
   	</div>
     <!--===Year show on top  -->
   	<div class="col-xs-10">
-      <ul class="saplingview ">
+      <ul class="saplingview " [style.width] ="saplingWidth">
         <li class="text-center" *ngFor="let year of years">
           <h4>{{year.year}}</h4>
         </li> 
@@ -19,13 +19,22 @@
     <img class="loader" src="../../../assets/images/loader.gif" >
   </div>
 <!--===images section show according to season ===-->
+
   <div class="loading-view" *ngIf="!loadingimg">
-    <div class="row photopoints-info" *ngFor="let postData of seriesData">
-      <div class="col-xs-1">
-        <p>{{postData.view}}</p>
+
+    <div class="col-xs-1">
+      <div class="row photopoints-info sl-view-name" *ngFor="let postData of seriesData">
+        <p *ngIf="postData.view != ''"> {{postData.view}}</p>
       </div>
-      <div class="col-xs-10">
-        <ul class="saplingview">
+    </div>  
+
+    <div class="col-xs-10 ss-scroll">
+    <!-- <div class="col-xs-1">
+        <p *ngIf="postData.view != ''"> {{postData.view}}</p>
+      </div>
+     -->  
+      <div class="row photopoints-info" *ngFor="let postData of seriesData">
+        <ul class="saplingview" [style.width] ="saplingWidth">
           <li  *ngFor="let year of years">
             <div  *ngFor="let imageData of postData.data">  
               <a *ngIf = "year.year==imageData.year" [routerLink]="['/imagedetails',imageData.id]">

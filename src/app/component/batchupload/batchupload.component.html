@@ -36,8 +36,8 @@
 		<div class="form-group form-controls text-center controls-area">
 			<img class="loader" src="../../../assets/images/loader.gif" *ngIf="loadingimg">
 			<!-- === Button for save and cancle the process === -->
-			<button [disabled]="disabledButton" type="submit" class="btn btn-success pull-right" *ngIf="formSubmit"><a>save</a></button>
-			<button type="" class="btn btn-success pull-right cancel"  *ngIf="imageUplodedStatus"><a routerLink="">cancel</a></button>
+			<button [disabled]="disabledButton" type="submit" class="btn btn-success pull-right" *ngIf="formSubmit">save</button>
+			<button type="" (click)="flushSelectedData()" class="btn btn-success pull-right cancel"  *ngIf="imageUplodedStatus">cancel</button>
 		</div>
 	</form>
 	</div>
