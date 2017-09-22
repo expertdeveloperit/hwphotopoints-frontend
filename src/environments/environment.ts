@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  apiEndpoint: 'http://182.75.232.100:8125/api/'
+  apiEndpoint: 'http://backend.hwphotopoints.org.uk/api/'
 };

@@ -8,10 +8,15 @@ import { PhotopointsService } from './photopoints.service';
 })
 export class PhotopointsComponent implements OnInit {
 
-  constructor(private _photopointsservice : PhotopointsService ) {}
   pageContent : any = [] ;
   splitNumber :number;
   next:number;
+  loadingimg:boolean;
+  constructor(private _photopointsservice : PhotopointsService ) {
+    this.loadingimg = true;
+  }
+
+
   ngOnInit() {
     this._photopointsservice.getSeriesData().subscribe(res => {
         this.pageContent = res.posts;     
@@ -23,7 +28,7 @@ export class PhotopointsComponent implements OnInit {
           this.splitNumber = 6;
         }
         this.next = this.splitNumber + this.splitNumber;
-        
+         this.loadingimg = false;     
       }, 
       error =>{
         console.log(error);
