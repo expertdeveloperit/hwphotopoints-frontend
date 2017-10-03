@@ -1,4 +1,7 @@
- h4 {
+.container.thirdcontainer {
+    width: 100%;
+} 
+h4 {
     text-transform: uppercase;
     text-align: center;
     font-size: 16px;
@@ -72,14 +75,19 @@ h2 {
 .year-winter-list ul
  li {
     display: inline-block;
-    width: 166px;
+    width: 200px;
     padding-left: 10px;
     box-sizing: border-box;
     
 }
+.year-winter-list ul
+ li img{
+    width: 100%;
+    max-height: 140px;
+    min-height: 140px;
+ }
 .csectionview .winterview-list li ul li {
-    max-width: 100px!important;
-    width: auto!important;
+    width: 200px!important;
     padding: 0 2px;
 }
 
@@ -87,7 +95,7 @@ h2 {
     width: 440px!important;
 }
 .thirdoption-years li {
-    min-width: 414px;
+    min-width: 800px;
     padding-left: 0!important;
     margin-right: 10px;
     margin-left: 10px;
@@ -113,10 +121,10 @@ h2 {
    /* width: 2000px;*/
 }
 .photo-points-id{
-    padding: 44px 0 0 0;
+    padding: 38px 0 0 0;
     text-align: center;
-    min-height: 101px;
-    margin-bottom: 28px;
+    min-height: 140px;
+    margin-bottom: 25px;
 }
 .winter h4 {
     margin: 0;
@@ -125,11 +133,6 @@ h2 {
 }
 /*---=== option B select ===---*/
 
-.season-space {
-    min-height: 107px;
-    padding: 50px 0;
-    margin-bottom: 10px;
-}
 .viwe-option img {
     width: 35px;
     display: inline-block;
@@ -147,9 +150,9 @@ h2 {
     display: inline-block;
     line-height: normal;
 }
-.season-space {
-    min-height: 135px;
-    padding: 57px 0;
+.season-space{
+    min-height: 169px;
+    padding: 30px 0;
     margin-bottom: 0;
 }
 .second-view .winter-img.spring-view ul {
@@ -160,7 +163,7 @@ h2 {
 }
 .photo-points-border {
     border-top: 1px solid #eaeaea;
-    border-bottom: 1px solid #eaeaea;
+
     margin-top: 15px;
     margin-bottom: 35px;
     margin-left: 0;
@@ -186,11 +189,14 @@ h2 {
     margin-top: 20px;
     margin-bottom: 0; 
 }
-.row.second-view-space.season-space.thirdview {
-    padding: 19px 0;
-    min-height: auto;
-    margin-bottom: 20px;
-    line-height: 20px;
+.second-view-space.season-space.thirdview{
+    padding: 30px 0 0 0;
+    min-height: 152px;
+    margin-bottom: 25px;
+    line-height: 60px;
+}
+.second-view-space p {
+    margin: 30px 0 10px;
 }
 img.loader {
     width: auto;
@@ -211,6 +217,28 @@ img.loader {
 .viwe-option .active {
     border-bottom: 2px solid #256f24;
 }
+ul.season-list {
+    width: 800px;
+    display: inline-block;
+    padding-left: 10px;
+}
+
+body .year-winter-list .season-area .season-list li {
+    width: 24%!important;
+    display: inline-block;
+    text-align: center;
+}
+
+.season-list li {
+    width: 195px!important;
+    text-align: center;
+    font-weight: bold;
+}
+.photo-points-border .year-winter-list li.season-group.third-views {
+    width: 800px!important;
+    vertical-align: top;
+}
+
 @media only screen and (max-width: 767px) {
 
 .row.photo-points-winter h4{
@@ -233,6 +261,7 @@ img.loader {
     padding-left: 0;
 }
 }
+
 @media only screen and (max-width: 767px) {
 
 .row.photo-points-winter{

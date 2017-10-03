@@ -57,25 +57,34 @@ export class BatchuploadComponent implements OnInit {
 
 // --===upload multiple file--===
 
-    uploadFile(event) 
+  uploadFile(event) 
   {   
 
     this.imagesList = [];
       let fileList = event.target.files; 
-      console.log(fileList.length);
+      if(fileList.length > 20){
+        this.message = "Please select maximum 20 images.";
+        return false;
+      }
       let fileIndex = [];
       for(let i = 0; i < fileList.length ; i++) {
         let reader = new FileReader(); 
-        reader.onload = (e: any) => {             //---=== this function used for show upload image-name ---
+        reader.onload = (e: any) => {    
           this.imagesList.push( e.target.result);
         }
 
-        let file = fileList[i];  
-        this.formData.append('fileIndex[]', file);  
-      
-        reader.readAsDataURL(event.target.files[i]); //---=== this function used for show upload image---
-  	    let element = event.target; 
-  	  	this.imagesName.push(element.files[i].name);
+        let file = fileList[i];
+        let bytes = event.target.files[i].size;
+        console.log(bytes);
+        if(bytes < 20000000){
+          this.formData.append('fileIndex[]', file);  
+          reader.readAsDataURL(event.target.files[i]); //---=== this function used for show upload image---
+    	    let element = event.target; 
+    	  	this.imagesName.push(element.files[i].name);
+        }else{
+          this.message = "Image size is greater than 20MB, please select image size less than it.";
+        }
+
       }
       
       this.ImageUploaded = true;  

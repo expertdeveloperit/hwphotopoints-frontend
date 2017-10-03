@@ -1,14 +1,16 @@
 <div class="container">
 	<div class="row">
-	<div class="col-sm-10">
-	<h2>Image Upload</h2>
-	</div>
-	<div class="col-sm-2 text-right">
-		<a class="btn btn-success  batchupload" routerLink="/batchimagesupload" >Batch Upload</a>
-	</div>
+		<div class="col-sm-10">
+		<h2>Image Upload</h2>
+		</div>
+		<div class="col-sm-2 text-right">
+			<a class="btn btn-success  batchupload" routerLink="/batchimagesupload" >Batch Upload</a>
+		</div>
 	</div>
 	
 	<div class="row" *ngIf="!imageUploded">
+	<p class="text-center"> {{message}}</p>
+
 		<form #imageinfo="ngForm"  (ngSubmit)="onSubmit(imageinfo.value)">
 			<div class="col-sm-4 photo-id form-group text-center">
 			<!-- === select file (note:if we want single image select remove multiple in input) === -->
@@ -65,7 +67,10 @@
 			<div class="form-group">      
 				<select name="Image" class="select select-year" #imageType *ngIf="selectimagetype" (change)="onImageChange(imageType.value)" ngModel>
 				  <option value="">----Select Image Type----</option>
-				  <option *ngFor="let type of allImageType; let i = index" value="{{type}}">{{type}}</option>
+				  <option *ngFor="let type of allImageType; let i = index" value="{{type}}">
+				  		<span *ngIf="type == 'PAN'">Panorama</span>
+				  		<span *ngIf="type == 'SNG'">Single</span>
+				  </option>
 			
 				</select>
 			</div>

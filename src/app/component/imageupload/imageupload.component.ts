@@ -35,7 +35,7 @@ export class ImageuploadComponent implements OnInit {
   imageName : string = "";
   imageId : number ;
   disabledButton: boolean;
-
+  message : string;
   constructor(private imageupload : ImageuploadService) {
     this.imageUploded = false;    
     this.imageUplodedStatus = false;
@@ -57,16 +57,22 @@ export class ImageuploadComponent implements OnInit {
 		 this.fileInput.nativeElement.click()
 	}
 // ---=== select image send to service ---
-
+  
   uploadFile(event) 
   {   
-
-      let fileList = event.target.files; 
-      let file = fileList[0];  
-      this.formData.append('image', file);
-       
+    this.message = "";
+    let fileList = event.target.files; 
+    let file = fileList[0];  
+    this.formData.append('image', file);
+         
   	this.logo = event.target.files[0]; 
+    let bytes = event.target.files[0].size;
+    if(bytes > 20000000){
+      this.message = "Image size is greater than 20MB, please select image size less than it.";
+      return false;
+    }
 
+    
     let reader = new FileReader(); 
     reader.onload = (e: any) => {             //---=== this function used for show upload image-name ---
       this.logo = e.target.result;
@@ -182,13 +188,9 @@ onLocationChange(location){
     }else{
       this.imageupload.getInfo(this.formData,'imagetype').subscribe(res => {
         if(res.types != null){
-
+          
           this.allImageType = res.types;
           this.selectimagetype = true; 
-
-          this.allImageType = res.types;
-          this.selectimagetype = true; 
-
         }
         this.loadingimg=false;
       });

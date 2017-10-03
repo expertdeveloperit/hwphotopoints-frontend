@@ -33,6 +33,7 @@ export class ThumbnailsphotoComponent implements OnInit {
   thirdViewWidth:string;
   secondViewWidth:string;
   firstViewWidth:string;
+  seasonOrder : any =[];
 
   constructor(private route:ActivatedRoute, private sphotoService : ThumbnailsphotoService) { 
   	this.selectfirstoption =true;
@@ -40,7 +41,8 @@ export class ThumbnailsphotoComponent implements OnInit {
   	this.selectthirdoption =false;
     this.loadingimg =false;
     this.formData = new FormData();
-
+    this.seasonOrder.push('Winter','Spring','Summer','Autumn');
+    
   }
 
   ngOnInit() {
@@ -111,7 +113,7 @@ export class ThumbnailsphotoComponent implements OnInit {
       this.thirdviewyears = res.years;
       this.thirdViewsData = res.ViewsData;
       this.totalSeason=["WIN","SPR","SUM","AUT"];
-      let wid = this.thirdviewyears.length * 460 ;
+      let wid = this.thirdviewyears.length * 850 ;
       this.thirdViewWidth = wid.toString()+"px";
       console.log(this.thirdViewWidth);
       Observable.interval(1000)
