@@ -1,6 +1,7 @@
 import { Component, OnInit, ElementRef,ViewChild } from '@angular/core';
 import {Updatethumbnailsphotoservice} from './updatethumbnailsphoto.service'; 
 import {ActivatedRoute} from '@angular/router';
+import {SharedDataService} from '../../shared-data.service';
 
 @Component({
   selector: 'app-updatethumbnailsphoto',
@@ -40,9 +41,10 @@ export class UpdatethumbnailsphotoComponent implements OnInit {
   Message : string;
   mediaInfo:any = [];
   pageload:boolean;
+  userPermissions:boolean;
 
-
-  constructor(private route:ActivatedRoute, private updatethumbnails: Updatethumbnailsphotoservice) {
+  constructor(private route:ActivatedRoute, private updatethumbnails: Updatethumbnailsphotoservice,public CMService : SharedDataService) {
+    this.userPermissions = true;
     this.pageload = false;
     this.imageUploded = false;    
     this.imageUplodedStatus = true;
@@ -54,7 +56,11 @@ export class UpdatethumbnailsphotoComponent implements OnInit {
     this.selectview = true;
     this.formSubmit= false;
     this.loadingimg=false;
-    this.formData = new FormData();                     
+    this.formData = new FormData(); 
+    if(CMService.currentUser.role == "visitor"){
+      this.userPermissions = false;
+      this.Message = "You don't have permission to access this page.";
+    }                    
   }
 
 //--- === this function used for show the title of upload image---

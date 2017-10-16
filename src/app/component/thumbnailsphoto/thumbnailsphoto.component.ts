@@ -60,7 +60,8 @@ export class ThumbnailsphotoComponent implements OnInit {
       this.autumnData = res.autumnData;
       this.springData = res.springData;
       this.years = res.years;
-      let wid = this.years.length * 170 + 200 ;
+      let wid = this.years.length * 190 + 200 ;
+      console.log(wid,"wid");
       this.firstViewWidth = wid.toString()+"px";
       Observable.interval(1000)
       .takeWhile(() => this.loadingimg =false)
@@ -90,7 +91,7 @@ export class ThumbnailsphotoComponent implements OnInit {
       this.secondviewyears = res.years;
       this.secondViewsData = res.ViewsData;
       this.secondViewImagesData = res.information;
-       let wid = this.secondviewyears.length * 170 +200;
+       let wid = this.secondviewyears.length * 185 +200;
       this.secondViewWidth = wid.toString()+"px";
        Observable.interval(1000)
       .takeWhile(() => this.loadingimg =false)
@@ -113,7 +114,7 @@ export class ThumbnailsphotoComponent implements OnInit {
       this.thirdviewyears = res.years;
       this.thirdViewsData = res.ViewsData;
       this.totalSeason=["WIN","SPR","SUM","AUT"];
-      let wid = this.thirdviewyears.length * 850 ;
+      let wid = this.thirdviewyears.length * 900 ;
       this.thirdViewWidth = wid.toString()+"px";
       console.log(this.thirdViewWidth);
       Observable.interval(1000)

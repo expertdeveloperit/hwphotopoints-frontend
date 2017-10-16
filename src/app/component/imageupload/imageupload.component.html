@@ -1,16 +1,18 @@
+
+
 <div class="container">
-	<div class="row">
+	<div class="row" *ngIf="userPermissions">
 		<div class="col-sm-10">
 		<h2>Image Upload</h2>
 		</div>
-		<div class="col-sm-2 text-right">
+		<div class="col-sm-2 text-right" >
 			<a class="btn btn-success  batchupload" routerLink="/batchimagesupload" >Batch Upload</a>
 		</div>
 	</div>
 	
 	<div class="row" *ngIf="!imageUploded">
-	<p class="text-center"> {{message}}</p>
-
+		<p class="text-center msg" > {{message}}</p>
+		<div *ngIf="userPermissions">
 		<form #imageinfo="ngForm"  (ngSubmit)="onSubmit(imageinfo.value)">
 			<div class="col-sm-4 photo-id form-group text-center">
 			<!-- === select file (note:if we want single image select remove multiple in input) === -->
@@ -91,6 +93,7 @@
 				</div>
 			</div>
 		</form>
+		</div>
 	</div>
 
 

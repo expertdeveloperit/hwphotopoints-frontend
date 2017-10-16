@@ -21,7 +21,7 @@ export class NewHeaderComponent implements OnInit {
 // ---=== These are animation states---===
   state = 'open';
   timeOutRef;
-
+  userDetail;
 // ---=== boolean value defined ---===
   userAuthenticated:boolean;
   // menuiconshow:boolean;
@@ -29,9 +29,17 @@ export class NewHeaderComponent implements OnInit {
   
   constructor(private router: Router, private _cookieService:CookieService,public serve : SharedDataService) { 
   	let loggedinUser = this._cookieService.get("hwUserToken");
+    let currentUser = this._cookieService.get("userDetail");
+    
+    if(currentUser){
+
+      this.userDetail = JSON.parse(currentUser);
+      
+    }
+    console.log(this.userDetail);
    		if(loggedinUser){
-   			this.serve.hitLogin(false);
-   		}else this.serve.hitLogin(true);
+   			this.serve.hitLogin(false,this.userDetail);
+   		}else this.serve.hitLogin(true,false);
 
   }
 
@@ -42,7 +50,7 @@ export class NewHeaderComponent implements OnInit {
   
  
   logoutUser(){
-    this.serve.hitLogin(true);
+    this.serve.hitLogin(true,false);
     this._cookieService.remove("hwUserToken",'/');
 		this._cookieService.remove("userDetail",'/');
 		this.router.navigate(['/login']);

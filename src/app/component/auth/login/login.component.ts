@@ -4,7 +4,7 @@ import { Router } from '@angular/router'; //--- ==== import for routing
 import { FormBuilder, FormGroup, Validators,FormControl} from '@angular/forms';//its using for form
 import { ValidationService } from '../../../validation.service'; //--=== Validation srevice import for email
 import {LoginService} from './login.service';
-import { SharedDataService } from '../../../shared-data.service'
+import { SharedDataService } from '../../../shared-data.service';
 
 @Component({
   selector: 'app-login',
@@ -37,10 +37,13 @@ export class LoginComponent {
      this.loginerror = "";
      this._loginservice.logindetails(logininfo).subscribe(res => { 
       if(res.status){
+        console.log("user",res.user.role);
         this._cookieService.put("hwUserToken", res.token, '/');
         let user_str = JSON.stringify(res.user);
         this._cookieService.put("userDetail", user_str, '/');
+        this.CmService.hitLogin(false,res.user);
         this.router.navigate(['']);
+
       }else{
         console.log("err");
         this.loginerror = res.error;

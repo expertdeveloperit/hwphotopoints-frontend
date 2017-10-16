@@ -6,9 +6,9 @@
 		</div>
 	 <!-- === Delete and dawnload image link ===-->
 		<div class="col-xs-12 col-sm-8 text-right" *ngIf="imageView"> 
-			<a routerLink="/updateimage/{{imageId}}" >Edit Image</a> 
+			<a *ngIf="userPermissions" routerLink="/updateimage/{{imageId}}" >Edit Image</a> 
 			
-			<a (click)="deleteImage()">Delete Image</a> 
+			<a *ngIf="userPermissions" (click)="deleteImage()">Delete Image</a> 
 
 			<a target="_blank" href="{{imageUrl}}" download="{{imageUrl}}">
 		    Download Image</a>
@@ -30,9 +30,9 @@
 		<div class="col-xs-6">  
 			<a  (click)="showExifdata()" >Show Exif Data</a> 
 			<ul *ngIf="exifData">
-		  		<li>FILE.FileName: 2016-WIN-P-P001A-SNG-S330.JPG</li>
-				<li>FILE.FileDateTime: 0<li>
-				<li>FILE.FileSize: 13405508</li>
+		  		<li *ngFor="let data of exifArray;">
+		  			 {{data.key}} : {{data.val}}
+		  		</li>
 			</ul>
 		</div>
 		<div class="col-xs-6">  

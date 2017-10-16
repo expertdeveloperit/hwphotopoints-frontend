@@ -24,7 +24,6 @@ border-left: 5px solid #42A948!important; /* green */
 }
 .loginerror {
     color: #c30606;
-    text-transform: capitalize;
     font-size: 16px;
 }
 .login-email {
@@ -45,8 +44,7 @@ border-left: 5px solid #42A948!important; /* green */
     font-size: 16px;
     border-radius: 4px;
     -webkit-box-shadow: 0;
-    box-shadow: 0;
-    text-transform: capitalize;
+    box-shadow: 0px;
 }
 .loginpage-layout {
     background-color: #f8f8f8;

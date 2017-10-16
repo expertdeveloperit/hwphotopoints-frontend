@@ -1,6 +1,7 @@
 import { Component, OnInit, ElementRef,ViewChild } from '@angular/core';
 
 import {ImageuploadService} from './imageupload.service'; //---import service ---
+import {SharedDataService} from '../../shared-data.service';
 
 @Component({
   selector: 'app-imageupload',
@@ -36,7 +37,9 @@ export class ImageuploadComponent implements OnInit {
   imageId : number ;
   disabledButton: boolean;
   message : string;
-  constructor(private imageupload : ImageuploadService) {
+  userPermissions : boolean;
+  constructor(private imageupload : ImageuploadService,public CMService : SharedDataService) {
+    this.userPermissions = true;
     this.imageUploded = false;    
     this.imageUplodedStatus = false;
     this.disabledButton =  false;
@@ -48,6 +51,13 @@ export class ImageuploadComponent implements OnInit {
     this.formSubmit= false;
     this.loadingimg=false;
     this.formData = new FormData();                     
+    if(CMService.currentUser.role == "visitor"){
+      this.userPermissions = false;
+      this.message = "you don't have permission to access this page."
+    }
+
+
+
   }
 
 //--- === this function used for show the title of upload image---

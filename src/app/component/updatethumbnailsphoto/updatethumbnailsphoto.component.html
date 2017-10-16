@@ -1,4 +1,8 @@
-<div class="container bg-img">
+<div class="container bg-img" *ngIf="!userPermissions">
+	<p class="text-center">{{Message}}</p>
+</div>
+
+<div class="container bg-img" *ngIf="userPermissions">
 	<h2>Update Post Data</h2>
 	<div class="row text-center" *ngIf="pageload">
 		<img class="loader" src="../../../assets/images/loader.gif" >

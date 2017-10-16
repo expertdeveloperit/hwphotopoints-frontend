@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {LegalPrivacy} from './legalprivacy.service';
-import {SharedDataService} from '../../shared-data.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { SafeHtml } from '@angular/platform-browser';
 
@@ -14,10 +13,9 @@ export class LegalPrivacyComponent implements OnInit {
 
   public pageContent: any;
    public temp: any;
-  constructor(private _legalservice : LegalPrivacy ,public serve : SharedDataService, private _sanitizer: DomSanitizer) {}
+  constructor(private _legalservice : LegalPrivacy , private _sanitizer: DomSanitizer) {}
 
   ngOnInit() {
-    this.serve.hitLogin(false);
     this._legalservice.gethomedata()
       .subscribe(res => {
         this.pageContent = res; 

@@ -1,6 +1,8 @@
 import { Component, OnInit,Input} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ImageDetailService} from './imagedetails.service';
+import {SharedDataService} from '../../shared-data.service';
+
 import 'rxjs/Rx' ;
 
 @Component({
@@ -22,11 +24,17 @@ export class ImagedetailsComponent implements OnInit {
   Message : string = "";
   imageView :boolean;
   allFileData : any = [];
-
-  constructor(private route:ActivatedRoute, private imageDetail : ImageDetailService) {
+  exifArray:any = [];
+  userPermissions : boolean;
+  constructor(private route:ActivatedRoute, private imageDetail : ImageDetailService,public CMService : SharedDataService) {
+    this.userPermissions = true;
     this.exifData = false;
     this.fileData = false;
     this.imageView = true;
+    console.log(CMService.currentUser.role);
+    if(CMService.currentUser.role == "visitor"){
+      this.userPermissions = false;
+    }
    }
 
   ngOnInit(){
@@ -43,6 +51,11 @@ export class ImagedetailsComponent implements OnInit {
         }
         this.imageId = mediaInfo.id;
         this.imageUrl = mediaInfo.file_location_aws;
+        let url = 'http://photos2.hwphotopoints.org.uk/exif.php?imageurl='+this.imageUrl;
+        
+        this.imageDetail.getExifInfo(url).subscribe(result => {
+          this.exifArray = result;
+        });
 
       }else{
         this.imageView= false;

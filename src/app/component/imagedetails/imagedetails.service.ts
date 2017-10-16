@@ -44,5 +44,12 @@ export class ImageDetailService {
     });
   }
 
+  public getExifInfo(url:any){
+   return this._http.get(url)
+    .map((response: Response) => {
+      return response.json();
+
+    });
+  }
 
 }
