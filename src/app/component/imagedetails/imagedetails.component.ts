@@ -51,7 +51,7 @@ export class ImagedetailsComponent implements OnInit {
         }
         this.imageId = mediaInfo.id;
         this.imageUrl = mediaInfo.file_location_aws;
-        let url = 'http://photos2.hwphotopoints.org.uk/exif.php?imageurl='+this.imageUrl;
+        let url = 'http://wphackstop.com/exif.php?imageurl='+this.imageUrl;
         
         this.imageDetail.getExifInfo(url).subscribe(result => {
           this.exifArray = result;

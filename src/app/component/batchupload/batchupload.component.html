@@ -1,7 +1,7 @@
 <div class="container">
 	<h2>Multiple Images Upload</h2>
 	<div class="row" *ngIf="!imageUploded">
-		<p class="text-center">{{message}}</p>
+		<p class="text-center msg">{{message}}</p>
 		<form #imageinfo="ngForm"  (ngSubmit)="onSubmit(imageinfo.value)" >
 			<!-- === Multiple Images upload ===-->
 			<div class="col-sm-6 photo-id form-group text-center">

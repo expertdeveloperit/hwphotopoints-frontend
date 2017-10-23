@@ -13,7 +13,7 @@
 	<div class="row" *ngIf="!imageUploded">
 		<p class="text-center msg" > {{message}}</p>
 		<div *ngIf="userPermissions">
-		<form #imageinfo="ngForm"  (ngSubmit)="onSubmit(imageinfo.value)">
+		<form #imageinfo="ngForm"  (ngSubmit)="onSubmit(imageinfo.value)" >
 			<div class="col-sm-4 photo-id form-group text-center">
 			<!-- === select file (note:if we want single image select remove multiple in input) === -->
 				<input name="myFile" #fileInput class="image-upload" type="file" hidden (change)="uploadFile($event)" ngModel accept="image/*" />
@@ -28,7 +28,7 @@
 			</div>
 			
 			<!-- === select serise and more option === -->
-			<div class="col-sm-8 imgselectoption" >
+			<div class="col-sm-8 imgselectoption" *ngIf="!uploadValidation" >
 				
 				<div class="form-group">      
 				<div *ngIf="imageUplodedStatus" class="selectseriesoption">

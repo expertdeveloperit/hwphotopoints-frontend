@@ -38,6 +38,8 @@ export class ImageuploadComponent implements OnInit {
   disabledButton: boolean;
   message : string;
   userPermissions : boolean;
+  uploadValidation : boolean;
+  file : string;
   constructor(private imageupload : ImageuploadService,public CMService : SharedDataService) {
     this.userPermissions = true;
     this.imageUploded = false;    
@@ -50,7 +52,9 @@ export class ImageuploadComponent implements OnInit {
     this.selectview = false;
     this.formSubmit= false;
     this.loadingimg=false;
-    this.formData = new FormData();                     
+    this.uploadValidation = false;
+    this.formData = new FormData();    
+
     if(CMService.currentUser.role == "visitor"){
       this.userPermissions = false;
       this.message = "you don't have permission to access this page."
@@ -70,15 +74,17 @@ export class ImageuploadComponent implements OnInit {
   
   uploadFile(event) 
   {   
+    this.uploadValidation = false;
     this.message = "";
     let fileList = event.target.files; 
-    let file = fileList[0];  
-    this.formData.append('image', file);
+    this.file = fileList[0];  
+    //this.formData.append('image', file);
          
   	this.logo = event.target.files[0]; 
     let bytes = event.target.files[0].size;
     if(bytes > 20000000){
       this.message = "Image size is greater than 20MB, please select image size less than it.";
+      this.uploadValidation = true;
       return false;
     }
 
@@ -246,6 +252,7 @@ onLocationChange(location){
 
 
   onSubmit(){
+    this.formData.append('image', this.file);
     this.disabledButton = true;
     this.loadingimg=true;
     this.imageupload.getInfo(this.formData,'uploaddata').subscribe(res => {
