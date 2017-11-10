@@ -20,6 +20,7 @@ import { LegalPrivacyComponent } from '../component/legalprivacy/legalprivacy.co
 import { ResetpasswordComponent } from '../component/auth/resetpassword/resetpassword.component';
 import { UpdatethumbnailsphotoComponent } from '../component/updatethumbnailsphoto/updatethumbnailsphoto.component';
 import { BatchuploadComponent } from '../component/batchupload/batchupload.component';
+import { BatchuploadCsvComponent } from '../component/batchupload-csv/batchupload-csv.component';
 
 @Injectable()
 export class AlwaysAuthGuard implements CanActivate {
@@ -55,6 +56,7 @@ const appRoutes: Routes = [
 	{path:'imagedetails/:id', component:ImagedetailsComponent,canActivate: [AlwaysAuthGuard]},
 	{path:'Updatethumbnails', component:UpdatethumbnailsphotoComponent,canActivate: [AlwaysAuthGuard]},
 	{path:'batchimagesupload', component:BatchuploadComponent,canActivate: [AlwaysAuthGuard]},
+	{path:'batchuploadcsv', component:BatchuploadCsvComponent,canActivate: [AlwaysAuthGuard]},
 	{path:'updateimage/:id', component:UpdatethumbnailsphotoComponent,canActivate: [AlwaysAuthGuard]}
 
 ];
@@ -84,5 +86,6 @@ export const routingcomponent =
 		LegalPrivacyComponent,
 		ResetpasswordComponent,
 		UpdatethumbnailsphotoComponent,
-		BatchuploadComponent
+		BatchuploadComponent,
+		BatchuploadCsvComponent
 	]
