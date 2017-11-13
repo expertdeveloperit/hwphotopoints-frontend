@@ -1,5 +1,7 @@
 import { Component, OnInit,ElementRef,ViewChild } from '@angular/core';
-import{BatchuploadCsvService}from './batchupload-csv.service'
+import{BatchuploadCsvService}from './batchupload-csv.service';
+import { environment } from '../../../environments/environment';
+
 @Component({
   selector: 'app-batchupload-csv',
   templateUrl: './batchupload-csv.component.html',
@@ -36,6 +38,7 @@ export class BatchuploadCsvComponent implements OnInit {
   thisActive : boolean;
   csvUploded : boolean;
   theHtmlString :string;
+  backendUrl : string;
 // ---constructor--
   constructor(private Batchupload:BatchuploadCsvService ) {
   	this.imageUploded = true; 
@@ -49,7 +52,7 @@ export class BatchuploadCsvComponent implements OnInit {
     this.CsvUploaded = false;
     this.ImageUploaded = false;
     this.thisActive = true;
- 
+    
 
   }
   chooseFileEnable(){
@@ -59,6 +62,7 @@ export class BatchuploadCsvComponent implements OnInit {
 		this.CsvfileInput.nativeElement.click()
 	}
   ngOnInit() {
+    this.backendUrl = environment.apiEndpoint+"/csv-example.csv";
   }
 
   activeimage(area){
