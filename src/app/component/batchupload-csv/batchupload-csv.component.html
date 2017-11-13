@@ -1,5 +1,21 @@
 <div class="container">
 	<h2>Multiple Images Upload</h2>
+
+	<div class="row instruction">
+<div class="col-sm-8 col-sm-offset-4">
+		<h4>Please follow these instructions for batch upload.</h4>
+		<ul>
+			<li>Click on "Upload Images" button.</li>
+			<li>Select "Choose Multiple File" option to upload the batch of images. </li>
+			<li>You will get a link to download the CSV file.</li>
+			<li>Click on the link to download that.</li>
+			<li>Update the downloaded CSV with series information.</li>
+			<li>Click on "Upload CSV" button.</li>
+			<li>Click on "Choose CSV File" and upload the updated CSV file.</li>
+		</ul>	
+	</div>	
+	</div>
+	<div class="tabs-section">
 	<div class="text-center tab-btn">
 		<button type=""  class="btn btn-success" [class.active]="thisActive" (click)="activeimage('img')">Upload Images </button>
 		<button type="" class="btn btn-success" [class.active]="!thisActive" (click)="activeimage('csv')">Upload Csv</button>	
@@ -10,7 +26,7 @@
 	<div class="row after-upload text-center">
 		<p [innerHTML]="theHtmlString"></p>
 	</div>
-	<div class="row" *ngIf="imageUploded">
+	<div class="row " *ngIf="imageUploded">
 		
 		<form #imageinfo="ngForm"  (ngSubmit)="onSubmit(imageinfo.value)" >
 			<!-- === Multiple Images upload ===-->
@@ -22,7 +38,7 @@
 						
 				</div>
 			</div>
-		<div class="row">
+		<div class="row file-show">
 			<ul class="images-list">
 				<li *ngFor="let image of imagesList; let i = index">
 					<img [src]="image">
@@ -65,5 +81,5 @@
 			</div>
 		</form>
 	</div>
-	
+	</div>
 </div>

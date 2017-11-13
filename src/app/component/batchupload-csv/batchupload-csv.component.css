@@ -17,7 +17,7 @@ button a{
 h2 {
     font-size: 30px;
     text-align: center;
-    margin: 40px 0 50px 0;
+    margin: 40px 0 30px 0;
     color: #246f24;
 }
 .image-upload{
@@ -87,11 +87,11 @@ img.loader {
 .msg{
     color: red;
 }
-.choose-file {
+/*.choose-file {
 
     margin: 30px 0 0;
 }
-
+*/
 .batch-img {
     margin: 60px 0 0 0;
     
@@ -107,14 +107,18 @@ img.loader {
     outline: 0;
 }
 .tab-btn .btn-success.active{
-    background-color: #adada0;
+    background-color: #265726;
+    color: #fff;
 }
 
-.tab-btn .btn {
-    padding: 6px 12px;
+.tab-btn .btn{
+    padding: 10px 18px;
     font-size: 14px;
     background: #f9f9f8;
     color: #000;
+    margin: 0;
+    border: 1px solid #fff;
+    border-radius: 0;
 }
 .after-upload{
     margin-top: 30px;
@@ -127,4 +131,26 @@ img.loader {
 .error{
     color: red;
     margin-top: 20px;
+}
+.instruction ul {
+    padding: 0;
+    list-style-type: circle;
+    margin: 0 0 30px;
+}
+.instruction h4 {
+    font-size: 16px;
+    font-weight: bold;
+}
+.tabs-section {
+    background: #efefef;
+        float: left;
+    width: 100%;
+    padding: 0 0 50px 0;
+}
+
+.tab-btn {
+    border-bottom: 2px solid #fff;
+}
+.file-show{
+    margin: 0;
 }
