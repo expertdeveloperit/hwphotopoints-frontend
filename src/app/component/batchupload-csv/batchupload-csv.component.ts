@@ -62,7 +62,7 @@ export class BatchuploadCsvComponent implements OnInit {
 		this.CsvfileInput.nativeElement.click()
 	}
   ngOnInit() {
-    this.backendUrl = environment.apiEndpoint+"/csv-example.csv";
+    this.backendUrl = environment.endpoint+"csv-example.csv";
   }
 
   activeimage(area){

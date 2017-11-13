@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
+  endpoint: 'http://backend.wphackstop.com/',
   apiEndpoint: 'http://backend.wphackstop.com/api/'
 };
