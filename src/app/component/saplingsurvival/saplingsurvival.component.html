@@ -6,8 +6,8 @@
   	 <h4>View</h4>
   	</div>
     <!--===Year show on top  -->
-  	<div class="col-xs-10">
-      <ul class="saplingview " [style.width] ="saplingWidth">
+  	<div class="col-xs-10 years-list">
+      <ul id="year-list" class="saplingview " [style.width] ="saplingWidth">
         <li class="text-center" *ngFor="let year of years">
           <h4>{{year.year}}</h4>
         </li> 
@@ -21,29 +21,33 @@
 <!--===images section show according to season ===-->
 
   <div class="loading-view" *ngIf="!loadingimg">
-
-    <div class="col-xs-1">
-      <div class="row photopoints-info sl-view-name" *ngFor="let postData of seriesData">
-        <p *ngIf="postData.view != ''"> {{postData.view}}</p>
-      </div>
-    </div>  
-
-    <div class="col-xs-10 ss-scroll">
-    <!-- <div class="col-xs-1">
-        <p *ngIf="postData.view != ''"> {{postData.view}}</p>
-      </div>
-     -->  
-      <div class="row photopoints-info" *ngFor="let postData of seriesData">
-        <ul class="saplingview" [style.width] ="saplingWidth">
-          <li  *ngFor="let year of years">
-            <div  *ngFor="let imageData of postData.data">  
-              <a *ngIf = "year.year==imageData.year" [routerLink]="['/imagedetails',imageData.id]">
-                <img src="{{imageData.file_thumb_location_aws}}" />
-              </a>
+ 
+        <div class="col-xs-1 view-list" [style.height]="containerHeight">
+          <div class="view-area">
+            <div class="row photopoints-info sl-view-name" *ngFor="let postData of seriesData">
+              <p *ngIf="postData.view != ''"> {{postData.view}}</p>
+            </div>
           </div>
-          </li>
-        </ul>
-      </div>
-    </div>
+        </div>  
+
+        <div class="col-xs-10 ss-scroll">
+           <div id="sarea" [style.width]="containerWidth" [style.height]="containerHeight" >
+        <!-- <div class="col-xs-1">
+            <p *ngIf="postData.view != ''"> {{postData.view}}</p>
+          </div>
+         -->  
+          <div class="row photopoints-info" *ngFor="let postData of seriesData">
+            <ul class="saplingview" [style.width] ="saplingWidth">
+              <li  *ngFor="let year of years">
+                <div  *ngFor="let imageData of postData.data">  
+                  <a *ngIf = "year.year==imageData.year" [routerLink]="['/imagedetails',imageData.id]">
+                    <img src="{{imageData.file_thumb_location_aws}}" />
+                  </a>
+              </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>  
    </div>
 </div>

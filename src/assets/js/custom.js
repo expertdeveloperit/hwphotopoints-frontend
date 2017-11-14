@@ -1,5 +1,8 @@
 $(document).ready(function(){
-	
+		
+
+
+
 	  var bodyHeight = $("body").height();
 	  var winHeight = $(window).height();
   	  var header =  $(".header-area").height();
@@ -11,5 +14,8 @@ $(document).ready(function(){
 
 	    $(".body-data").css("min-height",calculate);
 	  }
+
+$("#sarea").addClass("test");
 	
 });
+
