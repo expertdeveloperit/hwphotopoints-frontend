@@ -31,7 +31,3 @@ img.loader {
 .sl-view-name {
     min-height: 130px;
 }
-.ss-scroll {
-    overflow: scroll;
-    overflow-y: hidden;
-}

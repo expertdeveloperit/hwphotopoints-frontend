@@ -91,7 +91,7 @@
           <ul class="winterview-list" [style.width]="firstViewWidth">
             <li *ngFor="let mainyear of years" >
               <div class="" *ngFor="let imagesData of winter.data">
-                <a *ngIf = "mainyear.year==imagesData.year" routerLink="/imagedetails/{{imagesData.id}}" >
+                <a class="img-cover" *ngIf = "mainyear.year==imagesData.year" routerLink="/imagedetails/{{imagesData.id}}" >
                   <img  src="{{imagesData.file_thumb_location_aws}}" /> 
                 </a>
               </div>
@@ -106,7 +106,7 @@
           <ul class="winterview-list" [style.width]="firstViewWidth">
             <li *ngFor="let mainyear of years" >
               <div *ngFor="let sprimagesData of spring.data">
-                <a *ngIf = "mainyear.year==sprimagesData.year" routerLink="/imagedetails/{{sprimagesData.id}}" >
+                <a class="img-cover" *ngIf = "mainyear.year==sprimagesData.year" routerLink="/imagedetails/{{sprimagesData.id}}" >
                   <img  src="{{sprimagesData.file_thumb_location_aws}}" /> 
                 </a>
               </div>
@@ -121,7 +121,7 @@
           <ul class="winterview-list" [style.width]="firstViewWidth">
             <li *ngFor="let mainyear of years" >
               <div *ngFor="let simagesData of summer.data">
-                <a *ngIf = "mainyear.year==simagesData.year" routerLink="/imagedetails/{{simagesData.id}}" >
+                <a class="img-cover" *ngIf = "mainyear.year==simagesData.year" routerLink="/imagedetails/{{simagesData.id}}" >
                   <img  src="{{simagesData.file_thumb_location_aws}}" /> 
                 </a>
               </div>
@@ -137,7 +137,7 @@
           <ul class="winterview-list" [style.width]="firstViewWidth">
             <li *ngFor="let mainyear of years" >
               <div *ngFor="let aimagesData of autumn.data" id="{{aimagesData.id}}">
-              <a *ngIf = "mainyear.year==aimagesData.year" routerLink="/imagedetails/{{aimagesData.id}}" >
+              <a class="img-cover" *ngIf = "mainyear.year==aimagesData.year" routerLink="/imagedetails/{{aimagesData.id}}" >
                 <img  src="{{aimagesData.file_thumb_location_aws}}" /> 
               </a>
               </div>
@@ -190,7 +190,7 @@
                <ul class="winterview-list" [style.width]="secondViewWidth">
                  <li *ngFor="let secondviewyear of secondviewyears">
                   <div *ngFor="let mediainfo of imagesData.info">
-                    <a *ngIf = "secondviewyear.year==mediainfo.year" routerLink="/imagedetails/{{mediainfo.id}}" >
+                    <a class="img-cover" *ngIf = "secondviewyear.year==mediainfo.year" routerLink="/imagedetails/{{mediainfo.id}}" >
                       <img src="{{mediainfo.file_thumb_location_aws}}" /> 
                     </a>
                   </div>
@@ -244,7 +244,7 @@
                     <div *ngIf="imagesData.year == years.year">
                       <li  *ngFor="let season of totalSeason"> 
                         <div  *ngFor="let seasonData of imagesData.data">
-                          <a  *ngIf="season==seasonData.season" routerLink="/imagedetails/{{seasonData.id}}">
+                          <a class="img-cover"  *ngIf="season==seasonData.season" routerLink="/imagedetails/{{seasonData.id}}">
                             <img src="{{seasonData.file_thumb_location_aws}}" />
                           </a>
                         </div>

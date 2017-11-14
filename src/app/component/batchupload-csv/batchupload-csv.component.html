@@ -5,13 +5,13 @@
 <div class="col-sm-8 col-sm-offset-4">
 		<h4>Please follow these instructions for batch upload.</h4>
 		<ul>
-			<li>Click on "Upload Images" button.</li>
 			<li>Select "Choose Multiple File" option to upload the batch of images. </li>
-			<li>You will get a link to download the CSV file. <a download href="{{backendUrl}}">Demo CSV File</a></li>
-			<li>Click on the link to download that.</li>
-			<li>Update the downloaded CSV with series information.</li>
+			<li>Please click the "Upload" button to "Upload".</li>
+			<li>After image upload, you will see a link to a CSV file. <a download href="{{backendUrl}}">Demo CSV File</a></li>
+			<li>Click on the link to download and save the CSV file to your PC.</li>
+			<li>Update the downloaded CSV with image information.</li>
 			<li>Click on "Upload CSV" button.</li>
-			<li>Click on "Choose CSV File" and upload the updated CSV file.</li>
+			<li>Click on "Choose CSV File", select the CSV file with image data and then click upload."</li>
 
 		</ul>	
 	</div>	
@@ -19,7 +19,7 @@
 	<div class="tabs-section">
 	<div class="text-center tab-btn">
 		<button type=""  class="btn btn-success" [class.active]="thisActive" (click)="activeimage('img')">Upload Images </button>
-		<button type="" class="btn btn-success" [class.active]="!thisActive" (click)="activeimage('csv')">Upload Csv</button>	
+		<button type="" class="btn btn-success" [class.active]="!thisActive" (click)="activeimage('csv')">Upload CSV</button>	
 	</div>
 	<div class="row error text-center">
 		{{error}}
@@ -29,13 +29,13 @@
 	</div>
 	<div class="row " *ngIf="imageUploded">
 		
-		<form #imageinfo="ngForm"  (ngSubmit)="onSubmit(imageinfo.value)" >
+		<form #imageinfo="ngForm"  >
 			<!-- === Multiple Images upload ===-->
 			<div class="col-sm-12 photo-id form-group text-center" *ngIf="thisActive">
 				<input name="myFile" #fileInput class="image-upload" type="file" hidden (change)="uploadFile($event)" ngModel accept="image/*" multiple/>
 				<div class="choose-file">
 					<p><i class="fa fa-cloud-upload" aria-hidden="true"></i></p>
-					<a (click)="chooseFileEnable()"  class="btn btn-success">Choose Multiple File</a>
+					<a (click)="chooseFileEnable()"  class="btn btn-success">Choose Multiple Files</a>
 						
 				</div>
 			</div>
@@ -52,14 +52,14 @@
 		<div class="form-group form-controls text-center controls-area">
 			<img class="loader" src="../../../assets/images/loader.gif" *ngIf="loadingimg">
 			<!-- === Button for save and cancle the process === -->
-			<button [disabled]="disabledButton" type="submit" class="btn btn-success pull-right" *ngIf="formSubmit">save</button>
-			<button type="" (click)="flushSelectedData()" class="btn btn-success pull-right cancel"  *ngIf="imageUplodedStatus">cancel</button>
+			<button [disabled]="disabledButton"  (click)="onSubmit(imageinfo.value)" type="submit" class="btn btn-success pull-right" *ngIf="formSubmit">Upload</button>
+			<button type="" (click)="flushSelectedData()" class="btn btn-success pull-right cancel"  *ngIf="imageUplodedStatus">Cancel</button>
 		</div>
 	</form>
 	
 	</div>
 	<div *ngIf="csvUploded">
-		<form #csvinfo="ngForm"  (ngSubmit)="onCsvSubmit(csvinfo.value)" >
+		<form #csvinfo="ngForm"   >
 			
 			<!-- ===CSV File upload===-->
 			<div class="col-sm-12 form-group photo-id text-center">
@@ -77,8 +77,8 @@
 			<div class="form-group form-controls text-center controls-area">
 				<img class="loader" src="../../../assets/images/loader.gif" *ngIf="loadingimg">
 				<!-- === Button for save and cancle the process === -->
-				<button [disabled]="disabledButton" type="submit" class="btn btn-success pull-right" *ngIf="formSubmit">save</button>
-				<button type="" (click)="flushSelectedData()" class="btn btn-success pull-right cancel"  *ngIf="imageUplodedStatus">cancel</button>
+				<button [disabled]="disabledButton" type="submit" class="btn btn-success pull-right" *ngIf="formSubmit" (click)="onCsvSubmit(csvinfo.value)">Upload</button>
+				<button type="" (click)="flushSelectedData()" class="btn btn-success pull-right cancel"  *ngIf="imageUplodedStatus">Cancel</button>
 			</div>
 		</form>
 	</div>

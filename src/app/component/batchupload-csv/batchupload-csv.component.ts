@@ -127,7 +127,8 @@ export class BatchuploadCsvComponent implements OnInit {
     this.Batchupload.getInfo(this.formData,'uploadbatchdata').subscribe(res => {
       if(res.status == 'true'){
         this.loadingimg=false;
-        var down = res.msg+"Please download this csv file and update it with series information "+"<a class='dwn' style='font-weight:bold;color:#246f24' href='"+res.url+"' download >Click here to download</a>";
+        //var down = res.msg+"Please download this csv file and update it with series information "+"<a class='dwn' style='font-weight:bold;color:#246f24' href='"+res.url+"' download >Click here to download</a>";
+        var down = res.msg+" Please download this csv file and update it with series information. " +"<a class='dwn' style='font-weight:bold;color:#246f24' href='"+res.url+"' download >Click here to download</a>";
         this.theHtmlString = down;
         this.imageUploded = false; 
         this.csvUploded = false;
