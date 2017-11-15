@@ -82,6 +82,11 @@ export class BatchuploadCsvComponent implements OnInit {
 
   uploadFile(event) 
   {   
+      this.formData.delete("fileIndex[]");
+      this.imagesList = [];
+      this.imagesName = [];
+
+    let element = event.target; 
 
     	this.imagesList = [];
       	let fileList = event.target.files; 
@@ -101,7 +106,7 @@ export class BatchuploadCsvComponent implements OnInit {
 	        if(bytes < 20000000){
 	          this.formData.append('fileIndex[]', file);  
 	          reader.readAsDataURL(event.target.files[i]); //---=== this function used for show upload image---
-	    	    let element = event.target; 
+	    	    
 	    	  	this.imagesName.push(element.files[i].name);
 	        }else{
 	          this.message = "Image size is greater than 20MB, please select image size less than it.";

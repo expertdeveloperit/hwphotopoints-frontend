@@ -39,7 +39,7 @@
           <div class="row photopoints-info" *ngFor="let postData of seriesData">
             <ul class="saplingview" [style.width] ="saplingWidth">
               <li  *ngFor="let year of years">
-                <div  *ngFor="let imageData of postData.data">  
+                <div class="img-cover"  *ngFor="let imageData of postData.data">  
                   <a *ngIf = "year.year==imageData.year" [routerLink]="['/imagedetails',imageData.id]">
                     <img src="{{imageData.file_thumb_location_aws}}" />
                   </a>

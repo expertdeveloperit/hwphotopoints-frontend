@@ -26,8 +26,11 @@ img.loader {
 }
 img{
     max-height: 120px;
+    margin: 0 auto;
 }
-
+.img-cover{
+    text-align: center;
+}
 .loading-img {
     text-align: center;
     padding: 40px 0;

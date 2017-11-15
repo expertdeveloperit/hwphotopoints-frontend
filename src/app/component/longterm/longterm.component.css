@@ -13,14 +13,52 @@ h3 {
 ul.saplingview li {
     display: inline-block;
     width: 200px;
+    padding: 0 10px;
+}
+.photopoints-info {
+    margin-bottom: 10px;
 }
 img.loader {
     width: auto;
     max-width: 80px;
     margin: 0 auto;
+    max-height: 140px;
 }
-
+img{
+    max-height: 120px;
+    margin: 0 auto;
+}
+.img-cover{
+    text-align: center;
+}
 .loading-img {
     text-align: center;
     padding: 40px 0;
+}
+.sl-view-name {
+    min-height: 130px;
+}
+
+
+#sarea {
+    max-width: 100%;
+    overflow-y: scroll;
+    
+}
+ul#year-list{
+    position: absolute;
+}
+.years-list{
+    overflow: hidden;
+    position: relative;
+    height: 40px;
+    margin-left: 30px;
+}
+.view-list{
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+.view-area{
+    position: absolute;
 }

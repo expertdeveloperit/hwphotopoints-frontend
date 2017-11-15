@@ -57,7 +57,6 @@ h2 {
     border-top: 1px solid #eaeaea;
 }
 .year-winter-list {
-    overflow-x: scroll;
     padding-left: 0;
 }
 .second-view{
@@ -71,7 +70,13 @@ h2 {
 
     margin: 0;
 }
-
+.year-con{
+    width: 100%;
+    overflow: hidden;
+    float: left;
+    height: 37px;
+    position: relative;
+}
 .year-winter-list ul
  li {
     display: inline-block;
@@ -247,7 +252,42 @@ body .year-winter-list .season-area .season-list li {
     height: auto;
     min-height: auto;
 }
-
+#sarea{
+    max-width: 100%;
+    overflow-y: scroll;
+}
+.year-img-con{
+    position: relative;
+}
+#year-list{
+    position: absolute;
+}
+.season-view {
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid #eaeaea;
+}
+.season-view-list{
+    position: absolute;
+}
+.year-pad {
+    margin-right: 0;
+    padding-right: 0;
+}
+.year-pad .photo-pointssecond,.year-pad .photo-pointssecond{
+    margin-bottom: 0!important;
+}
+.second-view .year-con {
+    height: 39px;
+    border-bottom: 1px solid #eaeaea;
+}   
+.second-view  .season-view {
+    border:0;
+}
+.third-view .year-img-con .year-con{
+    height: 40px;
+border-bottom: 1px solid #eaeaea;
+}
 @media only screen and (max-width: 767px) {
 
 .row.photo-points-winter h4{

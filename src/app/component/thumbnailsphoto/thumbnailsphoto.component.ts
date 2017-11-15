@@ -2,6 +2,8 @@ import { Component, OnInit, Input} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ThumbnailsphotoService} from './thumbnailsphoto.service';
 import { Observable } from 'rxjs';
+declare var $: any;
+
 @Component({
   selector: 'app-thumbnailsphoto',
   templateUrl: './thumbnailsphoto.component.html',
@@ -34,7 +36,8 @@ export class ThumbnailsphotoComponent implements OnInit {
   secondViewWidth:string;
   firstViewWidth:string;
   seasonOrder : any =[];
-
+  containerWidth:string;
+  containerHeight:string;
   constructor(private route:ActivatedRoute, private sphotoService : ThumbnailsphotoService) { 
   	this.selectfirstoption =true;
   	this.selectsecondoption =false;
@@ -125,5 +128,21 @@ export class ThumbnailsphotoComponent implements OnInit {
       
      });
   }
+
+  ngAfterViewChecked() {
+      var wid = $(window).height() - 100;
+      var hei = $(window).width();
+       this.containerHeight = wid.toString()+"px";
+       this.containerWidth = hei.toString()+"px";
+       
+       $('#sarea').scroll(function(){
+     
+        var left = $(this).scrollLeft();
+        var top = $(this).scrollTop();
+        $(".season-view-list").css("top","-"+top+"px");
+        $("#year-list,.year-season").css("left","-"+left+"px");
+     });
+  }
+
 
 }

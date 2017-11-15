@@ -26,126 +26,133 @@
 <!-- === selectfirstoption Show when click on first option ===-->
 <div class="" *ngIf="selectfirstoption">
   <div class="row photo-points-space">
-    <div class=" col-sm-3" >
+    <div class=" col-sm-3 year-pad" >
         <h4>Year</h4> 
         <!-- === view id and season show leftside and year show:on top -->
-        <div class="row winter">
-          <div class=" col-sm-6">
-            <button class="btn btn-success">WINTER</button>
-          </div>
-            <div class="col-xs-6">
-            <h4>view</h4> 
-          </div>
-          <div class="col-sm-6 col-sm-offset-6 photo-points-id" *ngFor="let winteryear of winterData">
-            {{winteryear.view}}
-          </div>              
-        </div>
+        <div class="season-view" [style.height]="containerHeight">
+          <div class="season-view-list">
+            <div class="row winter">
+              <div class=" col-sm-6">
+                <button class="btn btn-success">WINTER</button>
+              </div>
+                <div class="col-xs-6">
+                <h4>view</h4> 
+              </div>
+              <div class="col-sm-6 col-sm-offset-6 photo-points-id" *ngFor="let winteryear of winterData">
+                {{winteryear.view}}
+              </div>              
+            </div>
 
-         <div class="row winter">
-          <div class="col-sm-6">
-            <button class="btn btn-success">SPRING</button>
-          </div>
-          <div class="col-xs-6">
-            <h4>view</h4> 
-          </div>
-           <div class="col-sm-6 col-sm-offset-6 photo-points-id" *ngFor="let spring of springData">
-            {{spring.view}}
-          </div> 
-              
-        </div>
+             <div class="row winter">
+              <div class="col-sm-6">
+                <button class="btn btn-success">SPRING</button>
+              </div>
+              <div class="col-xs-6">
+                <h4>view</h4> 
+              </div>
+               <div class="col-sm-6 col-sm-offset-6 photo-points-id" *ngFor="let spring of springData">
+                {{spring.view}}
+              </div> 
+                  
+            </div>
 
-        <div class="row winter">
-          <div class=" col-sm-6">
-            <button class="btn btn-success">SUMMER</button>
-          </div>
-           <div class="col-xs-6">
-            <h4>view</h4> 
-          </div>
-          <div class="col-sm-6 col-sm-offset-6 photo-points-id" *ngFor="let summer of summerData">
-            {{summer.view}}
-          </div>    
-        </div>
-       
-        <div class="row winter">
-          <div class="col-sm-6">
-            <button class="btn btn-success">AUTUMN</button>
-          </div>
-            <div class="col-xs-6">
-            <h4>view</h4> 
-          </div>
-          <div class="col-sm-6 col-sm-offset-6 photo-points-id" *ngFor="let autumn of autumnData">
-            {{autumn.view}}
-          </div>      
-        </div>
+            <div class="row winter">
+              <div class=" col-sm-6">
+                <button class="btn btn-success">SUMMER</button>
+              </div>
+               <div class="col-xs-6">
+                <h4>view</h4> 
+              </div>
+              <div class="col-sm-6 col-sm-offset-6 photo-points-id" *ngFor="let summer of summerData">
+                {{summer.view}}
+              </div>    
+            </div>
+           
+            <div class="row winter">
+              <div class="col-sm-6">
+                <button class="btn btn-success">AUTUMN</button>
+              </div>
+                <div class="col-xs-6">
+                <h4>view</h4> 
+              </div>
+              <div class="col-sm-6 col-sm-offset-6 photo-points-id" *ngFor="let autumn of autumnData">
+                {{autumn.view}}
+              </div>      
+            </div>
+          </div>  
+        </div>  
     </div>
-    <div class=" col-sm-9 year-winter-list" >
-      <ul class="yearlist" [style.width]="firstViewWidth">
-         <li  *ngFor="let year of years">
-        <h4>{{year.year}}</h4>
-        </li>
-      </ul>
+    <div class=" col-sm-9 year-winter-list year-img-con" >
+      <div class="year-con">
+        <ul id="year-list" class="yearlist" [style.width]="firstViewWidth">
+           <li  *ngFor="let year of years">
+          <h4>{{year.year}}</h4>
+          </li>
+        </ul>
+      </div>  
       <!-- ===selectfirstoption image section === -->
-      <div class="space-photo-points" [style.width]="firstViewWidth"></div>
-      <div class="row winter-img">
-        <div class="" *ngFor="let winter of winterData" >
-          <ul class="winterview-list" [style.width]="firstViewWidth">
-            <li *ngFor="let mainyear of years" >
-              <div class="" *ngFor="let imagesData of winter.data">
-                <a class="img-cover" *ngIf = "mainyear.year==imagesData.year" routerLink="/imagedetails/{{imagesData.id}}" >
-                  <img  src="{{imagesData.file_thumb_location_aws}}" /> 
-                </a>
-              </div>
-            </li>
-          </ul>
+      <div id="sarea" [style.width]="containerWidth" [style.height]="containerHeight">
+        <div class="space-photo-points" [style.width]="firstViewWidth"></div>
+        <div class="row winter-img">
+          <div class="" *ngFor="let winter of winterData" >
+            <ul class="winterview-list" [style.width]="firstViewWidth">
+              <li *ngFor="let mainyear of years" >
+                <div class="" *ngFor="let imagesData of winter.data">
+                  <a class="img-cover" *ngIf = "mainyear.year==imagesData.year" routerLink="/imagedetails/{{imagesData.id}}" >
+                    <img  src="{{imagesData.file_thumb_location_aws}}" /> 
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
 
-      <div class="space-photo-points" [style.width]="firstViewWidth"></div>
-      <div class="row spring-img">
-        <div class="" *ngFor="let spring of springData" >
-          <ul class="winterview-list" [style.width]="firstViewWidth">
-            <li *ngFor="let mainyear of years" >
-              <div *ngFor="let sprimagesData of spring.data">
-                <a class="img-cover" *ngIf = "mainyear.year==sprimagesData.year" routerLink="/imagedetails/{{sprimagesData.id}}" >
-                  <img  src="{{sprimagesData.file_thumb_location_aws}}" /> 
-                </a>
-              </div>
-            </li>
-          </ul>
+        <div class="space-photo-points" [style.width]="firstViewWidth"></div>
+        <div class="row spring-img">
+          <div class="" *ngFor="let spring of springData" >
+            <ul class="winterview-list" [style.width]="firstViewWidth">
+              <li *ngFor="let mainyear of years" >
+                <div *ngFor="let sprimagesData of spring.data">
+                  <a class="img-cover" *ngIf = "mainyear.year==sprimagesData.year" routerLink="/imagedetails/{{sprimagesData.id}}" >
+                    <img  src="{{sprimagesData.file_thumb_location_aws}}" /> 
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div> 
+        
+        <div class="space-photo-points" [style.width]="firstViewWidth"></div>
+        <div class="row summer-img">
+          <div class="" *ngFor="let summer of summerData" >
+            <ul class="winterview-list" [style.width]="firstViewWidth">
+              <li *ngFor="let mainyear of years" >
+                <div *ngFor="let simagesData of summer.data">
+                  <a class="img-cover" *ngIf = "mainyear.year==simagesData.year" routerLink="/imagedetails/{{simagesData.id}}" >
+                    <img  src="{{simagesData.file_thumb_location_aws}}" /> 
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div> 
-      
-      <div class="space-photo-points" [style.width]="firstViewWidth"></div>
-      <div class="row summer-img">
-        <div class="" *ngFor="let summer of summerData" >
-          <ul class="winterview-list" [style.width]="firstViewWidth">
-            <li *ngFor="let mainyear of years" >
-              <div *ngFor="let simagesData of summer.data">
-                <a class="img-cover" *ngIf = "mainyear.year==simagesData.year" routerLink="/imagedetails/{{simagesData.id}}" >
-                  <img  src="{{simagesData.file_thumb_location_aws}}" /> 
-                </a>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-      
+        
 
-       <div class="space-photo-points" [style.width]="firstViewWidth"></div>
-      <div class="row autumn-img">
-        <div class="" *ngFor="let autumn of autumnData" >
-          <ul class="winterview-list" [style.width]="firstViewWidth">
-            <li *ngFor="let mainyear of years" >
-              <div *ngFor="let aimagesData of autumn.data" id="{{aimagesData.id}}">
-              <a class="img-cover" *ngIf = "mainyear.year==aimagesData.year" routerLink="/imagedetails/{{aimagesData.id}}" >
-                <img  src="{{aimagesData.file_thumb_location_aws}}" /> 
-              </a>
-              </div>
-            </li>
-          </ul>
+         <div class="space-photo-points" [style.width]="firstViewWidth"></div>
+        <div class="row autumn-img">
+          <div class="" *ngFor="let autumn of autumnData" >
+            <ul class="winterview-list" [style.width]="firstViewWidth">
+              <li *ngFor="let mainyear of years" >
+                <div *ngFor="let aimagesData of autumn.data" id="{{aimagesData.id}}">
+                <a class="img-cover" *ngIf = "mainyear.year==aimagesData.year" routerLink="/imagedetails/{{aimagesData.id}}" >
+                  <img  src="{{aimagesData.file_thumb_location_aws}}" /> 
+                </a>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-    
     </div>
   </div>
 </div>
@@ -154,7 +161,7 @@
 
 <div class="second-view" *ngIf="selectsecondoption">
   <div class="row">
-    <div class=" col-sm-3" >   
+    <div class=" col-sm-3 year-pad" >   
       <div class="row photo-pointssecond">
         <div class="col-sm-6">
           <h4>VIEW</h4>
@@ -163,99 +170,125 @@
           <h4>SEASON</h4> 
         </div>  
       </div>
-<!-- === selectsecondoption view  leftside:id and season and top show:year ===-->
-      <div class="row second-view-space  text-center" *ngFor="let viewData of secondViewsData" >   
-      <div class=" col-sm-6 ">
-        <p>{{viewData.view}}</p>
-      </div>     
-      <div class="col-sm-6 rightsectionview">
-        <div class="row second-view-space text-center season-space" *ngFor="let seasonData of viewData.data">
-          <div class="">
-            {{seasonData.season}}
+<!-- === selectsecondoption view  leftside:id and season and top show:year ===--> 
+      <div class="season-view" [style.height]="containerHeight">
+        <div class="season-view-list">
+          <div class="row second-view-space  text-center" *ngFor="let viewData of secondViewsData" >   
+          <div class=" col-sm-6 ">
+            <p>{{viewData.view}}</p>
           </div>     
+          <div class="col-sm-6 rightsectionview">
+            <div class="row second-view-space text-center season-space" *ngFor="let seasonData of viewData.data">
+              <div class="">
+                {{seasonData.season}}
+              </div>     
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="col-sm-9 year-winter-list " >
-      <ul class="yearlist second-img-view" [style.width]="secondViewWidth">
-        <li  *ngFor="let year of secondviewyears">
-        <h4>{{year.year}}</h4>
-        </li>
-      </ul>
- <!-- selectsecondoption Image section -->
-    <div class="Bsectionview">
-          <div class="row winter-img spring-view" *ngFor="let imagesData of secondViewImagesData">
-            <div class="col-xs-12" >
-               <ul class="winterview-list" [style.width]="secondViewWidth">
-                 <li *ngFor="let secondviewyear of secondviewyears">
-                  <div *ngFor="let mediainfo of imagesData.info">
-                    <a class="img-cover" *ngIf = "secondviewyear.year==mediainfo.year" routerLink="/imagedetails/{{mediainfo.id}}" >
-                      <img src="{{mediainfo.file_thumb_location_aws}}" /> 
-                    </a>
-                  </div>
-                  </li>
-                </ul>
-            </div>
-          </div> 
+  <div class="col-sm-9 year-winter-list year-img-con" >
+     <div class="year-con">
+        <ul id="year-list" class="yearlist second-img-view" [style.width]="secondViewWidth">
+          <li  *ngFor="let year of secondviewyears">
+          <h4>{{year.year}}</h4>
+          </li>
+        </ul>
       </div>
+ <!-- selectsecondoption Image section -->
+      <div id="sarea" [style.width]="containerWidth" [style.height]="containerHeight">  
+          <div class="Bsectionview">
+              <div class="row winter-img spring-view" *ngFor="let imagesData of secondViewImagesData">
+                <div class="col-xs-12" >
+                   <ul class="winterview-list" [style.width]="secondViewWidth">
+                     <li *ngFor="let secondviewyear of secondviewyears">
+                      <div *ngFor="let mediainfo of imagesData.info">
+                        <a class="img-cover" *ngIf = "secondviewyear.year==mediainfo.year" routerLink="/imagedetails/{{mediainfo.id}}" >
+                          <img src="{{mediainfo.file_thumb_location_aws}}" /> 
+                        </a>
+                      </div>
+                      </li>
+                    </ul>
+                </div>
+              </div> 
+          </div>
+        </div>  
     </div>
   </div>
 </div>
 
 <!-- === selectthirdoption Show when click on third option ===-->
-  <div class="" *ngIf="selectthirdoption">
+  <div class="third-view" *ngIf="selectthirdoption">
      <div class="row photo-points-border">
-        <div class=" col-sm-2" >   
+        <div class=" col-sm-2 year-pad" >   
         <div class="row photo-pointssecond">
           <div class="col-sm-12">
             <h4>VIEW</h4>
           </div>  
         </div>
-        <div *ngFor="let viewData of thirdViewsData" class="row second-view-space season-space thirdview text-center">   
-          <div class=" col-sm-12 ">
-            <p>{{viewData.name}}</p>
-          </div>    
-        </div>  
+        <div class="season-view" [style.height]="containerHeight">
+          <div class="season-view-list">
+            <div *ngFor="let viewData of thirdViewsData" class="row second-view-space season-space thirdview text-center">   
+              <div class=" col-sm-12 ">
+                <p>{{viewData.name}}</p>
+              </div>    
+            </div> 
+          </div>
+        </div>    
+
       </div> 
     <!-- ===view section by id=== -->
-      <div class="col-sm-10 year-winter-list " >
-        <ul class="yearlist-c second-img-view thirdoption-years" [style.width]="thirdViewWidth">
-          <li *ngFor="let year of thirdviewyears">
-            <h4>{{year.year}}</h4>
-          </li>     
-        </ul>
+      <div class="col-sm-10 year-winter-list year-img-con">
+        <div class="year-con">
+          <ul id="year-list" class="yearlist-c second-img-view thirdoption-years" [style.width]="thirdViewWidth">
+            <li *ngFor="let year of thirdviewyears">
+              <h4>{{year.year}}</h4>
+            </li>     
+          </ul>
+        </div>  
     <!-- selectthirdoption Image section -->
       <div class="csectionview">
-        <div class="row option-c-view" [style.width]="thirdViewWidth">
-          <div class="col-xs-12" >
-          <div class="season-area" >
+        <div class="year-con">
+          <div id="year-list" class="row option-c-view year-season " [style.width]="thirdViewWidth">
+            <div class="season-area" >
                 <ul class="season-list" *ngFor="let year of thirdviewyears">
                   <li  *ngFor="let season of seasonOrder">
                       {{season}}
                   </li>
                 </ul>      
             </div>
-
-           <div class="thirdoption-view" *ngFor="let viewData of thirdViewsData">
-              <ul class="winterview-list" >
-                <li class="season-group third-views" *ngFor="let years of thirdviewyears">
-                  <ul class=" list-view-c" *ngFor="let imagesData of viewData.data">
-                    <div *ngIf="imagesData.year == years.year">
-                      <li  *ngFor="let season of totalSeason"> 
-                        <div  *ngFor="let seasonData of imagesData.data">
-                          <a class="img-cover"  *ngIf="season==seasonData.season" routerLink="/imagedetails/{{seasonData.id}}">
-                            <img src="{{seasonData.file_thumb_location_aws}}" />
-                          </a>
-                        </div>
-                      </li>
-                    </div>
-                  </ul>
-                </li>    
-              </ul>
-            </div>                
-          </div>
+          </div> 
         </div> 
+
+           <div id="sarea" [style.width]="containerWidth" [style.height]="containerHeight">
+            <div class="row option-c-view" [style.width]="thirdViewWidth">
+              <div class="col-xs-12" >
+            
+
+               <div class="thirdoption-view" *ngFor="let viewData of thirdViewsData">
+                  <ul class="winterview-list" >
+                    <li class="season-group third-views" *ngFor="let years of thirdviewyears">
+                      <ul class=" list-view-c" *ngFor="let imagesData of viewData.data">
+                        <div *ngIf="imagesData.year == years.year">
+                          <li  *ngFor="let season of totalSeason"> 
+                            <div  *ngFor="let seasonData of imagesData.data">
+                              <a class="img-cover"  *ngIf="season==seasonData.season" routerLink="/imagedetails/{{seasonData.id}}">
+                                <img src="{{seasonData.file_thumb_location_aws}}" />
+                              </a>
+                            </div>
+                          </li>
+                        </div>
+                      </ul>
+                    </li>    
+                  </ul>
+                </div>                
+              </div>
+            </div> 
+        </div>
+
+
+
       </div>
     </div>
   </div>
