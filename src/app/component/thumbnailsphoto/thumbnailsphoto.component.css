@@ -247,10 +247,12 @@ body .year-winter-list .season-area .season-list li {
 .year-winter-list .winterview-list .img-cover{
     min-height: 140px!important;
     max-height: 140px!important;
+    text-align: center;
 }
 .year-winter-list .winterview-list .img-cover img{
     height: auto;
     min-height: auto;
+    margin: 0 auto;
 }
 #sarea{
     max-width: 100%;
