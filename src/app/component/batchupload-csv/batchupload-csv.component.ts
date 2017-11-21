@@ -39,6 +39,10 @@ export class BatchuploadCsvComponent implements OnInit {
   csvUploded : boolean;
   theHtmlString :string;
   backendUrl : string;
+  progressing;
+  progressingWidth;
+  progressingWidthCount;
+  progressStatus;
 // ---constructor--
   constructor(private Batchupload:BatchuploadCsvService ) {
   	this.imageUploded = true; 
@@ -52,7 +56,8 @@ export class BatchuploadCsvComponent implements OnInit {
     this.CsvUploaded = false;
     this.ImageUploaded = false;
     this.thisActive = true;
-    
+    this.progressingWidth = "2%";
+    this.progressingWidthCount = 2;
 
   }
   chooseFileEnable(){
@@ -82,12 +87,12 @@ export class BatchuploadCsvComponent implements OnInit {
 
   uploadFile(event) 
   {   
+    
       this.formData.delete("fileIndex[]");
       this.imagesList = [];
       this.imagesName = [];
 
     let element = event.target; 
-
     	this.imagesList = [];
       	let fileList = event.target.files; 
       	if(fileList.length > 20){
@@ -99,6 +104,7 @@ export class BatchuploadCsvComponent implements OnInit {
 	        let reader = new FileReader(); 
 	        reader.onload = (e: any) => {    
 	          this.imagesList.push( e.target.result);
+            this.imagesName.push(element.files[i].name);
 	        }
 
 	        let file = fileList[i];
@@ -107,9 +113,9 @@ export class BatchuploadCsvComponent implements OnInit {
 	          this.formData.append('fileIndex[]', file);  
 	          reader.readAsDataURL(event.target.files[i]); //---=== this function used for show upload image---
 	    	    
-	    	  	this.imagesName.push(element.files[i].name);
+	    	  	
 	        }else{
-	          this.message = "Image size is greater than 20MB, please select image size less than it.";
+	          this.error = element.files[i].name+" image size is greater than 20MB, please select a smaller image size.";
 	        }
 
 	    }
@@ -124,12 +130,30 @@ export class BatchuploadCsvComponent implements OnInit {
 	}
 
 	// ---== Submit all images---===
+
+  progressbar(){
+    this.progressingWidthCount = this.progressingWidthCount+Math.floor(Math.random() * 3) + 1 ;
+    if(this.progressingWidthCount < 95){
+      this.progressingWidth = this.progressingWidthCount+"%";
+    }else{
+      clearInterval(this.progressing);
+    }
+
+  }
+
   onSubmit(){
     this.message = "";
     this.error = "";
     this.disabledButton = true;
     this.loadingimg=true;
+    this.progressStatus = true;
+    this.progressingWidthCount = 2;
+    this.progressingWidth = "2%";
+    this.progressing =  setInterval(() => { this.progressbar(); }, 1000 );
     this.Batchupload.getInfo(this.formData,'uploadbatchdata').subscribe(res => {
+      clearInterval(this.progressing);
+      this.progressingWidth = "100%";
+      this.progressStatus = false;
       if(res.status == 'true'){
         this.loadingimg=false;
         //var down = res.msg+"Please download this csv file and update it with series information "+"<a class='dwn' style='font-weight:bold;color:#246f24' href='"+res.url+"' download >Click here to download</a>";
@@ -170,7 +194,14 @@ export class BatchuploadCsvComponent implements OnInit {
     this.error = "";
     this.disabledButton = true;
     this.loadingimg=true;
+    this.progressStatus = true;
+    this.progressingWidthCount = 2;
+    this.progressingWidth = "2%";
+    this.progressing =  setInterval(() => { this.progressbar(); }, 1000 );
     this.Batchupload.getInfo(this.csvformData,'uploadcsvbatchdata').subscribe(res => {
+      clearInterval(this.progressing);
+      this.progressingWidth = "100%";
+      this.progressStatus = false;
       if(res.status == 'true'){
         this.loadingimg=false;
         this.theHtmlString  = res.msg;

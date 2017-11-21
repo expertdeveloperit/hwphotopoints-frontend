@@ -74,6 +74,7 @@ export class ImageuploadComponent implements OnInit {
   
   uploadFile(event) 
   {   
+    this.name = "";
     this.uploadValidation = false;
     this.message = "";
     let fileList = event.target.files; 
@@ -83,7 +84,7 @@ export class ImageuploadComponent implements OnInit {
   	this.logo = event.target.files[0]; 
     let bytes = event.target.files[0].size;
     if(bytes > 20000000){
-      this.message = "Image size is greater than 20MB, please select image size less than it.";
+      this.message = "Image size is greater than 20MB, please select a smaller image size.";
       this.uploadValidation = true;
       return false;
     }
@@ -98,7 +99,7 @@ export class ImageuploadComponent implements OnInit {
     let element = event.target; 
   	this.name = element.files[0].name;
   	
-    console.log(this.formData);
+    
 }
 //---=== Right section functionality 
 
@@ -120,7 +121,7 @@ export class ImageuploadComponent implements OnInit {
         this.allYears = [];
         let minYear = parseInt(res.years.start_year);
         
-        let maxYear = minYear + 30;
+        let maxYear = minYear + 99;
         this.selectyearoption = true;
         
         for (minYear; minYear < maxYear; minYear++) {
@@ -128,7 +129,7 @@ export class ImageuploadComponent implements OnInit {
         }
       }else {
         let minYear = 2017;        
-        let maxYear = 2046;
+        let maxYear = 2099;
         this.allYears = [];
         for (minYear; minYear < maxYear; minYear++) {
           this.allYears.push(minYear);

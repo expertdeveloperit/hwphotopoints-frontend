@@ -10,6 +10,12 @@
 			<li>After image upload, you will see a link to a CSV file.</li>
 			<li>Click on the link to download and save the CSV file to your PC.</li>
 			<li>Update the downloaded CSV with image information.</li>
+			<li>For series enter P, S or L</li>
+			<li>For year enter the full year e.g. 2018</li>
+			<li>For location, enter full name e.g. P001A</li>
+			<li>For season enter WIN, SPR, SUM or AUT</li>
+			<li>For image type enter SIN or PAN for single or panoramic</li>
+			<li>For view enter full description e.g. S120 or PAN001</li>
 			<li>Click on "Upload CSV" button.</li>
 			<li>Click on "Choose CSV File", select the CSV file with image data and then click upload."</li>
 
@@ -49,8 +55,14 @@
 		</div>
 
 		<!-- ==loaging img== -->
+		<div class="progress" *ngIf="progressStatus">
+			<div id="myProgress">
+			  <div id="myBar" [style.width]="progressingWidth">{{progressingWidth}}</div>
+			</div>
+		</div>
+
 		<div class="form-group form-controls text-center controls-area">
-			<img class="loader" src="../../../assets/images/loader.gif" *ngIf="loadingimg">
+			<!-- <img class="loader" src="../../../assets/images/loader.gif" *ngIf="loadingimg"> -->
 			<!-- === Button for save and cancle the process === -->
 			<button [disabled]="disabledButton"  (click)="onSubmit(imageinfo.value)" type="submit" class="btn btn-success pull-right" *ngIf="formSubmit">Upload</button>
 			<button type="" (click)="flushSelectedData()" class="btn btn-success pull-right cancel"  *ngIf="imageUplodedStatus">Cancel</button>
@@ -70,17 +82,23 @@
 						<div class="img-info">
 							<p>{{CsvName}}</p>
 						</div>
+					</div>
+					<div class="progress" *ngIf="progressStatus">
+						<div id="myProgress">
+						  <div id="myBar" [style.width]="progressingWidth">{{progressingWidth}}</div>
+						</div>
 					</div>	
 			</div>
 			
 			<!-- ==loaging img== -->
 			<div class="form-group form-controls text-center controls-area">
-				<img class="loader" src="../../../assets/images/loader.gif" *ngIf="loadingimg">
+				<!-- <img class="loader" src="../../../assets/images/loader.gif" *ngIf="loadingimg"> -->
 				<!-- === Button for save and cancle the process === -->
 				<button [disabled]="disabledButton" type="submit" class="btn btn-success pull-right" *ngIf="formSubmit" (click)="onCsvSubmit(csvinfo.value)">Upload</button>
 				<button type="" (click)="flushSelectedData()" class="btn btn-success pull-right cancel"  *ngIf="imageUplodedStatus">Cancel</button>
 			</div>
 		</form>
 	</div>
+
 	</div>
 </div>

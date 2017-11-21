@@ -154,3 +154,20 @@ img.loader {
 .file-show{
     margin: 0;
 }
+#myProgress {
+  width: 100%;
+  background-color: #ddd;
+}
+
+#myBar {
+    width: 1%;
+    height: 30px;
+    background-color: #255625;
+    text-align: right;
+    color:#fff;
+    font-weight: bold;
+}
+.progress {
+    max-width: 700px;
+    margin: 0 auto;
+}

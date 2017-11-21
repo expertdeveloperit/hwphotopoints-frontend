@@ -93,8 +93,10 @@ export class UpdatethumbnailsphotoComponent implements OnInit {
       this.onyearChange(this.mediaInfo.year);
       this.onSeasonChange(this.mediaInfo.season);
       this.onLocationChange(this.mediaInfo.post_name);
-      this.onImageChange(this.mediaInfo.image_view);
-      this.onViewChange(this.mediaInfo.views);
+      if(this.mediaInfo.series =="P"){
+        this.onImageChange(this.mediaInfo.image_view);
+        this.onViewChange(this.mediaInfo.views);
+      }
       this.pageload = false;
     });
 
@@ -152,7 +154,7 @@ export class UpdatethumbnailsphotoComponent implements OnInit {
         this.allYears = [];
         let minYear = parseInt(res.years.start_year);
         
-        let maxYear = minYear + 30;
+        let maxYear = minYear + 99;
         this.selectyearoption = true;
         
         for (minYear; minYear < maxYear; minYear++) {
@@ -160,7 +162,7 @@ export class UpdatethumbnailsphotoComponent implements OnInit {
         }
       }else {
         let minYear = 2017;        
-        let maxYear = 2046;
+        let maxYear = 2099;
         this.allYears = [];
         for (minYear; minYear < maxYear; minYear++) {
           this.allYears.push(minYear);
@@ -189,6 +191,7 @@ export class UpdatethumbnailsphotoComponent implements OnInit {
       this.updatethumbnails.getInfo(this.formData,'posts').subscribe(res => {
         if(res.posts != null){
             this.allPosts = res.posts;
+             console.log(this.allPosts,"allPosts");
             this.selectlocationoption=true;
         }
       });
@@ -211,6 +214,7 @@ export class UpdatethumbnailsphotoComponent implements OnInit {
     this.updatethumbnails.getInfo(this.formData,'posts').subscribe(res => {
     if(res.posts != null){
         this.allPosts = res.posts;
+
         this.selectlocationoption=true;
     }
     this.loadingimg=false;
@@ -220,6 +224,7 @@ export class UpdatethumbnailsphotoComponent implements OnInit {
 //---on location change show image type
 
 onLocationChange(location){
+  console.log(location,"location");
     this.selectimagetype = false; 
     this.selectview = false; 
     if(location == ""){
@@ -254,6 +259,7 @@ onLocationChange(location){
     if(imageType == ""){
       return false;
     }
+    console.log("imageChange");
     this.loadingimg=true;
     this.formData.delete('image_view');
      this.formData.append('image_view',imageType);

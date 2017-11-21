@@ -57,7 +57,7 @@
 			<div class="form-group">      
 				<select name="Location" class="select select-year" #location *ngIf="selectlocationoption" (change)="onLocationChange(location.value)" [(ngModel)]="mediaInfo.post_name">
 				  <option value="">----Select Location----</option>
-				  <option *ngFor="let post of allPosts; let i = index" [ngValue]="post.title" [selected]="post.title == mediaInfo.post_name">{{post.title}}</option>
+				  <option *ngFor="let post of allPosts" value="{{post.title}}" [selected]="post.title == mediaInfo.post_name">{{post.title}}</option>
 				  
 				</select>
 			</div>
