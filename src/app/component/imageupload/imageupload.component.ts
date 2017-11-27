@@ -40,6 +40,9 @@ export class ImageuploadComponent implements OnInit {
   userPermissions : boolean;
   uploadValidation : boolean;
   file : string;
+  SeriesName : string;
+ 
+  allValuesObject = {};
   constructor(private imageupload : ImageuploadService,public CMService : SharedDataService) {
     this.userPermissions = true;
     this.imageUploded = false;    
@@ -53,7 +56,7 @@ export class ImageuploadComponent implements OnInit {
     this.formSubmit= false;
     this.loadingimg=false;
     this.uploadValidation = false;
-    this.formData = new FormData();    
+    //this.formData = new FormData();    
 
     if(CMService.currentUser.role == "visitor"){
       this.userPermissions = false;
@@ -113,10 +116,11 @@ export class ImageuploadComponent implements OnInit {
       return false;
     }
     this.loadingimg=true;
-    this.formData.delete('series');
-    this.formData.append('series',seriesType);
-    
-    this.imageupload.getInfo(this.formData,'year').subscribe(res => {
+      this.SeriesName = seriesType;
+
+    this.allValuesObject['series'] = seriesType;
+
+    this.imageupload.getInfo(this.allValuesObject,'year').subscribe(res => {
       if(res.years != null){
         this.allYears = [];
         let minYear = parseInt(res.years.start_year);
@@ -143,6 +147,7 @@ export class ImageuploadComponent implements OnInit {
 
 //---on year change
   onyearChange(year){
+
      this.selectimagetype = false; 
     this.selectview = false; 
     this.selectlocationoption=false;
@@ -151,11 +156,11 @@ export class ImageuploadComponent implements OnInit {
       return false;
     }
 
-    this.formData.delete('year');
-    this.formData.append('year',year);
-    let SelectedSeries = this.formData.get('series');
+   this.allValuesObject['year'] = year ;
+    //let SelectedSeries = this.formData.get('series');
+    let SelectedSeries = this.SeriesName;
     if(SelectedSeries != "P"){
-      this.imageupload.getInfo(this.formData,'posts').subscribe(res => {
+      this.imageupload.getInfo(this.allValuesObject,'posts').subscribe(res => {
         if(res.posts != null){
             this.allPosts = res.posts;
             this.selectlocationoption=true;
@@ -175,9 +180,8 @@ export class ImageuploadComponent implements OnInit {
       return false;
     }
     this.loadingimg=true;
-    this.formData.delete('season');
-    this.formData.append('season',season);
-    this.imageupload.getInfo(this.formData,'posts').subscribe(res => {
+    this.allValuesObject['season'] = season;
+    this.imageupload.getInfo(this.allValuesObject,'posts').subscribe(res => {
     if(res.posts != null){
         this.allPosts = res.posts;
         this.selectlocationoption=true;
@@ -195,15 +199,14 @@ onLocationChange(location){
       return false;
     }
     this.loadingimg=true;
-    this.formData.delete('location');
-    this.formData.append('location',location);
-
-    let SelectedSeries = this.formData.get('series');
+     this.allValuesObject['location'] = location;
+    //let SelectedSeries = this.formData.get('series');
+    let SelectedSeries = this.SeriesName;
     if(SelectedSeries != "P"){
       this.loadingimg=false;
       this.formSubmit = true;
     }else{
-      this.imageupload.getInfo(this.formData,'imagetype').subscribe(res => {
+      this.imageupload.getInfo(this.allValuesObject,'imagetype').subscribe(res => {
         if(res.types != null){
           
           this.allImageType = res.types;
@@ -223,9 +226,8 @@ onLocationChange(location){
       return false;
     }
     this.loadingimg=true;
-    this.formData.delete('image_view');
-     this.formData.append('image_view',imageType);
-      this.imageupload.getInfo(this.formData,'values').subscribe(res => {
+    this.allValuesObject['image_view']= imageType ;
+      this.imageupload.getInfo(this.allValuesObject,'values').subscribe(res => {
       if(res.values != null){
 
         this.allvalues = res.values;
@@ -243,21 +245,29 @@ onLocationChange(location){
 
 //---on view
   onViewChange(view){
+
     if(view == ""){
       return false;
     }
     this.formSubmit = true;
-    this.formData.delete('view');
-    this.formData.append('view',view);    
+ this.allValuesObject['view'] = view;
   }
 
 
   onSubmit(){
+    this.formData = new FormData();
     this.formData.append('image', this.file);
+    this.formData.append('series',this.allValuesObject['series']);
+    this.formData.append('year',this.allValuesObject['year']);
+    this.formData.append('season',this.allValuesObject['season']);
+    this.formData.append('location',this.allValuesObject['location']);
+    this.formData.append('image_view',this.allValuesObject['image_view']);
+    this.formData.append('view',this.allValuesObject['view']);  
     this.disabledButton = true;
     this.loadingimg=true;
     this.imageupload.getInfo(this.formData,'uploaddata').subscribe(res => {
       if(res.response == 'succes'){
+        this.fileUrl = "";
         this.fileUrl = res.thumbImageUrl;
         this.imageName = res.image_name;
         this.imageId = res.imageId; 

@@ -24,7 +24,7 @@
 				<p><i class="fa fa-cloud-upload" aria-hidden="true"></i></p>
 				<a (click)="chooseFileEnable()"  class="btn btn-success">Choose File</a>
 					<div class="img-info">
-						<img [src]="logo">
+						<img *ngIf="logo" [src]="logo">
 						<p>{{name}}</p>
 					</div>
 				</div>

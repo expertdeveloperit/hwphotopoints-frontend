@@ -58,6 +58,10 @@ export class ThumbnailsphotoComponent implements OnInit {
     let URL = 'pseriesdetail/firstview';
     this.formData.append('postname', this.sphotoTitle);
     this.sphotoService.thumbnailsphotoinfo(this.formData,URL).subscribe(res => {
+      this.winterData = "";
+      this.summerData = "";
+      this.autumnData = "";
+      this.springData = "";
       this.winterData = res.winterData;
       this.summerData = res.summerData;
       this.autumnData = res.autumnData;

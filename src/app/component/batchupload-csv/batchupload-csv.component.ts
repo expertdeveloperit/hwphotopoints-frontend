@@ -88,7 +88,8 @@ export class BatchuploadCsvComponent implements OnInit {
   uploadFile(event) 
   {   
     
-      this.formData.delete("fileIndex[]");
+   //   this.formData.delete("fileIndex[]");
+     this.formData = new FormData();  
       this.imagesList = [];
       this.imagesName = [];
 
@@ -175,6 +176,8 @@ export class BatchuploadCsvComponent implements OnInit {
 
 	uploadCsvFile(csvevent) 
   	{   
+      this.csvformData = new FormData();
+    
       	let fileList = csvevent.target.files; 
       	let file = fileList[0];  
       	this.csvformData.append('csv', file);
@@ -219,9 +222,11 @@ export class BatchuploadCsvComponent implements OnInit {
 
   	flushSelectedData(){
       
-      this.formData.delete("fileIndex[]");
-      this.csvformData.delete('csv');
+      this.formData = new FormData();
+      this.csvformData = new FormData();
+    
       this.imagesList = [];
       this.CsvName = "";
+      
     }
 }
