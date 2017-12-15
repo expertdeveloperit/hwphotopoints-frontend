@@ -273,6 +273,9 @@ onLocationChange(location){
         this.imageId = res.imageId; 
         this.imageUploded = true;
         this.loadingimg=false;
+      }else{
+        this.message = res.msg;
+        this.loadingimg=false;
       }
     });
   }
