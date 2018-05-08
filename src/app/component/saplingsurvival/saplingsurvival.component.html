@@ -41,7 +41,8 @@
               <li  *ngFor="let year of years">
                 <div class="img-cover"  *ngFor="let imageData of postData.data">  
                   <a *ngIf = "year.year==imageData.year" [routerLink]="['/imagedetails',imageData.id]">
-                    <img src="{{imageData.file_thumb_location_aws}}" />
+                    <input type="hidden" value="{{imageData.year}}">
+                    <img  src="{{imageData.file_thumb_location_aws}}" />
                   </a>
               </div>
               </li>

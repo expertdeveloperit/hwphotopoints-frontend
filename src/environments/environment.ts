@@ -5,6 +5,9 @@
 
 export const environment = {
   production: false,
-  endpoint: 'http://backend.wphackstop.com/',
-  apiEndpoint: 'http://backend.wphackstop.com/api/'
+  // endpoint: 'http://backend.wphackstop.com/',
+  // apiEndpoint: 'http://backend.wphackstop.com/api/'
+  endpoint: 'http://backend.hwphotopoints.org.uk/',
+  apiEndpoint: 'http://backend.hwphotopoints.org.uk/api/'
+  
 };

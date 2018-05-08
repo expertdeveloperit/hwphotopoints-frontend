@@ -11,7 +11,7 @@ import {ForgetpasswordService} from './forgetpassword.service';
 })
 export class PasswordComponent {
 	
-	@Input() title:string="Forget Password";
+	@Input() title:string="PASSWORD RECOVERY";
   passwordinfo: FormGroup;
   error : string; 
   success : string;

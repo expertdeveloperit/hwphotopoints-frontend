@@ -9,6 +9,7 @@
 	</div>
 	<div *ngIf="!pageload">
 	<div class="row" *ngIf="!imageUploded" >
+	<p class="text-center msg" > {{message}}</p>
 		<form #imageinfo="ngForm"  (ngSubmit)="onSubmit(imageinfo.value)" >
 			<div class="col-sm-4 photo-id form-group text-center">
 			<!-- === select file (note:if we want single image select remove multiple in input) === -->
@@ -28,7 +29,7 @@
 				
 				<div class="form-group">      
 				<div *ngIf="imageUplodedStatus" class="selectseriesoption">
-					<select name="series" class="select" placeholder="Series" #seriesType (change)="onItemChange(seriesType.value)" [(ngModel)]="mediaInfo.series">
+					<select name="series" class="select" placeholder="Series" #seriesType (change)="onItemChange(seriesType.value,true)" [(ngModel)]="mediaInfo.series">
 					  <option value="">--Select Series--</option>
 					  <option  [selected]="mediaInfo.series == 'P'"  value="P">P</option>
 					  <option [selected]="mediaInfo.series == 'S'"  value="S">S</option>
@@ -40,13 +41,13 @@
 
 			<!-- === These select input show when above select choose any option === -->
 			<div class="form-group">      
-				<select name="year" class="select select-year" #year *ngIf="selectyearoption" (change)="onyearChange(year.value)" [(ngModel)]="mediaInfo.year" >
+				<select name="year" class="select select-year" #year *ngIf="selectyearoption" (change)="onyearChange(year.value,true)" [(ngModel)]="mediaInfo.year" >
 				  <option value="">--Select year--</option>
 				  <option *ngFor="let year of allYears; let i = index" [selected]="mediaInfo.year == year" value="{{year}}" >{{year}}</option>
 				</select>
 			</div>
 			<div class="form-group">      
-				<select name="Season" class="select select-year" #season *ngIf="selectspringoption" (change)="onSeasonChange(season.value)" [(ngModel)]="mediaInfo.season" >
+				<select name="Season" class="select select-year" #season *ngIf="selectspringoption" (change)="onSeasonChange(season.value,true)" [(ngModel)]="mediaInfo.season" >
 				  <option value="">----Select Season----</option>
 				  <option  [selected]="mediaInfo.season === 'WIN' "  value="WIN">Winter</option>
 				  <option  [selected]="mediaInfo.season === 'SPR'"  value="SPR">Spring</option>
@@ -55,7 +56,7 @@
 				</select>
 			</div>
 			<div class="form-group">      
-				<select name="Location" class="select select-year" #location *ngIf="selectlocationoption" (change)="onLocationChange(location.value)" [(ngModel)]="mediaInfo.post_name">
+				<select name="Location" class="select select-year" #location *ngIf="selectlocationoption" (change)="onLocationChange(location.value,true)" [(ngModel)]="mediaInfo.post_name">
 				  <option value="">----Select Location----</option>
 				  <option *ngFor="let post of allPosts" value="{{post.title}}" [selected]="post.title == mediaInfo.post_name">{{post.title}}</option>
 				  
@@ -63,7 +64,7 @@
 			</div>
 
 			<div class="form-group">      
-				<select name="Image" class="select select-year" #imageType *ngIf="selectimagetype" (change)="onImageChange(imageType.value)" [(ngModel)]="mediaInfo.image_view">
+				<select name="Image" class="select select-year" #imageType *ngIf="selectimagetype" (change)="onImageChange(imageType.value,true)" [(ngModel)]="mediaInfo.image_view">
 				  <option value="">----Select Image Type----</option>
 				  <option *ngFor="let type of allImageType; let i = index" value="{{type}}" [selected]="type == mediaInfo.image_view">{{type}}</option>
 			
@@ -71,7 +72,7 @@
 			</div>
 
 			<div class="form-group">    
-				<select name="View" class="select select-year" #view *ngIf="selectview" (change)="onViewChange(view.value)" [(ngModel)]="mediaInfo.views">
+				<select name="View" class="select select-year" #view *ngIf="selectview" (change)="onViewChange(view.value,true)" [(ngModel)]="mediaInfo.views">
 				  <option value="">----Select View----</option>
 				  <option *ngFor="let values of allvalues; let i = index" value="{{values}}" [selected]="values == mediaInfo.views" id="{{values}}">{{values}}</option>
 				</select>

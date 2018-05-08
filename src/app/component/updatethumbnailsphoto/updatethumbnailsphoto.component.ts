@@ -42,7 +42,7 @@ export class UpdatethumbnailsphotoComponent implements OnInit {
   mediaInfo:any = [];
   pageload:boolean;
   userPermissions:boolean;
-
+  message:string;
   constructor(private route:ActivatedRoute, private updatethumbnails: Updatethumbnailsphotoservice,public CMService : SharedDataService) {
     this.userPermissions = true;
     this.pageload = false;
@@ -89,13 +89,13 @@ export class UpdatethumbnailsphotoComponent implements OnInit {
       this.formData.delete('media_id');
       this.formData.append('media_id',this.imageId);
 
-      this.onItemChange(this.mediaInfo.series);
-      this.onyearChange(this.mediaInfo.year);
-      this.onSeasonChange(this.mediaInfo.season);
-      this.onLocationChange(this.mediaInfo.post_name);
+      this.onItemChange(this.mediaInfo.series,false);
+      this.onyearChange(this.mediaInfo.year,false);
+      this.onSeasonChange(this.mediaInfo.season,false);
+      this.onLocationChange(this.mediaInfo.post_name,false);
       if(this.mediaInfo.series =="P"){
-        this.onImageChange(this.mediaInfo.image_view);
-        this.onViewChange(this.mediaInfo.views);
+        this.onImageChange(this.mediaInfo.image_view,false);
+        this.onViewChange(this.mediaInfo.views,false);
       }
       this.pageload = false;
     });
@@ -111,10 +111,10 @@ export class UpdatethumbnailsphotoComponent implements OnInit {
   uploadFile(event) 
   {   
 
-      let fileList = event.target.files; 
-      let file = fileList[0];  
-      this.formData.delete('image');
-      this.formData.append('image', file);
+    let fileList = event.target.files; 
+    let file = fileList[0];  
+    this.formData.delete('image');
+    this.formData.append('image', file);
        
   	this.logo = event.target.files[0]; 
 
@@ -136,7 +136,7 @@ export class UpdatethumbnailsphotoComponent implements OnInit {
 }
 //---=== Right section functionality 
 
-  onItemChange(seriesType){
+  onItemChange(seriesType,status){
     this.selectimagetype = false; 
     this.selectview = false; 
     this.selectlocationoption=false;
@@ -144,6 +144,10 @@ export class UpdatethumbnailsphotoComponent implements OnInit {
     this.selectyearoption = false;
     if(seriesType == ""){
       return false;
+    }
+    if(status){
+      this.mediaInfo.year = "";
+      this.formSubmit = false;
     }
     this.loadingimg=true;
     this.formData.delete('series');
@@ -175,7 +179,7 @@ export class UpdatethumbnailsphotoComponent implements OnInit {
   }
 
 //---on year change
-  onyearChange(year){
+  onyearChange(year,status){
      this.selectimagetype = false; 
     this.selectview = false; 
     this.selectlocationoption=false;
@@ -183,12 +187,17 @@ export class UpdatethumbnailsphotoComponent implements OnInit {
     if(year == ""){
       return false;
     }
-
+    if(status){
+      this.mediaInfo.season = "";
+      this.formSubmit = false;
+      this.mediaInfo.post_name = "";
+    }
     this.formData.delete('year');
     this.formData.append('year',year);
     let SelectedSeries = this.formData.get('series');
     if(SelectedSeries != "P"){
       this.updatethumbnails.getInfo(this.formData,'posts').subscribe(res => {
+
         if(res.posts != null){
             this.allPosts = res.posts;
              console.log(this.allPosts,"allPosts");
@@ -201,12 +210,16 @@ export class UpdatethumbnailsphotoComponent implements OnInit {
   }
 
 //---on season change
-  onSeasonChange(season){
+  onSeasonChange(season,status){
     this.selectimagetype = false; 
     this.selectview = false; 
     this.selectlocationoption=false;
     if(season == ""){
       return false;
+    }
+    if(status){
+      this.mediaInfo.post_name = "";
+      this.formSubmit = false;
     }
     this.loadingimg=true;
     this.formData.delete('season');
@@ -223,12 +236,16 @@ export class UpdatethumbnailsphotoComponent implements OnInit {
 
 //---on location change show image type
 
-onLocationChange(location){
+onLocationChange(location,status){
   console.log(location,"location");
     this.selectimagetype = false; 
     this.selectview = false; 
     if(location == ""){
       return false;
+    }
+    if(status){
+      this.mediaInfo.image_view = "";
+      this.formSubmit = false;
     }
     this.loadingimg=true;
     this.formData.delete('location');
@@ -253,11 +270,15 @@ onLocationChange(location){
 
 //---on imageType change show view
   
-  onImageChange(imageType){
+  onImageChange(imageType,status){
     this.formSubmit = false;
     this.selectview = false;
     if(imageType == ""){
       return false;
+    }
+    if(status){
+      this.mediaInfo.views = "";
+      this.formSubmit = false;
     }
     console.log("imageChange");
     this.loadingimg=true;
@@ -275,8 +296,10 @@ onLocationChange(location){
   }
 
 //---on view
-  onViewChange(view){
+  onViewChange(view,status){
+    console.log(view,"view");
     if(view == ""){
+      this.formSubmit = false;
       return false;
     }
     this.formSubmit = true;
@@ -296,7 +319,11 @@ onLocationChange(location){
         this.imageUploded = true;
         this.loadingimg=false;
         this.disabledButton = false;
+      }else{
+        this.message = res.msg;
+        this.loadingimg=false;
       }
+
     });
   }
 

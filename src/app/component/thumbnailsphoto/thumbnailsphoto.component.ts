@@ -134,7 +134,7 @@ export class ThumbnailsphotoComponent implements OnInit {
   }
 
   ngAfterViewChecked() {
-      var wid = $(window).height() - 100;
+      var wid = $(window).height() +  200;
       var hei = $(window).width();
        this.containerHeight = wid.toString()+"px";
        this.containerWidth = hei.toString()+"px";

@@ -74,7 +74,7 @@
 				  <option value="">----Select Image Type----</option>
 				  <option *ngFor="let type of allImageType; let i = index" value="{{type}}">
 				  		<span *ngIf="type == 'PAN'">Panorama</span>
-				  		<span *ngIf="type == 'SNG'">Single</span>
+				  		<span *ngIf="type == 'SIN'">Single</span>
 				  </option>
 			
 				</select>
@@ -102,11 +102,11 @@
 
 	<!-- When Image uploaded successfully -->
 	<div class="row" *ngIf="imageUploded">
-		<div class="col-xs-10 col-xs-offset-1">
+		<!-- <div class="col-xs-10 col-xs-offset-1">
 			<div class="col-xs-12 ">
 				<p>Username: Developer</p>
 			</div>
-		</div>
+		</div> -->
 		<div class="col-xs-10 col-xs-offset-1">
 			<div class="col-xs-12 ">
 				<span>File uploaded successfully with following details.</span>
